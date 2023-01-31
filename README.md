@@ -1,2 +1,2 @@
-# DES310
+# DES310 Project
 National library of Scotland
