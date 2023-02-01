@@ -4,11 +4,11 @@ public class CameraController : MonoBehaviour
 {
     private float horizontalRotation;
     private float verticalRotation;
-    [SerializeField] private PlayerMovment player;
+    [SerializeField] private PlayerMovement player;
 
     [field: Header("Camera Settings")]
     [field: SerializeField]
-    public float Sensitivity { get; set; } = 100f;
+    public float Sensitivity { get; set; } = 10f;
 
     [SerializeField] private float clampAngle = 85f;
 
