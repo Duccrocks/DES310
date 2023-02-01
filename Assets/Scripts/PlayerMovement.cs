@@ -5,14 +5,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovment : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private float jumpHeight = 5.0f;
     [SerializeField] private float gravity = 9.81f;
-
+    private bool wasGrounded = true;
     private CharacterController controller;
-    private float yVelocity;
+    private float yVelocity = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,38 +25,42 @@ public class PlayerMovment : MonoBehaviour
     void Update()
     {
         Movement();
+  
+        Gravity();
         Jump();
     }
     private void Movement()
     {
         float horizontal = Input.GetAxis("Horizontal") * speed;
         float vertical = Input.GetAxis("Vertical") * speed;
+
         Vector3 moveDirection = transform.right * horizontal + transform.forward * vertical;
         Debug.Log($"Move diection: {moveDirection}");
         controller.Move(moveDirection * Time.deltaTime);
 
         //Gravity
-        Gravity(moveDirection);
+       // Gravity(moveDirection);
 
     }
-    private void Gravity(Vector3 moveDirection)
+    private void Gravity()
     {
-        //Reset the player to spawn if they fall off.
-        if (gameObject.transform.position.y < -20)
+        // Gravity
+        if (controller.isGrounded&&yVelocity<0)
         {
-            gameObject.transform.position = new Vector3(0, 10, 0);
+                yVelocity = 0;
         }
-        //Gravity
-        yVelocity += gravity;
-        moveDirection.y = yVelocity;
-
-        //Moves the player
-        controller.Move(moveDirection);
+        else
+        {
+            yVelocity -= gravity * Time.deltaTime;
+            controller.Move(new Vector3(0, yVelocity, 0)*Time.deltaTime);
+        }
     }
 
     private void Jump()
     {
-       
+        if (!controller.isGrounded) return;
+
+        if (Input.GetKeyDown(KeyCode.Space)) yVelocity = jumpHeight;
     }
 
   
