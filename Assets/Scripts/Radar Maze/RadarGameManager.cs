@@ -15,11 +15,11 @@ public class RadarGameManager : MonoBehaviour
         if (Random.Range(1, 50) == 1)
         {
             // Key objects random spawn
-            Vector3 objPos = keyObjects[Random.Range(0, keyObjects.Length)].transform.position;
-            Vector3 spawnPos = new Vector3(objPos.x + Random.Range(-15, 15), 3, objPos.z + Random.Range(-15, 15));
+            // Vector3 objPos = keyObjects[Random.Range(0, keyObjects.Length)].transform.position;
+            // Vector3 spawnPos = new Vector3(objPos.x + Random.Range(-15, 15), 3, objPos.z + Random.Range(-15, 15));
 
             // Random spawn
-            // Vector3 spawnPos = new Vector3(Random.Range(-50, 50), Random.Range(1.5f, 4.5f), Random.Range(-50, 50));
+            Vector3 spawnPos = new Vector3(Random.Range(-50, 50), Random.Range(1.5f, 4.5f), Random.Range(-50, 50));
 
             Instantiate(wispPrefab, spawnPos, Quaternion.identity);
         }
