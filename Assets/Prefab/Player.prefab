@@ -33,7 +33,7 @@ Transform:
   - {fileID: 483065528216082115}
   - {fileID: 483065527602597332}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &483065527466821099
 CharacterController:
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 483065527466821098}
-  <Sensitivity>k__BackingField: 100
+  <Sensitivity>k__BackingField: 500
   clampAngle: 85
 --- !u!1 &483065528216082119
 GameObject:

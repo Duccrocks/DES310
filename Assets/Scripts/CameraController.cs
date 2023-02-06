@@ -26,9 +26,6 @@ public class CameraController : MonoBehaviour
         //If the player has been in the game before sets the sensitivity to the players prefer.
         if (PlayerPrefs.HasKey("sensitivity"))
             Sensitivity = PlayerPrefs.GetFloat("sensitivity");
-        //In the case the player hasn't been in game before, sets the sensitivity to a default of 5.
-        else
-            Sensitivity = 100;
     }
 
     private void Update()
