@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sonar : MonoBehaviour
 {
     [SerializeField] private Material SonarShader;
+    private Camera cam;
 
     void Update()
     {
