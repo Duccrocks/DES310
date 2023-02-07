@@ -2330,6 +2330,7 @@ GameObject:
   - component: {fileID: 6268188385419268207}
   - component: {fileID: 7012895946403618762}
   - component: {fileID: 5095322687664483072}
+  - component: {fileID: 7012895946403618763}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -2344,4 +2345,18 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6752800800228330197}
+  m_Mesh: {fileID: -462981019419857548, guid: ea5ad17401f6abc43a86789e0bf2a058, type: 3}
+--- !u!64 &7012895946403618763
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6752800800228330197}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -462981019419857548, guid: ea5ad17401f6abc43a86789e0bf2a058, type: 3}
