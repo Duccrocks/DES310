@@ -62,9 +62,19 @@ Shader "Unlit/Xray"
 				if (temp>0) {
 					col = fixed4(1, 1, 1, 1);
 				}
+				float3 vertVector = float3(i.worldPos.x - _playerPos.x, i.worldPos.y - _playerPos.y, i.worldPos.z - _playerPos.z);//calc vector to curret fragment worldCOORDS
+				float dist = sqrt(vertVector.x * vertVector.x + vertVector.y * vertVector.y + vertVector.z * vertVector.z);//calc length of vector
+				float illuminated;
+				if (dist < 1.5) {
+					illuminated = 1;
+				}
+				else
+				{
+					illuminated = 0;
+				}
 				// sample the texture
 				//fixed4 col = tex2D(_MainTex, i.uv);
-				col *= i.inside;
+				col *= illuminated;
 				return col;
 		}
 		ENDCG
