@@ -11,8 +11,8 @@ public class Sonar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("Teeheeeee");
-            SonarShader.SetFloat("LastPulseTime", Time.time);
-            SonarShader.SetVector("PulseOrigin", transform.position);
+            SonarShader.SetFloat("_LastPulseTime", Time.time);
+            SonarShader.SetVector("_PulseOrigin", transform.position);
         }    
     }
 }

@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 271488385}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: Radar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -369,7 +369,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6849546283596164469, guid: e579adf6e856b414781f8e03a777caca, type: 3}
+  - {fileID: 2100000, guid: 386774017bd51294fae75577252cfbf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -414,6 +414,24 @@ Transform:
   m_Father: {fileID: 1104519765}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &556222178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 483065527466821100, guid: dc677f9018cd65744a133ceb49680718, type: 3}
+  m_PrefabInstance: {fileID: 1417724268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &556222182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556222178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a10e0a3fb3d66b47bc06f624d1e3009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SonarShader: {fileID: 2100000, guid: 386774017bd51294fae75577252cfbf0, type: 2}
 --- !u!1 &568874371
 GameObject:
   m_ObjectHideFlags: 0
