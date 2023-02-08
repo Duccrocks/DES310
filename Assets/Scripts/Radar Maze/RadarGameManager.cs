@@ -12,7 +12,7 @@ public class RadarGameManager : MonoBehaviour
     // Spawning wisps nearby key objects in order to give player's hints to where to go
     void FixedUpdate()
     {
-        if (Random.Range(1, 50) == 1)
+        if (Random.Range(1, 500) == 1)
         {
             // Key objects random spawn
             // Vector3 objPos = keyObjects[Random.Range(0, keyObjects.Length)].transform.position;
