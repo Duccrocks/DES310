@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 inputMovement;
     private float yVelocity;
 
-    public Vector2 MovementValue { get => inputMovement; set => inputMovement = value; }
+    public Vector2 InputMovement { get => inputMovement; set => inputMovement = value; }
 
     private void Start()
     {
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        var move = transform.right * inputMovement.x + transform.forward * inputMovement.y;
+        var move = transform.right * InputMovement.x + transform.forward * InputMovement.y;
         controller.Move(move * (speed * Time.deltaTime));
         //Debug.Log($"Player grounded state {IsGrounded()}");
     }

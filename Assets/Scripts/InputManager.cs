@@ -44,7 +44,7 @@ public class InputManager : MonoBehaviour
 
     public void GetPlayerMovement(InputAction.CallbackContext ctx)
     {
-        playerMovement.MovementValue = ctx.ReadValue<Vector2>();
+        playerMovement.InputMovement = ctx.ReadValue<Vector2>();
     }
 
     public void GetAxis(InputAction.CallbackContext ctx)
