@@ -19,14 +19,15 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        playerControls.Player.Move.performed += GetPlayerMovement;
-        playerControls.Player.Look.performed += GetAxis;
-        playerControls.Player.Jump.performed += Jump;
+   
     }
 
     private void OnEnable()
     {
         playerControls.Enable();
+        playerControls.Player.Move.performed += GetPlayerMovement;
+        playerControls.Player.Look.performed += GetAxis;
+        playerControls.Player.Jump.performed += Jump;
     }
 
     private void OnDisable()

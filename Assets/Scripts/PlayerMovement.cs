@@ -3,20 +3,20 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")] 
+    [Header("Movement")]
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private float jumpHeight = 5.0f;
     [SerializeField] private float gravity = -9.81f;
-    
-    [Header("Ground Check")] 
+
+    [Header("Ground Check")]
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] [Range(0, 1)] private float groundDistance;
+    [SerializeField][Range(0, 1)] private float groundDistance;
     private CharacterController controller;
     private Vector2 inputMovement;
     private float yVelocity;
 
-    public Vector2 MovementValue { get => inputMovement; set => inputMovement = value;}
+    public Vector2 MovementValue { get => inputMovement; set => inputMovement = value; }
 
     private void Start()
     {
@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         Gravity();
         //Jump();
     }
+
 
     private void Movement()
     {
@@ -66,6 +67,14 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
+
         return Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+    }
+
+    void OnDrawGizmos()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(groundCheck.position, groundDistance);
     }
 }
