@@ -24,6 +24,7 @@ public class InputManager : MonoBehaviour
 
     private void OnEnable()
     {
+        //Subscribes all player control events
         playerControls.Enable();
         playerControls.Player.Move.performed += GetPlayerMovement;
         playerControls.Player.Look.performed += GetAxis;
@@ -32,7 +33,7 @@ public class InputManager : MonoBehaviour
 
     private void OnDisable()
     {
-        //Personally I don't like memory leaks.
+        //Personally I don't like memory leaks so unsubscribe from all.
         playerControls.Disable();
         playerControls.Player.Move.performed -= GetPlayerMovement;
         playerControls.Player.Look.performed -= GetAxis;
@@ -40,7 +41,7 @@ public class InputManager : MonoBehaviour
     }
 
 
-    #region Player Controls
+    #region Player Controls events
 
     public void GetPlayerMovement(InputAction.CallbackContext ctx)
     {
