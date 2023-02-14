@@ -3,7 +3,10 @@ Shader "Unlit/Xray"
 	Properties
 	{
 		_MainTex("Texture", 2D) = "white" {}
-		_playerPos("ppos", float)=(0,0,0)
+		_playerPos("ppos", Vector) = (0,0,0,1)
+		_objectPosition("objectPos", Vector) = (0,0,0,1)
+		_objectScale("objectScale", Vector) = (1,1,1,1)
+		_pulseLength("pulseLen", float) = 5
 	}
 		SubShader
 	{
@@ -36,9 +39,12 @@ Shader "Unlit/Xray"
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
 			float4 _playerPos;
-
+			float4 _objectPosition;
+			float4 _objectScale;
+			float _pulseLength;
 			v2f vert(appdata v)
 			{
+				
 				float3 vertVector = float3(v.vertex.x - _playerPos.x, v.vertex.y - _playerPos.y, v.vertex.z - _playerPos.z);
 				float dist = sqrt(vertVector.x * vertVector.x + vertVector.y * vertVector.y + vertVector.z * vertVector.z);
 				v2f o;
@@ -49,9 +55,10 @@ Shader "Unlit/Xray"
 				{
 					o.inside = 0;
 				}
-				o.worldPos = v.vertex;
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+				v.vertex = float4(v.vertex.x * _objectScale.x, v.vertex.y * _objectScale.y, v.vertex.z * _objectScale.z, v.vertex.w);
+				o.worldPos = v.vertex+ _objectPosition;
 				return o;
 			}
 
@@ -65,7 +72,7 @@ Shader "Unlit/Xray"
 				float3 vertVector = float3(i.worldPos.x - _playerPos.x, i.worldPos.y - _playerPos.y, i.worldPos.z - _playerPos.z);//calc vector to curret fragment worldCOORDS
 				float dist = sqrt(vertVector.x * vertVector.x + vertVector.y * vertVector.y + vertVector.z * vertVector.z);//calc length of vector
 				float illuminated;
-				if (dist < 1.5) {
+				if (dist < _pulseLength) {
 					illuminated = 1;
 				}
 				else

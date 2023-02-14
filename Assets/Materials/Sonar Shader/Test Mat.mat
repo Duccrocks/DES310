@@ -105,7 +105,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _LastPulseTime: 19.484407
+    - _LastPulseTime: 2.9295602
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -122,14 +122,18 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _pulseLength: 4.98
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _PlayerPosition: {r: 0, g: 0, b: 0, a: 0}
-    - _PulseOrigin: {r: 9.008135, g: 1.0799999, b: -13.570444, a: 0}
+    - _PulseOrigin: {r: -0.15, g: 1.0799999, b: -10.32, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _WorldPos: {r: 0, g: 0, b: 0, a: 0}
+    - _objectPosition: {r: 0, g: 0, b: 0, a: 1}
+    - _objectScale: {r: 1, g: 1, b: 1, a: 1}
+    - _playerPos: {r: -5.97, g: 0, b: 0, a: 1}
     - _playerPosition: {r: 1.949676, g: 3.19, b: -8.207401, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8683437279901674193
