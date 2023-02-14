@@ -462,43 +462,33 @@ MonoBehaviour:
   pillar: {fileID: 0}
   playerPos: {fileID: 556222185}
   pulseManager: {fileID: 556222186}
---- !u!1 &556222178 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 483065527466821100, guid: dc677f9018cd65744a133ceb49680718, type: 3}
-  m_PrefabInstance: {fileID: 1417724268}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &556222182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556222178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a10e0a3fb3d66b47bc06f624d1e3009, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SonarShader: {fileID: 2100000, guid: 386774017bd51294fae75577252cfbf0, type: 2}
 --- !u!4 &556222185 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 483065527466821101, guid: dc677f9018cd65744a133ceb49680718, type: 3}
   m_PrefabInstance: {fileID: 1417724268}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &556222186
+--- !u!114 &556222186 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 943192851675436759, guid: dc677f9018cd65744a133ceb49680718, type: 3}
+  m_PrefabInstance: {fileID: 1417724268}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556222178}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f75fff36043a8df49b51778f94d7a609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pulseOrigin: {x: 0, y: 0, z: 0}
-  length: 0
+--- !u!114 &556222188 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8363715779729255620, guid: dc677f9018cd65744a133ceb49680718, type: 3}
+  m_PrefabInstance: {fileID: 1417724268}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab876c8dda9a4d4aafe66c0c17688b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &731950371
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,8 +502,8 @@ GameObject:
   - component: {fileID: 731950373}
   - component: {fileID: 731950372}
   - component: {fileID: 731950376}
-  m_Layer: 0
-  m_Name: Plane
+  m_Layer: 6
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -819,6 +809,30 @@ PrefabInstance:
     - target: {fileID: 483065527466821101, guid: dc677f9018cd65744a133ceb49680718, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467866407032515612, guid: dc677f9018cd65744a133ceb49680718, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 556222188}
+    - target: {fileID: 3467866407032515612, guid: dc677f9018cd65744a133ceb49680718, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 556222188}
+    - target: {fileID: 3467866407032515612, guid: dc677f9018cd65744a133ceb49680718, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 556222188}
+    - target: {fileID: 3467866407032515612, guid: dc677f9018cd65744a133ceb49680718, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetPlayerMovement
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467866407032515612, guid: dc677f9018cd65744a133ceb49680718, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetAxis
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467866407032515612, guid: dc677f9018cd65744a133ceb49680718, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Jump
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
