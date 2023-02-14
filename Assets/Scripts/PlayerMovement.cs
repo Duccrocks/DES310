@@ -14,10 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField][Range(0, 1)] private float groundDistance;
     private CharacterController controller;
     private float yVelocity;
-    private Vector2 inputMovement;
-
-    public Vector2 InputMovement { get => inputMovement; set => inputMovement = value; }
-
+    
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -25,14 +22,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Movement();
         Gravity();
     }
 
 
-    private void Movement()
+    public void Movement(Vector2 inputMovement)
     {
-        var move = transform.right * InputMovement.x + transform.forward * InputMovement.y;
+        var move = transform.right * inputMovement.x + transform.forward * inputMovement.y;
         controller.Move(move * (speed * Time.deltaTime));
     }
 
