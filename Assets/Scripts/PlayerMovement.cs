@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField][Range(0, 1)] private float groundDistance;
     private CharacterController controller;
-    private Vector2 inputMovement;
     private float yVelocity;
+    private Vector2 inputMovement;
 
     public Vector2 InputMovement { get => inputMovement; set => inputMovement = value; }
 
@@ -23,12 +23,10 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
         Movement();
         Gravity();
-        //Jump();
     }
 
 
@@ -36,13 +34,11 @@ public class PlayerMovement : MonoBehaviour
     {
         var move = transform.right * InputMovement.x + transform.forward * InputMovement.y;
         controller.Move(move * (speed * Time.deltaTime));
-        //Debug.Log($"Player grounded state {IsGrounded()}");
     }
 
 
     private void Gravity()
     {
-        // Debug.Log($"Player y velocity {yVelocity}");
         // Gravity
         if (IsGrounded() && yVelocity < 0)
         {
@@ -61,19 +57,17 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded())
         {
             yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            Debug.Log("Jumping");
         }
     }
 
     private bool IsGrounded()
     {
-
         return Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
     }
 
     void OnDrawGizmos()
     {
-        // Draw a yellow sphere at the transform's position
+        // Draw a yellow sphere at the grounds position
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(groundCheck.position, groundDistance);
     }
