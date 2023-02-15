@@ -1,22 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class Menu : MonoBehaviour
 {
     [SerializeField] private string library;
+
     public void StartGame()
     {
-        SceneManager.LoadScene(library);
+        SceneManager.LoadScene(library.Trim());
     }
-    
+
     /// <summary>
-    /// Quits to desktop.
+    ///     Quits to desktop.
     /// </summary>
     public void QuitGame()
     {
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+        EditorApplication.isPlaying = false;
 #endif
         Application.Quit();
     }
