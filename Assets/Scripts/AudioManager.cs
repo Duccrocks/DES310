@@ -63,7 +63,6 @@ public class AudioManager : MonoBehaviour
         musicSource.loop = true;
         musicSource2.loop = true;
 
-        PlayMusic(clip);
     }
 
     /// <summary>
