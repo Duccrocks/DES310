@@ -3,18 +3,13 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private PlayerMovement player;
-
-    private Vector2 inputRotation;
-
+    
     private float horizontalRotation;
     private float verticalRotation;
 
     [field: Header("Camera Settings")]
     [SerializeField] [Range(0,100)] private float sensitivity = 10f;
     [SerializeField] [Range(0,85)] private float clampAngle = 85f;
-
-    public Vector2 InputRotation { get => inputRotation; set => inputRotation = value; }
-
     private void Awake()
     {
         //Locks the cursor.
@@ -30,18 +25,15 @@ public class CameraController : MonoBehaviour
             sensitivity = PlayerPrefs.GetFloat("sensitivity");
     }
 
-    private void Update()
-    {
-        Look();
-        //Shows which way the player is looking.
-        Debug.DrawRay(transform.position, transform.forward * 2, Color.red);
-    }
-
     /// <summary>
     ///     Moves the camera by mouse.
     /// </summary>
-    private void Look()
+    /// <param name="inputRotation">Vector2 from input.</param>
+    public void Look(Vector2 inputRotation)
     {
+        //Shows which way the player is looking.
+        Debug.DrawRay(transform.position, transform.forward * 2, Color.red);
+        
         horizontalRotation += inputRotation.x * sensitivity * Time.deltaTime;
         verticalRotation -= inputRotation.y * sensitivity * Time.deltaTime;
 
