@@ -44,6 +44,15 @@ public class SelectionManager : MonoBehaviour
                     hasInteracted = false;
                 }
             }
+            else
+            {
+                //No change to crosshair.
+            if (isCrosshairActive)
+            {
+                CrosshairChange(false);
+                doOnce = false;
+            }
+            }
         }
         //In the case nothing was hit.
         else
