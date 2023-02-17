@@ -1,18 +1,17 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SelectionManager : MonoBehaviour
 {
     [SerializeField] private string selectabletag = "SelectableObject";
     [SerializeField] private RawImage crosshair;
-    [SerializeField] private string excludedLayer; 
+    [SerializeField] private string excludedLayer;
     public int rayLength;
 
     [SerializeField] private LayerMask layerMaskInteract;
     private bool doOnce;
+    private bool hasInteracted;
     private bool isCrosshairActive;
-    private bool hasInteracted = false;
 
     // Update is called once per frame
     private void Update()
@@ -47,11 +46,11 @@ public class SelectionManager : MonoBehaviour
             else
             {
                 //No change to crosshair.
-            if (isCrosshairActive)
-            {
-                CrosshairChange(false);
-                doOnce = false;
-            }
+                if (isCrosshairActive)
+                {
+                    CrosshairChange(false);
+                    doOnce = false;
+                }
             }
         }
         //In the case nothing was hit.
