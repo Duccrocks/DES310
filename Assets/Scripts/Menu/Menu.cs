@@ -1,14 +1,16 @@
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField] private string library;
 
+    /// <summary>
+    /// Loads library level.
+    /// </summary>
     public void StartGame()
     {
-        SceneManager.LoadScene(library.Trim());
+        LevelManager.instance.LoadScene(library.Trim());
     }
 
     /// <summary>
