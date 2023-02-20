@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] private PlayerMovement player;
+
+    [Header("Camera Settings")] 
+    [SerializeField] [Range(0.1f, 10)] private float sensitivity = 10f;
+    [SerializeField] [Range(0, 90)] private float clampAngle = 90f;
+
     private float horizontalRotation;
     private float verticalRotation;
-    
-    [SerializeField] private PlayerMovement player;
-    [field: Header("Camera Settings")] 
-    [SerializeField] [Range(0.1f, 10)] private float sensitivity = 10f;
-    [SerializeField] [Range(0, 85)] private float clampAngle = 85f;
 
     private void Awake()
     {
