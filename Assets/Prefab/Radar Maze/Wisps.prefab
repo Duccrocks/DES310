@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 256324427410302601}
   - component: {fileID: 1359004964787683680}
   - component: {fileID: 6140462574120197899}
-  m_Layer: 0
+  - component: {fileID: -1153508203001121963}
+  m_Layer: 2
   m_Name: Wisps
   m_TagString: Wisp
   m_Icon: {fileID: 0}
@@ -34,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &4890425512169223907
 VisualEffect:
@@ -206,5 +207,17 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 60
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1153508203001121963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177481724565558275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5534244f92792634fb40d4367cba0627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
