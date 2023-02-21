@@ -3,13 +3,14 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private PlayerMovement player;
-    
+
+    [Header("Camera Settings")] 
+    [SerializeField] [Range(0.1f, 10)] private float sensitivity = 10f;
+    [SerializeField] [Range(0, 90)] private float clampAngle = 90f;
+
     private float horizontalRotation;
     private float verticalRotation;
 
-    [field: Header("Camera Settings")]
-    [SerializeField] [Range(0,100)] private float sensitivity = 10f;
-    [SerializeField] [Range(0,85)] private float clampAngle = 85f;
     private void Awake()
     {
         //Locks the cursor.
@@ -33,7 +34,7 @@ public class CameraController : MonoBehaviour
     {
         //Shows which way the player is looking.
         Debug.DrawRay(transform.position, transform.forward * 2, Color.red);
-        
+
         horizontalRotation += inputRotation.x * sensitivity * Time.deltaTime;
         verticalRotation -= inputRotation.y * sensitivity * Time.deltaTime;
 

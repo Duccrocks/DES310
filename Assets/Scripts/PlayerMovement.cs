@@ -3,18 +3,19 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")]
+    [Header("Movement")] 
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private float jumpHeight = 5.0f;
     [SerializeField] private float gravity = -9.81f;
-
-    [Header("Ground Check")]
-    [SerializeField] private LayerMask groundMask;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField][Range(0, 1)] private float groundDistance;
-    private CharacterController controller;
     private float yVelocity;
     
+    [Header("Ground Check")] 
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] [Range(0, 1)] private float groundDistance;
+
+    private CharacterController controller;
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -23,6 +24,13 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Gravity();
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Draw a yellow sphere at the grounds position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(groundCheck.position, groundDistance);
     }
 
 
@@ -50,21 +58,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (IsGrounded())
-        {
-            yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
+        if (IsGrounded()) yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
     }
 
     private bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-    }
-
-    void OnDrawGizmos()
-    {
-        // Draw a yellow sphere at the grounds position
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(groundCheck.position, groundDistance);
     }
 }

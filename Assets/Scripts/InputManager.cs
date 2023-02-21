@@ -3,11 +3,11 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    private CameraController cameraController;
     private PlayerControls playerControls;
 
     //Reference to all player controls.
     private PlayerMovement playerMovement;
+    private CameraController cameraController;
     private SelectionManager selectionManager;
 
 
@@ -25,6 +25,11 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+        /*
+         * Constantly listen for player input for movement and camera rotation
+         * as this is something that needs to be ran every frame.
+         */
+
         var movementValue = playerControls.Player.Move.ReadValue<Vector2>();
         playerMovement.Movement(movementValue);
 
@@ -37,10 +42,7 @@ public class InputManager : MonoBehaviour
         //Subscribes all player control events
         playerControls.Enable();
         playerControls.Player.Jump.performed += Jump;
-        
         playerControls.Player.Interact.performed += Interact;
-
-        //playerControls.Player.Jump.Enable();
     }
 
     private void OnDisable()
@@ -48,6 +50,7 @@ public class InputManager : MonoBehaviour
         //Personally I don't like memory leaks so unsubscribe from all.
         playerControls.Disable();
         playerControls.Player.Jump.performed -= Jump;
+        playerControls.Player.Interact.performed -= Interact;
     }
 
     #region Player Controls events
