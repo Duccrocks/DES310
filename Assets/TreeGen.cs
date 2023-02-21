@@ -11,13 +11,15 @@ public class TreeGen : MonoBehaviour
 
     public void Generate()
     {
+        
         for (int i = 0; i < treeCount; i++)
         {
             Vector2 spawnPoint = new Vector2(Random.Range(-250, 100), Random.Range(250, -50));
 
             Physics.Raycast(new Vector3(spawnPoint.x, 50.0f, spawnPoint.y), Vector3.down, out var hit, 100.0f, 6);
 
-            Instantiate(trees[Random.Range(0, trees.Length - 1)], hit.point, Quaternion.identity, treeParent.transform);
+            GameObject tree = Instantiate(trees[Random.Range(0, trees.Length - 1)], hit.point, Quaternion.identity, treeParent.transform);
+            tree.transform.Rotate(new Vector3(90, 0, 0));
         }
     }
 }
