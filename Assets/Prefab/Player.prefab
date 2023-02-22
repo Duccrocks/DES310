@@ -75,6 +75,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 212150cb-627b-42c5-9ff7-c3c23b33b172
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f9c5d06e-36c3-4766-b346-2f4c895958a0
+    m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -277,13 +281,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0591eac8afa37e64c84e826c26ca19ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectabletag: Selectable
-  crosshair: {fileID: 0}
-  excludedLayer: Ground
-  rayLength: 6
+  selectableTag: SelectableObject
   layerMaskInteract:
     serializedVersion: 2
     m_Bits: 128
+  excludedLayer: Ground
+  rayLength: 6
+  crosshair: {fileID: 0}
 --- !u!1 &483065528216082119
 GameObject:
   m_ObjectHideFlags: 0
