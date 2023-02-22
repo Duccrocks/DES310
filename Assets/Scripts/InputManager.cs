@@ -3,59 +3,66 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    private CameraController cameraController;
+    private PlayerControls playerControls;
 
     //Reference to all player controls.
-    private PlayerControls playerControls;
     private PlayerMovement playerMovement;
+    private CameraController cameraController;
+    private SelectionManager selectionManager;
+
 
     private void Awake()
     {
-        playerMovement = GetComponent<PlayerMovement>();
-        cameraController = GetComponentInChildren<CameraController>();
-
         playerControls = new PlayerControls();
     }
 
     private void Start()
     {
-   
+        playerMovement = GetComponent<PlayerMovement>();
+        cameraController = GetComponentInChildren<CameraController>();
+        selectionManager = GetComponentInChildren<SelectionManager>();
+    }
+
+    private void Update()
+    {
+        /*
+         * Constantly listen for player input for movement and camera rotation
+         * as this is something that needs to be ran every frame.
+         */
+
+        var movementValue = playerControls.Player.Move.ReadValue<Vector2>();
+        playerMovement.Movement(movementValue);
+
+        var cameraRotationValue = playerControls.Player.Look.ReadValue<Vector2>();
+        cameraController.Look(cameraRotationValue);
     }
 
     private void OnEnable()
     {
         //Subscribes all player control events
         playerControls.Enable();
-        playerControls.Player.Move.performed += GetPlayerMovement;
-        playerControls.Player.Look.performed += GetAxis;
         playerControls.Player.Jump.performed += Jump;
+        playerControls.Player.Interact.performed += Interact;
     }
 
     private void OnDisable()
     {
         //Personally I don't like memory leaks so unsubscribe from all.
         playerControls.Disable();
-        playerControls.Player.Move.performed -= GetPlayerMovement;
-        playerControls.Player.Look.performed -= GetAxis;
         playerControls.Player.Jump.performed -= Jump;
+        playerControls.Player.Interact.performed -= Interact;
     }
-
 
     #region Player Controls events
 
-    public void GetPlayerMovement(InputAction.CallbackContext ctx)
-    {
-        playerMovement.InputMovement = ctx.ReadValue<Vector2>();
-    }
-
-    public void GetAxis(InputAction.CallbackContext ctx)
-    {
-        cameraController.InputRotation = ctx.ReadValue<Vector2>();
-    }
-
     public void Jump(InputAction.CallbackContext ctx)
     {
-        if (ctx.started) playerMovement.Jump();
+        if (ctx.performed) playerMovement.Jump();
+    }
+
+    public void Interact(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) selectionManager.Interact();
     }
 
     #endregion

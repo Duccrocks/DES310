@@ -3,20 +3,18 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")]
+    [Header("Movement")] 
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private float jumpHeight = 5.0f;
     [SerializeField] private float gravity = -9.81f;
-
-    [Header("Ground Check")]
+    private float yVelocity;
+    
+    [Header("Ground Check")] 
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform groundCheck;
-    [SerializeField][Range(0, 1)] private float groundDistance;
-    private CharacterController controller;
-    private float yVelocity;
-    private Vector2 inputMovement;
+    [SerializeField] [Range(0, 1)] private float groundDistance;
 
-    public Vector2 InputMovement { get => inputMovement; set => inputMovement = value; }
+    private CharacterController controller;
 
     private void Start()
     {
@@ -25,14 +23,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Movement();
         Gravity();
     }
 
-
-    private void Movement()
+    private void OnDrawGizmos()
     {
-        var move = transform.right * InputMovement.x + transform.forward * InputMovement.y;
+        // Draw a yellow sphere at the grounds position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(groundCheck.position, groundDistance);
+    }
+
+
+    public void Movement(Vector2 inputMovement)
+    {
+        var move = transform.right * inputMovement.x + transform.forward * inputMovement.y;
         controller.Move(move * (speed * Time.deltaTime));
     }
 
@@ -54,21 +58,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (IsGrounded())
-        {
-            yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
+        if (IsGrounded()) yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
     }
 
     private bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-    }
-
-    void OnDrawGizmos()
-    {
-        // Draw a yellow sphere at the grounds position
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(groundCheck.position, groundDistance);
     }
 }
