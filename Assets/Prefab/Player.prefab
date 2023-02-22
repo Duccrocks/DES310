@@ -268,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 5118387661832502334}
   sensitivity: 10
-  clampAngle: 90
+  clampAngle: 85
 --- !u!114 &3728844797299791498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   excludedLayer: Ground
-  rayLength: 4
+  rayLength: 6
   crosshair: {fileID: 0}
 --- !u!1 &483065528216082119
 GameObject:
