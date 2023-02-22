@@ -186,8 +186,8 @@ Shader "Unlit/WireframeSimple"
             // Set alpha to 1 if within the threshold, else 0.
             float alpha = step(closest, _WireframeWidth);
 
-            float3 vertVector = float3(i.worldPos.x - _playerPos.x, i.worldPos.y - _playerPos.y, i.worldPos.z - _playerPos.z);//calc vector to curret fragment worldCOORDS
-				float dist = sqrt(vertVector.x * vertVector.x + vertVector.y * vertVector.y + vertVector.z * vertVector.z);//calc length of vector
+            float2 vertVector = float2(i.worldPos.x - _playerPos.x, i.worldPos.z - _playerPos.z);//calc vector to curret fragment worldCOORDS
+				float dist = sqrt(vertVector.x * vertVector.x + vertVector.y * vertVector.y);//calc length of vector
 				float illuminated;
 				if (dist < _pulseLength&&dist>_pulseLength-8) {
 					illuminated = 1;
