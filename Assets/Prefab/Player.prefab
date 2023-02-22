@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0591eac8afa37e64c84e826c26ca19ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectableTag: Selectable
+  selectableTag: SelectableObject
   layerMaskInteract:
     serializedVersion: 2
     m_Bits: 128
