@@ -43,6 +43,9 @@ public class InputManager : MonoBehaviour
         playerControls.Enable();
         playerControls.Player.Jump.performed += Jump;
         playerControls.Player.Interact.performed += Interact;
+        playerControls.Player.Sprint.started += StartSprinting;
+        playerControls.Player.Sprint.canceled += StopSprinting;
+
     }
 
     private void OnDisable()
@@ -51,6 +54,8 @@ public class InputManager : MonoBehaviour
         playerControls.Disable();
         playerControls.Player.Jump.performed -= Jump;
         playerControls.Player.Interact.performed -= Interact;
+        playerControls.Player.Sprint.started -= StartSprinting;
+        playerControls.Player.Sprint.canceled -= StopSprinting;
     }
 
     #region Player Controls events
@@ -64,6 +69,10 @@ public class InputManager : MonoBehaviour
     {
         if (ctx.performed) selectionManager.Interact();
     }
+
+    public void StartSprinting(InputAction.CallbackContext ctx) => playerMovement.StartSprinting();
+
+    public void StopSprinting(InputAction.CallbackContext ctx) => playerMovement.StopSprinting();
 
     #endregion
 }
