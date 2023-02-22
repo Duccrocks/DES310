@@ -29,4 +29,12 @@ public static class Helpers
     {
         foreach (Transform child in transforms) Object.Destroy(child.gameObject);
     }
+
+    /// <summary>
+    ///     Destroys all of this transforms children.
+    /// </summary>
+    public static void DestroyChildrenImmeditately(this Transform transforms)
+    {
+        foreach (Transform child in transforms) Object.DestroyImmediate(child.gameObject);
+    }
 }
