@@ -56,11 +56,11 @@ public class RadarGameManager : MonoBehaviour
 
     public void Victory()
     {
-        Debug.Log("HEHEHEHE HAHAHAHA WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        LevelManager.instance.LoadScene("Menu");
     }
 
     public void Death()
     {
-        Debug.Log("WAAAAAAAAAA WAAAAAAAAAAAAA WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        LevelManager.instance.LoadScene("Library");
     }
 }
