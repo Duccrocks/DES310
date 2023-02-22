@@ -4,17 +4,19 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")] 
+    
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private float jumpHeight = 5.0f;
     [SerializeField] private float gravity = -9.81f;
-    private float yVelocity;
-    
-    [Header("Ground Check")] 
+    [SerializeField] [Range(1, 10)] private float sprintMultiplier = 2f;
+
+    [Header("Ground Check")]
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform groundCheck;
     [SerializeField] [Range(0, 1)] private float groundDistance;
-
+    
     private CharacterController controller;
+    private float yVelocity;
 
     private void Start()
     {
@@ -59,6 +61,16 @@ public class PlayerMovement : MonoBehaviour
     public void Jump()
     {
         if (IsGrounded()) yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+
+    public void StartSprinting()
+    {
+        speed *= sprintMultiplier;
+    }
+
+    public void StopSprinting()
+    {
+        speed /= sprintMultiplier;
     }
 
     private bool IsGrounded()
