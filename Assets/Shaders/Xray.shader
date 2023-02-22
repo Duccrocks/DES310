@@ -110,7 +110,7 @@ Shader "Unlit/WireframeSimple"
             Pass
             {
                 // Removes the front facing triangles, this enables us to create the wireframe for those behind.
-          
+                Cull Off
                 CGPROGRAM
                 #pragma vertex vert
                 #pragma fragment frag

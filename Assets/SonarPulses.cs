@@ -13,9 +13,9 @@ public class SonarPulses : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pulseSpeed = 40;
-        pulseTimer = 0;
-        pulsing = true;
+        pulseSpeed = 6;
+        pulseTimer = 10;
+        pulsing = false;
         pulseOrigin = transform.position;
     }
 
