@@ -1,20 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SonarPulses : MonoBehaviour
 {
-    public Vector3 pulseOrigin;
-    public float length;
+    [NonSerialized] public Vector3 pulseOrigin;
+    [NonSerialized] public float length;
 
-    private float pulseTimer;
-    private float pulseSpeed;
+    [SerializeField] private float pulseTimer = 10;
+    [SerializeField] private float pulseSpeed = 50;
     private bool pulsing;
     // Start is called before the first frame update
     void Start()
     {
-        pulseSpeed = 6;
-        pulseTimer = 10;
         pulsing = false;
         pulseOrigin = transform.position;
     }
