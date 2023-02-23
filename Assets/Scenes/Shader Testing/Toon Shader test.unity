@@ -155,7 +155,7 @@ MonoBehaviour:
   rendererData: {fileID: 11400000, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
   featureName: ColourBlind
   colourBlindType: 0
-  colourMask: {x: 0.6, y: -0.36, z: -0.28, w: 0.87}
+  colourMask: {x: 0, y: 0, z: 0, w: 0}
 --- !u!4 &550460620
 Transform:
   m_ObjectHideFlags: 0
