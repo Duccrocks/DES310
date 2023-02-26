@@ -1,7 +1,8 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
+//Source: https://www.youtube.com/watch?v=TD0R5x0yL0Y
 public class RebindUI : MonoBehaviour
 {
     [SerializeField] private InputActionReference inputActionReference; //this is on the SO
@@ -9,12 +10,12 @@ public class RebindUI : MonoBehaviour
     [SerializeField] [Range(0, 10)] private int selectedBinding;
     [SerializeField] private InputBinding.DisplayStringOptions displayStringOptions;
 
-    [Header("Binding Info - DO NOT EDIT")] [SerializeField]
-    private InputBinding inputBinding;
+    [Header("Binding Info - DO NOT EDIT")] 
+    [SerializeField] private InputBinding inputBinding;
 
-    [Header("UI Fields")] [SerializeField] private Text actionText;
-
-    [SerializeField] private Text rebindText;
+    [Header("UI Fields")] 
+    [SerializeField] private TMP_Text actionText;
+    [SerializeField] private TMP_Text rebindText;
 
     private string actionName;
     private int bindingIndex;
@@ -27,17 +28,20 @@ public class RebindUI : MonoBehaviour
             GetBindingInfo();
             UpdateUI();
         }
-
+        
+        //Subscribe functions to be called when rebind events are invoked.
         RebindManager.RebindComplete += UpdateUI;
         RebindManager.RebindCanceled += UpdateUI;
     }
 
     private void OnDisable()
     {
+        //Unsubscribe to save memory
         RebindManager.RebindComplete -= UpdateUI;
         RebindManager.RebindCanceled -= UpdateUI;
     }
-
+    
+    //Function that's ran when a value in the inspector changes (to update the inspector accordingly)
     private void OnValidate()
     {
         if (inputActionReference == null)
