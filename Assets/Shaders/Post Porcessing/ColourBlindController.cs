@@ -4,15 +4,17 @@ using System.Linq;
 
 public class ColourBlindController : MonoBehaviour
 {
+    public enum ColouBlindMode{none, Protanopiaro, Deuteranopia, Tritanopia }
 
     [SerializeField] private UniversalRendererData rendererData = null;
     [SerializeField] private string featureName = null;
-    [SerializeField, Range(0, 3)] private int colourBlindType = 0;
     [SerializeField] Vector4 colourMask;
+    [SerializeField] ColouBlindMode currentColourblindSetting;
     // Start is called before the first frame update
     void Start()
     {
         colourMask = new Vector4(1, 1, 1, 1);
+        currentColourblindSetting = ColouBlindMode.none;
     }
 
     // Update is called once per frame
@@ -24,6 +26,24 @@ public class ColourBlindController : MonoBehaviour
 
             var blitFeature = feature as Blit;
             var material = blitFeature.blitPass.blitMaterial;
+
+            switch (currentColourblindSetting) {
+                case (ColouBlindMode.none):
+                    material.SetVector("_ColourBlindVector", new Vector4(1,0,0,0));
+                    break;
+                case (ColouBlindMode.Tritanopia):
+                    material.SetVector("_ColourBlindVector", new Vector4(0, 1, 0, 0));
+                    break;
+                case (ColouBlindMode.Deuteranopia):
+                    material.SetVector("_ColourBlindVector", new Vector4(0, 0, 1, 0));
+                    break;
+                case (ColouBlindMode.Protanopiaro):
+                    material.SetVector("_ColourBlindVector", new Vector4(0, 0, 0, 1));
+                    break;
+                default: break;
+            }
+
+
             material.SetVector("_colourMask", colourMask);
             //material.SetFloat("_Saturation", saturation);
         }
