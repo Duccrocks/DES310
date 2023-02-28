@@ -1,47 +1,67 @@
-using UnityEngine.Rendering.Universal;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ColourBlindController : MonoBehaviour
 {
-    public enum ColouBlindMode { none, Protanopiaro, Deuteranopia, Tritanopia }
+    public enum ColourBlindMode
+    {
+        None,
+        Protanopia,
+        Deuteranopia,
+        Tritanopia
+    }
 
-    [SerializeField] private UniversalRendererData rendererData = null;
-    [SerializeField] private string featureName = null;
+    private static ColourBlindController instance;
+
+    [SerializeField] private UniversalRendererData rendererData;
+    [SerializeField] private string featureName;
     [SerializeField] private Vector4 colourMask;
-    public ColouBlindMode currentColourblindSetting;
+    public ColourBlindMode currentColourblindSetting;
+
+    private void Awake()
+    {
+
+        if (instance == null)
+        {
+            
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+            Destroy(gameObject);
+    }
+
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         colourMask = new Vector4(1, 1, 1, 1);
-        currentColourblindSetting = ColouBlindMode.none;
+        currentColourblindSetting = ColourBlindMode.None;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
         if (TryGetFeature(out var feature))
         {
-
             var blitFeature = feature as Blit;
             var material = blitFeature.blitPass.blitMaterial;
 
             switch (currentColourblindSetting)
             {
-                case (ColouBlindMode.none):
+                case ColourBlindMode.None:
                     material.SetVector("_ColourBlindVector", new Vector4(1, 0, 0, 0));
                     break;
-                case (ColouBlindMode.Tritanopia):
+                case ColourBlindMode.Tritanopia:
                     material.SetVector("_ColourBlindVector", new Vector4(0, 1, 0, 0));
                     break;
-                case (ColouBlindMode.Deuteranopia):
+                case ColourBlindMode.Deuteranopia:
                     material.SetVector("_ColourBlindVector", new Vector4(0, 0, 1, 0));
                     break;
-                case (ColouBlindMode.Protanopiaro):
+                case ColourBlindMode.Protanopia:
                     material.SetVector("_ColourBlindVector", new Vector4(0, 0, 0, 1));
                     break;
-                default: break;
             }
 
 
@@ -49,11 +69,11 @@ public class ColourBlindController : MonoBehaviour
             //material.SetFloat("_Saturation", saturation);
         }
     }
+
     private bool TryGetFeature(out ScriptableRendererFeature feature)
     {
-        feature = rendererData.rendererFeatures.Where((f) => f.name == featureName).FirstOrDefault();
+        feature = rendererData.rendererFeatures.Where(f => f.name == featureName).FirstOrDefault();
 
         return feature != null;
     }
-
 }

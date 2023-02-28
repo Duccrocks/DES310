@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -9,11 +10,13 @@ public class Options : MonoBehaviour
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] private AudioMixer audioMixer;
     private ColourBlindController colourBlindController;
-    private void Start()
+
+    private void Awake()
     {
         colourBlindController = FindObjectOfType<ColourBlindController>();
         InitialisePrefs();
     }
+
 
     /// <summary>
     ///     Sets the sensitivity of the players camera.
@@ -66,8 +69,15 @@ public class Options : MonoBehaviour
     {
         print(colourBlindValue);
         PlayerPrefs.SetInt("colourblind", colourBlindValue);
-        colourBlindController.currentColourblindSetting = (ColourBlindController.ColouBlindMode)colourBlindValue;
 
+        try
+        {
+            colourBlindController.currentColourblindSetting = (ColourBlindController.ColourBlindMode)colourBlindValue;
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.LogError("Colourblind controller null");
+        }
     }
 
     //Default values for player.
@@ -88,7 +98,16 @@ public class Options : MonoBehaviour
 
         if (PlayerPrefs.HasKey("colourblind"))
         {
-            var previousColourBlindness = PlayerPrefs.GetInt("colourblind",0);
+            var previousColourBlindness = PlayerPrefs.GetInt("colourblind", 0);
+            try
+            {
+                colourBlindController.currentColourblindSetting =
+                    (ColourBlindController.ColourBlindMode)previousColourBlindness;
+            }
+            catch (NullReferenceException e)
+            {
+                Debug.LogError("Colourblind controller null");
+            }
         }
 
         if (PlayerPrefs.HasKey("quality"))

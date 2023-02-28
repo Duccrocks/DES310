@@ -68,6 +68,7 @@ public class InputManager : MonoBehaviour
         playerControls.Player.Interact.performed -= Interact;
         playerControls.Player.Sprint.started -= StartSprinting;
         playerControls.Player.Sprint.canceled -= StopSprinting;
+        playerControls.Player.Pause.performed -= TogglePause;
     }
 
     #region Player Controls events
