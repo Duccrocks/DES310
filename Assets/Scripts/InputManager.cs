@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,10 +7,10 @@ public class InputManager : MonoBehaviour
     private PlayerControls playerControls;
 
     //Reference to all player controls.
-    private PlayerMovement playerMovement;
-    private CameraController cameraController;
-    private SelectionManager selectionManager;
-
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private CameraController cameraController;
+    [SerializeField] private SelectionManager selectionManager;
+    [SerializeField] private PauseMenu pauseMenu;
 
     private void Awake()
     {
@@ -24,12 +25,12 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        playerMovement = GetComponent<PlayerMovement>();
-        cameraController = GetComponentInChildren<CameraController>();
-        selectionManager = GetComponentInChildren<SelectionManager>();
-    }
+    // private void Start()
+    // {
+    //     playerMovement = GetComponent<PlayerMovement>();
+    //     cameraController = GetComponentInChildren<CameraController>();
+    //     selectionManager = GetComponentInChildren<SelectionManager>();
+    // }
 
     private void Update()
     {
@@ -53,8 +54,11 @@ public class InputManager : MonoBehaviour
         playerControls.Player.Interact.performed += Interact;
         playerControls.Player.Sprint.started += StartSprinting;
         playerControls.Player.Sprint.canceled += StopSprinting;
+        playerControls.Player.Pause.performed += TogglePause;
+
 
     }
+
 
     private void OnDisable()
     {
@@ -81,6 +85,15 @@ public class InputManager : MonoBehaviour
     public void StartSprinting(InputAction.CallbackContext ctx) => playerMovement.StartSprinting();
 
     public void StopSprinting(InputAction.CallbackContext ctx) => playerMovement.StopSprinting();
+
+    private void TogglePause(InputAction.CallbackContext ctx)
+    {
+        if(ctx.performed)
+        {
+            pauseMenu.TogglePause();
+        }
+    }
+
 
     #endregion
 }

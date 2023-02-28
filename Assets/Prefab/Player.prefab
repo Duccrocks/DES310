@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3467866407032515612}
   - component: {fileID: 646420614751925707}
   - component: {fileID: 5118387661832502334}
-  - component: {fileID: 2456701550121273664}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -79,6 +78,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f9c5d06e-36c3-4766-b346-2f4c895958a0
     m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fd981b22-13db-41d9-8eea-854b8d79f7e5
+    m_ActionName: Player/Sprint[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 822db53b-891e-472a-847b-5ff6fc2c1107
+    m_ActionName: Player/Pause[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -123,18 +130,6 @@ MonoBehaviour:
     m_Bits: 64
   groundCheck: {fileID: 7124147106484437205}
   groundDistance: 0.3
---- !u!114 &2456701550121273664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 483065527466821100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ab876c8dda9a4d4aafe66c0c17688b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &483065527602597337
 GameObject:
   m_ObjectHideFlags: 0

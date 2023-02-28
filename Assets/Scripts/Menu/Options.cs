@@ -8,9 +8,10 @@ public class Options : MonoBehaviour
     [SerializeField] private Slider sensSlider, volumeSlider;
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] private AudioMixer audioMixer;
-
+    private ColourBlindController colourBlindController;
     private void Start()
     {
+        colourBlindController = FindObjectOfType<ColourBlindController>();
         InitialisePrefs();
     }
 
@@ -57,6 +58,18 @@ public class Options : MonoBehaviour
         Screen.fullScreen = isFullScreen;
     }
 
+    /// <summary>
+    ///     Sets if colourblindness is on or off
+    /// </summary>
+    /// <param name="colourBlindValue">The value of the quality</param>
+    public void SetColourBlindness(int colourBlindValue)
+    {
+        print(colourBlindValue);
+        PlayerPrefs.SetInt("colourblind", colourBlindValue);
+        colourBlindController.currentColourblindSetting = (ColourBlindController.ColouBlindMode)colourBlindValue;
+
+    }
+
     //Default values for player.
     private void InitialisePrefs()
     {
@@ -73,15 +86,16 @@ public class Options : MonoBehaviour
             volumeSlider.value = previousVolume;
         }
 
+        if (PlayerPrefs.HasKey("colourblind"))
+        {
+            var previousColourBlindness = PlayerPrefs.GetInt("colourblind",0);
+        }
+
         if (PlayerPrefs.HasKey("quality"))
         {
-            var previousQuality = PlayerPrefs.GetInt("quality");
+            var previousQuality = PlayerPrefs.GetInt("quality", 2);
             QualitySettings.SetQualityLevel(previousQuality);
             qualityDropdown.value = previousQuality;
-        }
-        else
-        {
-            QualitySettings.SetQualityLevel(2);
         }
     }
 }
