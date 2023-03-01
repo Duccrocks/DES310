@@ -1589,7 +1589,7 @@ MonoBehaviour:
   sensSlider: {fileID: 5120818019349919003}
   volumeSlider: {fileID: 5120818018068924005}
   qualityDropdown: {fileID: 5120818019076036649}
-  colourBlindDropDown: {fileID: 5120818019076036649}
+  colourBlindDropDown: {fileID: 3473676819252985626}
   audioMixer: {fileID: 24100000, guid: ee026c42157e24149aae554826e8e54a, type: 2}
 --- !u!1 &5120818017950184404
 GameObject:

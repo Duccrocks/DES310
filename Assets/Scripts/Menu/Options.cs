@@ -6,13 +6,16 @@ using UnityEngine.UI;
 
 public class Options : MonoBehaviour
 {
-    [Header("UI Elements")] 
+    [SerializeField] private AudioMixer audioMixer;
     
+    [Header("Sliders")]
     [SerializeField] private Slider sensSlider;
     [SerializeField] private Slider volumeSlider;
+    
+    [Header("Dropdowns")]
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] private TMP_Dropdown colourBlindDropDown;
-    [SerializeField] private AudioMixer audioMixer;
+    
     private ColourBlindController colourBlindController;
 
     private void Awake()
