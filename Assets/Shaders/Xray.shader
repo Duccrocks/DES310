@@ -184,7 +184,7 @@ Shader "Unlit/WireframeSimple"
                 // Find the barycentric coordinate closest to the edge.
                 float closest = min(i.barycentric.x, min(i.barycentric.y, i.barycentric.z));
             // Set alpha to 1 if within the threshold, else 0.
-            float alpha = step(closest, _WireframeWidth);
+            float alpha = step(abs(closest), abs(_WireframeWidth));
 
             float2 vertVector = float2(i.worldPos.x - _playerPos.x, i.worldPos.z - _playerPos.z);//calc vector to curret fragment worldCOORDS
 				float dist = sqrt(vertVector.x * vertVector.x + vertVector.y * vertVector.y);//calc length of vector
@@ -196,12 +196,12 @@ Shader "Unlit/WireframeSimple"
 				{
 					illuminated = 0;
 				}
-
+                if (alpha<0.1) {
+                    return fixed4(0,0,0,1);
+                }
             // Set to our backwards facing wireframe colour.
             fixed4 temp = fixed4(_WireframeBackColour.r, _WireframeBackColour.g, _WireframeBackColour.b, alpha);
-            fixed4 temp2 = fixed4(1, 1, 1, 1);
-            fixed4 temp3 = fixed4(illuminated, illuminated, illuminated, 1);
-            return temp* illuminated;
+            return fixed4(temp.xyz*illuminated,alpha);
         }
         ENDCG
     }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3467866407032515612}
   - component: {fileID: 646420614751925707}
   - component: {fileID: 5118387661832502334}
-  - component: {fileID: 8363715779729255620}
+  - component: {fileID: 2456701550121273664}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -117,12 +117,13 @@ MonoBehaviour:
   speed: 3
   jumpHeight: 2
   gravity: -19.62
+  sprintMultiplier: 2
   groundMask:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 7124147106484437205}
   groundDistance: 0.3
---- !u!114 &8363715779729255620
+--- !u!114 &2456701550121273664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

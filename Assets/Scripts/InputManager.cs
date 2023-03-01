@@ -13,7 +13,15 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        playerControls = new PlayerControls();
+        if (RebindManager.inputActions != null)
+        {
+            
+            playerControls = RebindManager.inputActions;
+        }
+        else
+        {
+            playerControls = new PlayerControls();
+        }
     }
 
     private void Start()

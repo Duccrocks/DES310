@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Materials/Materials/god 1.mat.meta
 guid: 848c29bda822b5849ba2939de82b5933
+========
+guid: c72959464d4327648b7062e52f494d6c
+>>>>>>>> development:Assets/Settings/SampleSceneProfile.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000

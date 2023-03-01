@@ -1,9 +1,16 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField] private string library;
+
+    private void Start()
+    {
+        //Locks the cursor.
+        Cursor.lockState = CursorLockMode.None;
+    }
 
     /// <summary>
     /// Loads library level.
