@@ -6,14 +6,22 @@ using UnityEngine.UI;
 
 public class Options : MonoBehaviour
 {
-    [SerializeField] private Slider sensSlider, volumeSlider;
+    [Header("UI Elements")] 
+    
+    [SerializeField] private Slider sensSlider;
+    [SerializeField] private Slider volumeSlider;
     [SerializeField] private TMP_Dropdown qualityDropdown;
+    [SerializeField] private TMP_Dropdown colourBlindDropDown;
     [SerializeField] private AudioMixer audioMixer;
     private ColourBlindController colourBlindController;
 
     private void Awake()
     {
         colourBlindController = FindObjectOfType<ColourBlindController>();
+    }
+
+    private void Start()
+    {
         InitialisePrefs();
     }
 
@@ -76,7 +84,7 @@ public class Options : MonoBehaviour
         }
         catch (NullReferenceException e)
         {
-            Debug.LogError("Colourblind controller null");
+            Debug.LogError($"Colourblind controller null \n{e}");
         }
     }
 
@@ -103,10 +111,11 @@ public class Options : MonoBehaviour
             {
                 colourBlindController.currentColourblindSetting =
                     (ColourBlindController.ColourBlindMode)previousColourBlindness;
+                colourBlindDropDown.value = previousColourBlindness;
             }
             catch (NullReferenceException e)
             {
-                Debug.LogError("Colourblind controller null");
+                Debug.LogError($"Colourblind controller null \n{e}");
             }
         }
 

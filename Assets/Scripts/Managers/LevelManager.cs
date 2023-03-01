@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
     /// <param name="loadSceneMode">Additive or single loading (defaults to single)</param>
     public void LoadScene(string sceneName, LoadSceneMode loadSceneMode = LoadSceneMode.Single)
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName.Trim());
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
     /// <param name="loadSceneMode">Additive or single loading (defaults to single)</param>
     public IEnumerator LoadSceneAsync(string sceneName, LoadSceneMode loadSceneMode = LoadSceneMode.Single)
     {
-        var progress = SceneManager.LoadSceneAsync(sceneName, loadSceneMode);
+        var progress = SceneManager.LoadSceneAsync(sceneName.Trim(), loadSceneMode);
 
         while (!progress.isDone)
             //Can do a transition or loading screen here.
@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
     /// <param name="sceneName">Name of scene to load.</param>
     public IEnumerator UnloadSceneAsync(string sceneName)
     {
-        var progress = SceneManager.UnloadSceneAsync(sceneName);
+        var progress = SceneManager.UnloadSceneAsync(sceneName.Trim());
 
         while (!progress.isDone)
             yield return null;

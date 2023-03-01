@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
-    [SerializeField] private string library;
+    [SerializeField] private string sceneToLoad;
 
     private void Start()
     {
@@ -17,7 +17,7 @@ public class Menu : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        LevelManager.instance.LoadScene(library.Trim());
+        LevelManager.instance.LoadScene(sceneToLoad);
     }
 
     /// <summary>
