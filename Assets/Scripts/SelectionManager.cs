@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +7,7 @@ public class SelectionManager : MonoBehaviour
     [SerializeField] private string selectableTag = "SelectableObject";
     [SerializeField] private LayerMask layerMaskInteract;
     [SerializeField] private string excludedLayer;
-    [SerializeField][Range(0,10)] private float rayLength;
+    [SerializeField] [Range(0, 10)] private float rayLength;
     [SerializeField] private RawImage crosshair;
 
     private bool doOnce;
@@ -72,18 +73,25 @@ public class SelectionManager : MonoBehaviour
     /// <param name="isOn">If the crosshair colour is changed or not.</param>
     private void CrosshairChange(bool isOn)
     {
-        //If its on and just changes once.
-        if (isOn && !doOnce)
+        try
         {
-            //Turns the crosshair red.
-            crosshair.color = Color.red;
+            //If its on and just changes once.
+            if (isOn && !doOnce)
+            {
+                //Turns the crosshair red.
+                crosshair.color = Color.red;
+            }
+            //In the case that it isn't then.
+            else
+            {
+                //Turns the crosshair white.
+                crosshair.color = Color.white;
+                isCrosshairActive = false;
+            }
         }
-        //In the case that it isn't then.
-        else
+        catch (NullReferenceException e)
         {
-            //Turns the crosshair white.
-            crosshair.color = Color.white;
-            isCrosshairActive = false;
+            Debug.LogError($"Crosshair is null\n {e}");
         }
     }
 
