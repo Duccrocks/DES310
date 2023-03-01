@@ -138,6 +138,7 @@ Shader "Unlit/WireframeSimple"
                 float4 pos : SV_POSITION;
                 float3 barycentric : TEXCOORD0;
                 float4 worldPos: TEXCOORD1;
+                float2 uv : TEXCOORD2;
             };
 
             sampler2D _MainTex;
@@ -164,14 +165,17 @@ Shader "Unlit/WireframeSimple"
                 g2f o;
                 o.pos = IN[0].vertex;
                 o.worldPos = IN[0].worldPos;
+                o.uv = IN[0].uv;
                 o.barycentric = float3(1.0, 0.0, 0.0);
                 triStream.Append(o);
                 o.pos = IN[1].vertex;
                 o.worldPos = IN[1].worldPos;
+                o.uv = IN[1].uv;
                 o.barycentric = float3(0.0, 1.0, 0.0);
                 triStream.Append(o);
                 o.pos = IN[2].vertex;
                 o.worldPos = IN[2].worldPos;
+                o.uv = IN[2].uv;
                 o.barycentric = float3(0.0, 0.0, 1.0);
                 triStream.Append(o);
             }
@@ -196,12 +200,19 @@ Shader "Unlit/WireframeSimple"
 				{
 					illuminated = 0;
 				}
-                if (alpha<0.1) {
-                    return fixed4(0,0,0,1);
-                }
+               
             // Set to our backwards facing wireframe colour.
             fixed4 temp = fixed4(_WireframeBackColour.r, _WireframeBackColour.g, _WireframeBackColour.b, alpha);
-            return fixed4(temp.xyz*illuminated,alpha);
+
+            #if !UNITY_EDITOR
+                fixed4 col = tex2D(_MainTex, i.uv);
+                return fixed4(col.xyz,1);
+            #else
+                 if (alpha<0.1) {
+                    return fixed4(0,0,0,1);
+                }
+                return fixed4(temp.xyz*illuminated,alpha);
+            #endif
         }
         ENDCG
     }

@@ -57,6 +57,11 @@ public class KelpieAI : MonoBehaviour
         }
     }
 
+    public void IncreaseDiff()
+    {
+        // Increase the diff lol 
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
