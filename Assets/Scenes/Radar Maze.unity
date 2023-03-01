@@ -12434,9 +12434,9 @@ MonoBehaviour:
   kelpie: {fileID: 745463808}
   player: {fileID: 1772213007}
   keyAreas:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1556268886}
+  - {fileID: 2070602642}
+  - {fileID: 79474158}
   kelpieRange: 75
 --- !u!195 &745463808
 NavMeshAgent:
