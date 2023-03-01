@@ -55,4 +55,16 @@ public class ColourBlindController : MonoBehaviour
         return feature != null;
     }
 
+    void OnApplicationQuit()
+    {
+    
+        if (TryGetFeature(out var feature))
+        {
+            var blitFeature = feature as Blit;
+            var material = blitFeature.blitPass.blitMaterial;
+
+            material.SetVector("_ColourBlindVector", new Vector4(1, 0, 0, 0));
+        }
+    }
+
 }
