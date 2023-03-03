@@ -59,7 +59,10 @@ public class KelpieAI : MonoBehaviour
 
     public void IncreaseDiff()
     {
-        // Increase the diff lol 
+        Debug.Log("Action is coming (African accent)");
+
+        GetComponent<NavMeshAgent>().speed *= 1.25f;
+        kelpieRange += 10;
     }
 
     void OnTriggerEnter(Collider other)
