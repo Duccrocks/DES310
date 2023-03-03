@@ -25,7 +25,5 @@ public class Artifacts : MonoBehaviour, IInteractable
         GameObject[] artifactsLeft = GameObject.FindGameObjectsWithTag("SelectableObject");
 
         if (artifactsLeft.Length <= 1) RadarGameManager.Instance.Victory();
-
-        Debug.Log("how did you get this far...?");
     }
 }

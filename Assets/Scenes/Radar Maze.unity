@@ -8204,9 +8204,9 @@ MonoBehaviour:
   treePrefabs: []
   wispPrefab: {fileID: 177481724565558275, guid: 264a7c30fd0750e4281152e9e9064859, type: 3}
   keyObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 555281423}
+  - {fileID: 1497603876}
+  - {fileID: 1338981694}
 --- !u!4 &430960429
 Transform:
   m_ObjectHideFlags: 0
@@ -12422,7 +12422,7 @@ GameObject:
   - component: {fileID: 745463807}
   m_Layer: 0
   m_Name: Kelpie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
