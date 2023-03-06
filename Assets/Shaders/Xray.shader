@@ -100,6 +100,7 @@ Shader "Unlit/WireframeSimple"
         _objectPosition("objectPos", Vector) = (0,0,0,1)
         _objectScale("objectScale", Vector) = (1,1,1,1)
         _pulseLength("pulseLen", float) = 5
+        _isTerrain("isTerrain", float) = 0
     }
         SubShader
         {
@@ -147,6 +148,7 @@ Shader "Unlit/WireframeSimple"
             float4 _objectScale;
             float _pulseLength;
             float4 wplz;
+            float _isTerrain;
             v2f vert(appdata v)
             {
                 v2f o;
@@ -199,7 +201,8 @@ Shader "Unlit/WireframeSimple"
                 if (alpha<0.1) {
                     return fixed4(0,0,0,1);
                 }
-            // Set to our backwards facing wireframe colour.
+            // Set to our backwards facing wireframe colour
+
             fixed4 temp = fixed4(_WireframeBackColour.r, _WireframeBackColour.g, _WireframeBackColour.b, alpha);
             return fixed4(temp.xyz*illuminated,alpha);
         }
