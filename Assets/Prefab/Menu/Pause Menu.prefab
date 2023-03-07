@@ -869,7 +869,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6173686273149435919}
+      - m_Target: {fileID: 1705286760310357706}
         m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
         m_MethodName: Select
         m_Mode: 1
@@ -1366,9 +1366,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: d9bed21044642f94eaaac43be65dfcd6, type: 3}
---- !u!114 &6173686273149435919 stripped
+--- !u!114 &1705286760310357706 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1933349203244759332, guid: d9bed21044642f94eaaac43be65dfcd6, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6400619379130533857, guid: d9bed21044642f94eaaac43be65dfcd6, type: 3}
   m_PrefabInstance: {fileID: 5726876887502240043}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
