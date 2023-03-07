@@ -150,7 +150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7619922457586752260
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1279,6 +1279,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Settings Panel Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1933349203244759332, guid: d9bed21044642f94eaaac43be65dfcd6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2363166745792627453}
+    - target: {fileID: 1933349203244759332, guid: d9bed21044642f94eaaac43be65dfcd6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 6277560302852361589}
     - target: {fileID: 2722491420323793363, guid: d9bed21044642f94eaaac43be65dfcd6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
