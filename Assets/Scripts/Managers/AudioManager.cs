@@ -1,12 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 /// <summary>
 ///     Used to handle audio across scenes.
 /// </summary>
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioClip clip;
+    //[SerializeField] private AudioClip clip;
 
     private bool firstMusicSourceIsPlaying;
 
@@ -21,12 +22,27 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         // If doesnt have an instance of AudioManager get one
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        //Gets an audio source for sfx
+        sfxSource = gameObject.GetComponent<AudioSource>();
         //Adds 2 audio sources for music
         musicSource = gameObject.AddComponent<AudioSource>();
         musicSource2 = gameObject.AddComponent<AudioSource>();
-        //Adds an audio source for sfx
-        sfxSource = gameObject.GetComponent<AudioSource>();
+
+        AudioMixerGroup audioMixerGroup = sfxSource.outputAudioMixerGroup;
+        
+        musicSource.outputAudioMixerGroup = audioMixerGroup;
+        musicSource2.outputAudioMixerGroup = audioMixerGroup;
+
 
         //Makes the Audiomanager persist throughout on scene change.
         DontDestroyOnLoad(gameObject);
