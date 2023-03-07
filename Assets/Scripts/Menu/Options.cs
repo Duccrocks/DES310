@@ -15,7 +15,9 @@ public class Options : MonoBehaviour
     [Header("Dropdowns")]
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] private TMP_Dropdown colourBlindDropDown;
-    
+
+    [Header("Toggle")]
+    [SerializeField] private Toggle fullscreenToggle;
     private ColourBlindController colourBlindController;
 
     private void Awake()
@@ -70,6 +72,7 @@ public class Options : MonoBehaviour
     public void SetFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
+        PlayerPrefs.SetInt("fullscreen",Convert.ToInt32(isFullScreen));
     }
 
     /// <summary>
@@ -127,6 +130,13 @@ public class Options : MonoBehaviour
             var previousQuality = PlayerPrefs.GetInt("quality", 2);
             QualitySettings.SetQualityLevel(previousQuality);
             qualityDropdown.value = previousQuality;
+        }
+        
+        if (PlayerPrefs.HasKey("fullscreen"))
+        {
+            var wasFullscreen = PlayerPrefs.GetInt("fullscreen", 1);
+            Screen.fullScreen = Convert.ToBoolean(wasFullscreen);
+
         }
     }
 }
