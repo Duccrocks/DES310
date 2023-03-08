@@ -61,7 +61,7 @@ public class KelpieAI : MonoBehaviour
     {
         Debug.Log("Action is coming (African accent)");
 
-        GetComponent<NavMeshAgent>().speed *= 1.25f;
+        GetComponent<NavMeshAgent>().speed *= 1.1f;
         kelpieRange += 10;
     }
 
