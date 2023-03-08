@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
 public class RadarGameManager : MonoBehaviour
@@ -56,7 +57,8 @@ public class RadarGameManager : MonoBehaviour
 
     public void Victory()
     {
-        LevelManager.instance.LoadScene("Menu");
+        //LevelManager.instance.LoadScene("Menu");
+        SceneManager.LoadScene(0);
     }
 
     public void Death()
