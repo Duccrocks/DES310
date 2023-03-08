@@ -19,13 +19,14 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        StaticVariables.cameraSensitivity = 10f;
         verticalRotation = transform.localEulerAngles.x;
         horizontalRotation = player.transform.eulerAngles.y;
         //If the player has been in the game before sets the sensitivity to the players prefer.
         if (PlayerPrefs.HasKey("sensitivity"))
-            sensitivity = PlayerPrefs.GetFloat("sensitivity");
-    }
+            StaticVariables.cameraSensitivity = PlayerPrefs.GetFloat("sensitivity");
 
+    }
     /// <summary>
     ///     Moves the camera by mouse.
     /// </summary>
@@ -35,8 +36,8 @@ public class CameraController : MonoBehaviour
         //Shows which way the player is looking.
         Debug.DrawRay(transform.position, transform.forward * 2, Color.red);
 
-        horizontalRotation += inputRotation.x * sensitivity * Time.deltaTime;
-        verticalRotation -= inputRotation.y * sensitivity * Time.deltaTime;
+        horizontalRotation += inputRotation.x * StaticVariables.cameraSensitivity * Time.deltaTime;
+        verticalRotation -= inputRotation.y * StaticVariables.cameraSensitivity * Time.deltaTime;
 
         //Clamps the camera from looping around vertically.
         verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
@@ -45,4 +46,5 @@ public class CameraController : MonoBehaviour
         player.transform.rotation = Quaternion.Euler(0f, horizontalRotation, 0f);
         transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
     }
+
 }

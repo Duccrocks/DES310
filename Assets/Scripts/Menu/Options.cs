@@ -40,6 +40,7 @@ public class Options : MonoBehaviour
         print($"The sensitivity has changed to {sensitivity}");
         //Saves this sensitivity so if the player reloads it'll keep their sensitivity.
         PlayerPrefs.SetFloat("sensitivity", sensitivity);
+        StaticVariables.cameraSensitivity = sensitivity;
     }
 
     /// <summary>
@@ -101,6 +102,7 @@ public class Options : MonoBehaviour
         {
             var previousSensitivity = PlayerPrefs.GetFloat("sensitivity", 5);
             sensSlider.value = previousSensitivity;
+            StaticVariables.cameraSensitivity = previousSensitivity;
         }
 
         if (PlayerPrefs.HasKey("volume"))
