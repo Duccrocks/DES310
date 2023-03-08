@@ -43,7 +43,14 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0.0f;
         pauseHud.SetActive(true);
         hudPanel.SetActive(false);
-        eventSystem.SetSelectedGameObject(resumeButton);
+        try
+        {
+            eventSystem.SetSelectedGameObject(resumeButton);
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log($"Event system null {e}");
+        }
         cameraController.enabled = false;
         Cursor.lockState = CursorLockMode.None;
         isPaused = true;
