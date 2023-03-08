@@ -6,7 +6,7 @@ using UnityEngine;
 public class SonarPulses : MonoBehaviour
 {
     [NonSerialized] public Vector3 pulseOrigin;
-    [NonSerialized] public float length;
+    [SerializeField] public float length;
 
     [SerializeField] private float pulseTimer = 10;
     [SerializeField] private float pulseSpeed = 50;
