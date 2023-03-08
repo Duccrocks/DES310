@@ -31898,6 +31898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f75fff36043a8df49b51778f94d7a609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  length: 0
   pulseTimer: 10
   pulseSpeed: 5
 --- !u!1 &1782593222
@@ -34617,7 +34618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948462762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -82.66, y: 107.83, z: -260.74}
+  m_LocalPosition: {x: -273.06, y: 107.2, z: -338.33}
   m_LocalScale: {x: 1, y: 4.512, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34656,7 +34657,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 1, b: 0.96201396, a: 1}
-  m_Intensity: 200
+  m_Intensity: 10
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

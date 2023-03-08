@@ -5,7 +5,7 @@ void xray_float(in float3 lightColour, in float3 xrayColour, in float3 playerPos
 	float2 vertVector = float2(worldPos.x - playerPos.x, worldPos.z - playerPos.z);//calc vector to curret fragment worldCOORDS
 	float dist = sqrt(vertVector.x * vertVector.x + vertVector.y * vertVector.y);//calc length of vector
 	float illuminated;
-	if (dist < pulseLength && dist>pulseLength - 8) {
+	if (dist < pulseLength&&dist>pulseLength-8) {
 		illuminated = 1;
 	}
 	else
