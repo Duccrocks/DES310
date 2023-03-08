@@ -25,8 +25,12 @@ public class SonarShaderManager : MonoBehaviour
         }
         for (int i =0; i< pillar.GetComponent<Renderer>().materials.Length;++i)
         {
-
+            Vector3 scale = pillar.transform.localScale;
+            // scale.x /= 5;
+            // scale.y /= 5;
+            // scale.z /= 5;
             pillar.GetComponent<Renderer>().materials[i].SetVector("_PlayerPos", pulseManager.pulseOrigin);
+            pillar.GetComponent<Renderer>().materials[i].SetVector("_Scale", scale);
             pillar.GetComponent<Renderer>().materials[i].SetFloat("_PulseLen", pulseManager.length);
             //pillar.GetComponent<Renderer>().materials[i].SetFloat("_isTerrain", isTerrain);
         }
