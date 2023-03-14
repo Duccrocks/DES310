@@ -64,6 +64,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Jean:
+        m_Texture: {fileID: 2800000, guid: e2645e7fda9a78747bc146c5d08d1c85, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 5d7f55f7ff1c5384da02c24087c4e90a, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -145,6 +149,7 @@ Material:
     - _ZWrite: 1
     - _falloff_amount: 0.001
     - _fresnel_size: 0.05
+    - _shouldJean: 0
     - _smoothness: 1000
     - _toonRampPoint: 0
     m_Colors:
