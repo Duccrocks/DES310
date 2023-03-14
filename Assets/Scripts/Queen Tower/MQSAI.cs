@@ -9,6 +9,8 @@ public class MQSAI : MonoBehaviour
     private GameObject player;
     [SerializeField] private LayerMask layerMask;
 
+    private float attackRange = 10;
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -20,13 +22,15 @@ public class MQSAI : MonoBehaviour
     {
         Debug.Log(PlayerInView());
         if(PlayerInView()) agent.SetDestination(player.transform.position);
+        else agent.isStopped = true;
+
+        if (Vector3.Distance(player.transform.position, transform.position) >= attackRange) Attack();
     }
 
     bool PlayerInView()
     {
         RaycastHit hit;
-        Debug.DrawLine(transform.position, player.transform.position, Color.green);
-        Physics.Raycast(transform.position, player.transform.position, out hit, 500, layerMask);
+        Physics.Raycast(transform.position, player.transform.position - transform.position, out hit, 50, layerMask);
         
 
         if (hit.transform == null) return false;
@@ -35,5 +39,10 @@ public class MQSAI : MonoBehaviour
         Debug.Log("Hit was not null but obj hit is not player");
         
         return false;
+    }
+
+    void Attack()
+    {
+        // Damage player
     }
 }
