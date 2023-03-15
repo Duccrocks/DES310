@@ -23,16 +23,10 @@ public class SonarPulses : MonoBehaviour
     {
         if (pulsing)
             pulseTimer += Time.deltaTime;
-        
+
         length = pulseSpeed * pulseTimer;
 
-        if (Input.GetKeyDown(KeyCode.F)&&(pulseTimer>2||!pulsing))
-        {
-            pulseOrigin = transform.position;
-            pulseTimer = 0;
-            pulsing = true;
-        }
-        if (pulseTimer>10)
+        if (pulseTimer > 10)
         {
             pulseOrigin = transform.position;
             pulseTimer = 0;
@@ -41,6 +35,16 @@ public class SonarPulses : MonoBehaviour
         if (!pulsing)
         {
             length = 0;
+        }
+    }
+
+    public void Pulse()
+    {
+        if (pulseTimer > 2 || !pulsing)
+        {
+            pulseOrigin = transform.position;
+            pulseTimer = 0;
+            pulsing = true;
         }
     }
 }

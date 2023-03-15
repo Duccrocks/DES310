@@ -80,6 +80,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SonarPulse"",
+                    ""type"": ""Button"",
+                    ""id"": ""025b5607-d35e-45df-8c24-b114710bfac8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -280,6 +289,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""499ff15b-58a9-4e98-ad19-7b3ce239ef84"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SonarPulse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05ab45d7-3030-4fe1-8760-fb31c46c51d4"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SonarPulse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -355,6 +386,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_SonarPulse = m_Player.FindAction("SonarPulse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -420,6 +452,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_SonarPulse;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -430,6 +463,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @SonarPulse => m_Wrapper.m_Player_SonarPulse;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -457,6 +491,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @SonarPulse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSonarPulse;
+                @SonarPulse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSonarPulse;
+                @SonarPulse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSonarPulse;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -479,6 +516,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @SonarPulse.started += instance.OnSonarPulse;
+                @SonarPulse.performed += instance.OnSonarPulse;
+                @SonarPulse.canceled += instance.OnSonarPulse;
             }
         }
     }
@@ -536,5 +576,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnSonarPulse(InputAction.CallbackContext context);
     }
 }
