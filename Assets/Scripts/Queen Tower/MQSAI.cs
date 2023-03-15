@@ -7,24 +7,34 @@ public class MQSAI : MonoBehaviour
 {
     private NavMeshAgent agent;
     private GameObject player;
+    private PlayerHealth playerHealth;
     [SerializeField] private LayerMask layerMask;
 
-    private float attackRange = 10;
+    private float attackRange = 5;
+    private bool canAttack = true;
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Debug.Log(PlayerInView());
-        if(PlayerInView()) agent.SetDestination(player.transform.position);
-        else agent.isStopped = true;
+        if(PlayerInView())
+        {
+            agent.isStopped = false;
+            agent.SetDestination(player.transform.position);
+        } 
+        else
+        {
+            agent.isStopped = true;
+        } 
 
-        if (Vector3.Distance(player.transform.position, transform.position) >= attackRange) Attack();
+        if (Vector3.Distance(player.transform.position, transform.position) <= attackRange && canAttack) Attack();
     }
 
     bool PlayerInView()
@@ -43,6 +53,13 @@ public class MQSAI : MonoBehaviour
 
     void Attack()
     {
-        // Damage player
+        playerHealth.HealthDecrease(40);
+        canAttack = false;
+        Invoke(nameof(AttackReset), 2f);
+    }
+
+    void AttackReset()
+    {
+        canAttack = true;
     }
 }
