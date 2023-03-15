@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class GuardSpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject guard;
+    [SerializeField] private GameObject guardPrefab;
+    [SerializeField] private Transform[] guardSpawnPos;
 
     public void SpawnGuard()
     {
-        var spawnedGuard = Instantiate(guard,transform.position,Quaternion.identity);
+        foreach (var guardPos in guardSpawnPos)
+        {
+            var spawnedGuard = Instantiate(guardPrefab,transform.position,Quaternion.identity);
+        }
+        
     }
 }
