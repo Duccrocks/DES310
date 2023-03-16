@@ -1,10 +1,18 @@
+using System;
 using UnityEngine;
 
 public class MiniGameTransition : MonoBehaviour, IInteractable
 {
-     [SerializeField] private string sceneString;
+    [SerializeField] private string sceneString;
     public void Interact()
     {
-        LevelManager.instance.LoadScene(sceneString);
+        try
+        {
+            LevelManager.instance.LoadScene(sceneString);
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.LogError($"Level manager null. \n{e}");
+        }
     }
 }

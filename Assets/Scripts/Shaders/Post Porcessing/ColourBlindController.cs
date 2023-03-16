@@ -37,7 +37,7 @@ public class ColourBlindController : MonoBehaviour
     private void Start()
     {
         colourMask = new Vector4(1, 1, 1, 1);
-        currentColourblindSetting = ColourBlindMode.None;
+        //currentColourblindSetting = ColourBlindMode.None;
     }
 
     // Update is called once per frame
