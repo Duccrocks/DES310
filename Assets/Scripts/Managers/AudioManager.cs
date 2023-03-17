@@ -7,8 +7,6 @@ using UnityEngine.Audio;
 /// </summary>
 public class AudioManager : MonoBehaviour
 {
-    //[SerializeField] private AudioClip clip;
-
     private bool firstMusicSourceIsPlaying;
 
     private AudioSource musicSource;
