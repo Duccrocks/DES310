@@ -17,7 +17,14 @@ public class Menu : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        LevelManager.instance.LoadScene(sceneToLoad);
+        try
+        {
+            LevelManager.instance.LoadScene(sceneToLoad);
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.LogError($"Level manager null. \n{e}");
+        }
     }
 
     /// <summary>

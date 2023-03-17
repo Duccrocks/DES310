@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class Options : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
-    
+
     [Header("Sliders")]
     [SerializeField] private Slider sensSlider;
     [SerializeField] private Slider volumeSlider;
-    
+
     [Header("Dropdowns")]
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] private TMP_Dropdown colourBlindDropDown;
@@ -73,7 +73,7 @@ public class Options : MonoBehaviour
     public void SetFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
-        PlayerPrefs.SetInt("fullscreen",Convert.ToInt32(isFullScreen));
+        PlayerPrefs.SetInt("fullscreen", Convert.ToInt32(isFullScreen));
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ public class Options : MonoBehaviour
         }
         catch (NullReferenceException e)
         {
-            Debug.LogError($"Colourblind controller null \n{e}");
+            Debug.LogError(e);
         }
     }
 
@@ -117,8 +117,7 @@ public class Options : MonoBehaviour
             var previousColourBlindness = PlayerPrefs.GetInt("colourblind", 0);
             try
             {
-                colourBlindController.currentColourblindSetting =
-                    (ColourBlindController.ColourBlindMode)previousColourBlindness;
+                colourBlindController.currentColourblindSetting = (ColourBlindController.ColourBlindMode)previousColourBlindness;
                 colourBlindDropDown.value = previousColourBlindness;
             }
             catch (NullReferenceException e)
@@ -133,7 +132,7 @@ public class Options : MonoBehaviour
             QualitySettings.SetQualityLevel(previousQuality);
             qualityDropdown.value = previousQuality;
         }
-        
+
         if (PlayerPrefs.HasKey("fullscreen"))
         {
             var wasFullscreen = PlayerPrefs.GetInt("fullscreen", 1);
