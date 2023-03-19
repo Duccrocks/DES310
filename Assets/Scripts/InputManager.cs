@@ -93,8 +93,8 @@ public class InputManager : MonoBehaviour
         playerControls.Player.Interact.performed -= Interact;
         playerControls.Player.Sprint.performed -= StartSprinting;
         playerControls.Player.Sprint.canceled -= StopSprinting;
-        if (pauseMenu) playerControls.Player.Pause.performed -= TogglePause;
-        if (sonarPulses) playerControls.Player.SonarPulse.performed -= SonarPulse;
+        playerControls.Player.Pause.performed -= TogglePause;
+        playerControls.Player.SonarPulse.performed -= SonarPulse;
     }
 
     #region Player Controls events

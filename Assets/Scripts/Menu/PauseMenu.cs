@@ -16,7 +16,6 @@ public class PauseMenu : MonoBehaviour
 
 
     private bool isPaused;
-    public static event Action<bool> HasPaused;
 
 
     private void Awake()
@@ -35,7 +34,6 @@ public class PauseMenu : MonoBehaviour
         else
             UnPauseGame();
         //Fires an event stating if the game has been paused or not.
-        HasPaused?.Invoke(isPaused);
     }
 
     private void PauseGame()
