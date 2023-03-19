@@ -135,8 +135,9 @@ public class Options : MonoBehaviour
 
         if (PlayerPrefs.HasKey("fullscreen"))
         {
-            var wasFullscreen = PlayerPrefs.GetInt("fullscreen", 1);
-            Screen.fullScreen = Convert.ToBoolean(wasFullscreen);
+            var wasFullscreen = Convert.ToBoolean(PlayerPrefs.GetInt("fullscreen", 1));
+            Screen.fullScreen = wasFullscreen;
+            fullscreenToggle.enabled = wasFullscreen;
 
         }
     }

@@ -19,12 +19,12 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        StaticVariables.cameraSensitivity = 10f;
+        StaticVariables.cameraSensitivity = sensitivity;
         verticalRotation = transform.localEulerAngles.x;
         horizontalRotation = player.transform.eulerAngles.y;
         //If the player has been in the game before sets the sensitivity to the players prefer.
         if (PlayerPrefs.HasKey("sensitivity"))
-            StaticVariables.cameraSensitivity = PlayerPrefs.GetFloat("sensitivity");
+            StaticVariables.cameraSensitivity = PlayerPrefs.GetFloat("sensitivity",sensitivity);
 
     }
     /// <summary>
@@ -34,7 +34,8 @@ public class CameraController : MonoBehaviour
     public void Look(Vector2 inputRotation)
     {
         //Shows which way the player is looking.
-        Debug.DrawRay(transform.position, transform.forward * 2, Color.red);
+        var cameraTransform = transform;
+        Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 2, Color.red);
 
         horizontalRotation += inputRotation.x * StaticVariables.cameraSensitivity * Time.deltaTime;
         verticalRotation -= inputRotation.y * StaticVariables.cameraSensitivity * Time.deltaTime;

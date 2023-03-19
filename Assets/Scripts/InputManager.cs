@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
 {
     private enum ControlType
@@ -9,11 +10,11 @@ public class InputManager : MonoBehaviour
         General,
         RadarMaze,
         MaryQueenOfScots,
-        DuckMinigame
+        DuckMiniGame
     }
 
     [Header("Controls Enum")]
-    [Tooltip("What scenes controls to use")]
+    [Tooltip("Which scenes controls to use.")]
     [SerializeField] private ControlType controlType;
     private PlayerControls playerControls;
 
@@ -26,15 +27,7 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        if (RebindManager.inputActions != null)
-        {
-
-            playerControls = RebindManager.inputActions;
-        }
-        else
-        {
-            playerControls = new PlayerControls();
-        }
+        playerControls = RebindManager.inputActions ?? new PlayerControls();
 
         playerMovement = GetComponent<PlayerMovement>();
         cameraController = GetComponentInChildren<CameraController>();
@@ -42,13 +35,14 @@ public class InputManager : MonoBehaviour
 
         try
         {
-            pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
+            pauseMenu = FindObjectOfType<PauseMenu>();
         }
         catch (NullReferenceException)
         {
             Debug.LogError("Pause menu null");
         }
 
+        //Depending on what scene we're in set up certain input events or not.
         switch (controlType)
         {
             case ControlType.General:
@@ -57,7 +51,7 @@ public class InputManager : MonoBehaviour
             sonarPulses = GetComponent<SonarPulses>();
                 break;
             case ControlType.MaryQueenOfScots:
-            case ControlType.DuckMinigame:
+            case ControlType.DuckMiniGame:
                 Debug.LogError("We haven't made Duck game yet.");
                 break;
 
@@ -77,14 +71,14 @@ public class InputManager : MonoBehaviour
         var cameraRotationValue = playerControls.Player.Look.ReadValue<Vector2>();
         cameraController.Look(cameraRotationValue);
     }
-
+    
     private void OnEnable()
     {
         //Subscribes all player control events
         playerControls.Enable();
         playerControls.Player.Jump.performed += Jump;
         playerControls.Player.Interact.performed += Interact;
-        playerControls.Player.Sprint.started += StartSprinting;
+        playerControls.Player.Sprint.performed += StartSprinting;
         playerControls.Player.Sprint.canceled += StopSprinting;
         if (pauseMenu) playerControls.Player.Pause.performed += TogglePause;
         if (sonarPulses) playerControls.Player.SonarPulse.performed += SonarPulse;
@@ -97,27 +91,35 @@ public class InputManager : MonoBehaviour
         playerControls.Disable();
         playerControls.Player.Jump.performed -= Jump;
         playerControls.Player.Interact.performed -= Interact;
-        playerControls.Player.Sprint.started -= StartSprinting;
+        playerControls.Player.Sprint.performed -= StartSprinting;
         playerControls.Player.Sprint.canceled -= StopSprinting;
-        if (pauseMenu) playerControls.Player.Pause.performed -= TogglePause;
-        if (sonarPulses) playerControls.Player.SonarPulse.performed -= SonarPulse;
+        playerControls.Player.Pause.performed -= TogglePause;
+        playerControls.Player.SonarPulse.performed -= SonarPulse;
     }
 
     #region Player Controls events
 
-    public void Jump(InputAction.CallbackContext ctx)
+    private void Jump(InputAction.CallbackContext ctx)
     {
         if (ctx.performed) playerMovement.Jump();
     }
 
-    public void Interact(InputAction.CallbackContext ctx)
+    private void Interact(InputAction.CallbackContext ctx)
     {
         if (ctx.performed) selectionManager.Interact();
     }
 
-    public void StartSprinting(InputAction.CallbackContext ctx) => playerMovement.StartSprinting();
+    private void StartSprinting(InputAction.CallbackContext ctx)
 
-    public void StopSprinting(InputAction.CallbackContext ctx) => playerMovement.StopSprinting();
+    {
+        if (ctx.performed) playerMovement.StartSprinting();
+        
+    }
+
+    private void StopSprinting(InputAction.CallbackContext ctx)
+    {
+        if(ctx.canceled) playerMovement.StopSprinting();
+    }
 
     private void TogglePause(InputAction.CallbackContext ctx)
     {
