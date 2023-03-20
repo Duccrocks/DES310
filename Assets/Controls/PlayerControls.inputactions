@@ -29,7 +29,7 @@
                     "id": "212150cb-627b-42c5-9ff7-c3c23b33b172",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -270,8 +270,8 @@
                 },
                 {
                     "name": "",
-                    "id": "499ff15b-58a9-4e98-ad19-7b3ce239ef84",
-                    "path": "<Gamepad>/buttonNorth",
+                    "id": "05ab45d7-3030-4fe1-8760-fb31c46c51d4",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -281,8 +281,8 @@
                 },
                 {
                     "name": "",
-                    "id": "05ab45d7-3030-4fe1-8760-fb31c46c51d4",
-                    "path": "<Keyboard>/f",
+                    "id": "499ff15b-58a9-4e98-ad19-7b3ce239ef84",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
