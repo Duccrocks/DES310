@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void StaminaCheck()
     {
-        if (sprintController.CurrentStamina <= 1)
+        if (sprintController.CurrentStamina <= 0)
         {
             StopSprinting();
             return;

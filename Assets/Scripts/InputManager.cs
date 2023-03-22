@@ -12,19 +12,20 @@ public class InputManager : MonoBehaviour
         MaryQueenOfScots,
         DuckMiniGame
     }
-
+    
     [Header("Controls Enum")]
     [Tooltip("Which scenes controls to use.")]
     [SerializeField] private ControlType controlType;
+
+    private CameraController cameraController;
+    private bool isPaused;
+    private PauseMenu pauseMenu;
     private PlayerControls playerControls;
 
     //Reference to all player controls.
     private PlayerMovement playerMovement;
-    private CameraController cameraController;
     private SelectionManager selectionManager;
-    private PauseMenu pauseMenu;
     private SonarPulses sonarPulses;
-    bool isPaused;
 
     private void Awake()
     {
@@ -55,7 +56,6 @@ public class InputManager : MonoBehaviour
             case ControlType.DuckMiniGame:
                 Debug.LogError("We haven't made Duck game yet.");
                 break;
-
         }
     }
 
@@ -67,15 +67,12 @@ public class InputManager : MonoBehaviour
          * as this is something that needs to be ran every frame.
          */
 
-        if(!isPaused)
-        {
-
+        if (isPaused) return;
         var movementValue = playerControls.Player.Move.ReadValue<Vector2>();
         playerMovement.Movement(movementValue);
 
         var cameraRotationValue = playerControls.Player.Look.ReadValue<Vector2>();
         cameraController.Look(cameraRotationValue);
-        }
     }
 
     private void OnEnable()
@@ -89,8 +86,7 @@ public class InputManager : MonoBehaviour
         if (pauseMenu) playerControls.Player.Pause.performed += TogglePause;
         if (sonarPulses) playerControls.Player.SonarPulse.performed += SonarPulse;
 
-        PauseMenu.OnPause += OnPause;    
-
+        PauseMenu.OnPause += OnPause;
     }
 
 
@@ -104,6 +100,8 @@ public class InputManager : MonoBehaviour
         playerControls.Player.Sprint.canceled -= StopSprinting;
         playerControls.Player.Pause.performed -= TogglePause;
         playerControls.Player.SonarPulse.performed -= SonarPulse;
+        
+        PauseMenu.OnPause -= OnPause;
     }
 
     private void OnPause(bool hasPaused)
@@ -123,9 +121,11 @@ public class InputManager : MonoBehaviour
             playerControls.Player.Interact.performed += Interact;
             playerControls.Player.Sprint.performed += StartSprinting;
             playerControls.Player.Sprint.canceled += StopSprinting;
-            if (sonarPulses)  playerControls.Player.SonarPulse.performed += SonarPulse;
+            if (sonarPulses) playerControls.Player.SonarPulse.performed += SonarPulse;
         }
     }
+
+
 
     #region Player Controls events
 
@@ -143,7 +143,6 @@ public class InputManager : MonoBehaviour
 
     {
         if (ctx.performed) playerMovement.StartSprinting();
-
     }
 
     private void StopSprinting(InputAction.CallbackContext ctx)
@@ -153,20 +152,13 @@ public class InputManager : MonoBehaviour
 
     private void TogglePause(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
-        {
-            pauseMenu.TogglePause();
-        }
+        if (ctx.performed) pauseMenu.TogglePause();
     }
 
     private void SonarPulse(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
-        {
-            sonarPulses.Pulse();
-        }
+        if (ctx.performed) sonarPulses.Pulse();
     }
-
 
     #endregion
 }
