@@ -17,7 +17,7 @@ public class SprintController : MonoBehaviour
 
     private Coroutine regen;
     //How long stamina will take to tick
-    private const float regenTick = 0.1f;
+    private float regenTick;
 
 
     //The players current stamina
@@ -25,6 +25,7 @@ public class SprintController : MonoBehaviour
 
     private void Start()
     {
+        regenTick = Time.fixedTime;
         //Initalizes variables.
         CurrentStamina = maxStamina;
         try
@@ -68,7 +69,7 @@ public class SprintController : MonoBehaviour
         while (CurrentStamina < maxStamina)
         {
             //Regenerates the stamina at a 25th of the max stamina every regenTick.
-            CurrentStamina += maxStamina / 25;
+            CurrentStamina += (maxStamina)* regenTick;
             //Changes the stamina bar
             staminaBar.value = CurrentStamina;
             //How long it takes to loop

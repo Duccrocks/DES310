@@ -24,6 +24,7 @@ public class InputManager : MonoBehaviour
     private SelectionManager selectionManager;
     private PauseMenu pauseMenu;
     private SonarPulses sonarPulses;
+    bool isPaused;
 
     private void Awake()
     {
@@ -48,7 +49,7 @@ public class InputManager : MonoBehaviour
             case ControlType.General:
                 return;
             case ControlType.RadarMaze:
-            sonarPulses = GetComponent<SonarPulses>();
+                sonarPulses = GetComponent<SonarPulses>();
                 break;
             case ControlType.MaryQueenOfScots:
             case ControlType.DuckMiniGame:
@@ -58,6 +59,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
+
     private void Update()
     {
         /*
@@ -65,13 +67,17 @@ public class InputManager : MonoBehaviour
          * as this is something that needs to be ran every frame.
          */
 
+        if(!isPaused)
+        {
+
         var movementValue = playerControls.Player.Move.ReadValue<Vector2>();
         playerMovement.Movement(movementValue);
 
         var cameraRotationValue = playerControls.Player.Look.ReadValue<Vector2>();
         cameraController.Look(cameraRotationValue);
+        }
     }
-    
+
     private void OnEnable()
     {
         //Subscribes all player control events
@@ -82,6 +88,9 @@ public class InputManager : MonoBehaviour
         playerControls.Player.Sprint.canceled += StopSprinting;
         if (pauseMenu) playerControls.Player.Pause.performed += TogglePause;
         if (sonarPulses) playerControls.Player.SonarPulse.performed += SonarPulse;
+
+        PauseMenu.OnPause += OnPause;    
+
     }
 
 
@@ -95,6 +104,27 @@ public class InputManager : MonoBehaviour
         playerControls.Player.Sprint.canceled -= StopSprinting;
         playerControls.Player.Pause.performed -= TogglePause;
         playerControls.Player.SonarPulse.performed -= SonarPulse;
+    }
+
+    private void OnPause(bool hasPaused)
+    {
+        isPaused = hasPaused;
+        if (hasPaused)
+        {
+            playerControls.Player.Jump.performed -= Jump;
+            playerControls.Player.Interact.performed -= Interact;
+            playerControls.Player.Sprint.performed -= StartSprinting;
+            playerControls.Player.Sprint.canceled -= StopSprinting;
+            playerControls.Player.SonarPulse.performed -= SonarPulse;
+        }
+        else
+        {
+            playerControls.Player.Jump.performed += Jump;
+            playerControls.Player.Interact.performed += Interact;
+            playerControls.Player.Sprint.performed += StartSprinting;
+            playerControls.Player.Sprint.canceled += StopSprinting;
+            if (sonarPulses)  playerControls.Player.SonarPulse.performed += SonarPulse;
+        }
     }
 
     #region Player Controls events
@@ -113,12 +143,12 @@ public class InputManager : MonoBehaviour
 
     {
         if (ctx.performed) playerMovement.StartSprinting();
-        
+
     }
 
     private void StopSprinting(InputAction.CallbackContext ctx)
     {
-        if(ctx.canceled) playerMovement.StopSprinting();
+        if (ctx.canceled) playerMovement.StopSprinting();
     }
 
     private void TogglePause(InputAction.CallbackContext ctx)
@@ -131,7 +161,7 @@ public class InputManager : MonoBehaviour
 
     private void SonarPulse(InputAction.CallbackContext ctx)
     {
-        if(ctx.performed)
+        if (ctx.performed)
         {
             sonarPulses.Pulse();
         }
