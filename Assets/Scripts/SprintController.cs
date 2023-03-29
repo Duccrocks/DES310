@@ -51,7 +51,7 @@ public class SprintController : MonoBehaviour
         if (CurrentStamina - staminaDrain >= 0f)
         {
             //Decreases the stamina over time.
-            CurrentStamina -= staminaDrain;
+            CurrentStamina -= staminaDrain * Time.deltaTime * 50;
             //Changes the stamina bar
             staminaBar.value = CurrentStamina;
             if (regen != null) StopCoroutine(regen);
