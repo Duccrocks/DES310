@@ -14,7 +14,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Book1
-    second: {fileID: 2100000, guid: 52b7316360bf69e4bb10a10046d75984, type: 2}
+    second: {fileID: 2100000, guid: 1f4bca63c165acb4a8b4810d8f981eae, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
