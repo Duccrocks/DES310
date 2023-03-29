@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour
     /// <param name="loadSceneMode">Additive or single loading (defaults to single)</param>
     public void LoadScene(string sceneName, LoadSceneMode loadSceneMode = LoadSceneMode.Single)
     {
+        AudioManager.Instance.StopAll();
         SceneManager.LoadScene(sceneName.Trim());
     }
 
@@ -42,6 +43,8 @@ public class LevelManager : MonoBehaviour
             //Can do a transition or loading screen here.
             yield return null;
         Debug.Log($"Scene: {sceneName} has loaded");
+        AudioManager.Instance.StopAll();
+
     }
 
     /// <summary>
@@ -55,5 +58,6 @@ public class LevelManager : MonoBehaviour
         while (!progress.isDone)
             yield return null;
         Debug.Log($"Scene: {sceneName} has unloaded");
+        
     }
 }
