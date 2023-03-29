@@ -151,7 +151,7 @@ Material:
     - _fresnel_size: 0.05
     - _shouldJean: 0
     - _smoothness: 1000
-    - _toonRampPoint: 0
+    - _toonRampPoint: 0.41
     m_Colors:
     - Toon_Ramp_Tint: {r: 0.49056596, g: 0.49056596, b: 0.49056596, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
