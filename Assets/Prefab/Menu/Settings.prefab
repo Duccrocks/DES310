@@ -4242,6 +4242,18 @@ PrefabInstance:
       value: 29.5
       objectReference: {fileID: 0}
     - target: {fileID: 2592457971214331943, guid: b1eeec263b24f7745b41cf0984d94792, type: 3}
+      propertyPath: m_Value
+      value: 0.0506
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592457971214331943, guid: b1eeec263b24f7745b41cf0984d94792, type: 3}
+      propertyPath: m_MaxValue
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592457971214331943, guid: b1eeec263b24f7745b41cf0984d94792, type: 3}
+      propertyPath: m_MinValue
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592457971214331943, guid: b1eeec263b24f7745b41cf0984d94792, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
       objectReference: {fileID: 367042724312979059}

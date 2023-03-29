@@ -6,18 +6,19 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PlayerMovement))]
 public class SprintController : MonoBehaviour
 {
+    //How long stamina will take to tick
+    private const float regenTick = 0.01f;
 
     [Header("Stamina Settings")]
     [SerializeField] [Range(10, 500)] private float maxStamina = 100f;
+
     [SerializeField] private float staminaDrain = 1f;
     [SerializeField] private float staminaRegenDelay = 1.5f;
-    
-    [Header("HUD")] 
+
+    [Header("HUD")]
     [SerializeField] private Slider staminaBar;
 
     private Coroutine regen;
-    //How long stamina will take to tick
-    private const float regenTick = 0.1f;
 
 
     //The players current stamina
@@ -25,7 +26,7 @@ public class SprintController : MonoBehaviour
 
     private void Start()
     {
-        //Initalizes variables.
+        //Initalises variables.
         CurrentStamina = maxStamina;
         try
         {
@@ -50,7 +51,7 @@ public class SprintController : MonoBehaviour
         if (CurrentStamina - staminaDrain >= 0f)
         {
             //Decreases the stamina over time.
-            CurrentStamina -= staminaDrain;
+            CurrentStamina -= staminaDrain * Time.deltaTime * 50;
             //Changes the stamina bar
             staminaBar.value = CurrentStamina;
             if (regen != null) StopCoroutine(regen);
@@ -68,7 +69,7 @@ public class SprintController : MonoBehaviour
         while (CurrentStamina < maxStamina)
         {
             //Regenerates the stamina at a 25th of the max stamina every regenTick.
-            CurrentStamina += maxStamina / 25;
+            CurrentStamina += maxStamina * Time.deltaTime;
             //Changes the stamina bar
             staminaBar.value = CurrentStamina;
             //How long it takes to loop

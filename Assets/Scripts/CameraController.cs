@@ -5,9 +5,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private PlayerMovement player;
 
     [Header("Camera Settings")] 
-    [SerializeField] [Range(0.1f, 10)] private float sensitivity = 10f;
+    [SerializeField] [Range(0.001f, 0.1f)] private float sensitivity = 0.0500f;
     [SerializeField] [Range(0, 90)] private float clampAngle = 90f;
-
     private float horizontalRotation;
     private float verticalRotation;
 
@@ -25,6 +24,8 @@ public class CameraController : MonoBehaviour
         //If the player has been in the game before sets the sensitivity to the players prefer.
         if (PlayerPrefs.HasKey("sensitivity"))
             StaticVariables.cameraSensitivity = PlayerPrefs.GetFloat("sensitivity",sensitivity);
+        
+            
 
     }
     /// <summary>
@@ -37,8 +38,8 @@ public class CameraController : MonoBehaviour
         var cameraTransform = transform;
         Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 2, Color.red);
 
-        horizontalRotation += inputRotation.x * StaticVariables.cameraSensitivity * Time.deltaTime;
-        verticalRotation -= inputRotation.y * StaticVariables.cameraSensitivity * Time.deltaTime;
+        horizontalRotation += inputRotation.x * StaticVariables.cameraSensitivity;
+        verticalRotation -= inputRotation.y * StaticVariables.cameraSensitivity;
 
         //Clamps the camera from looping around vertically.
         verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
