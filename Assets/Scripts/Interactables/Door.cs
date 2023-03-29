@@ -6,8 +6,13 @@ using UnityEngine.Events;
 public class Door : MonoBehaviour, IInteractable
 {
     public UnityEvent doorOpened;
+    private bool doOnce = false;
     public void Interact()
     {
-        doorOpened?.Invoke();
+        if(!doOnce)
+        {
+            doorOpened?.Invoke();
+            doOnce = true;
+        }
     }
 }
