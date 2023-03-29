@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private SprintController sprintController;
     
     private bool isSprinting;
+    private bool isGrounded;
     private float sprintSpeed;
     private float walkSpeed;
     private float yVelocity;
@@ -57,8 +58,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Gravity()
     {
+        IsGroundedCheck();
         // Gravity
-        if (IsGrounded() && yVelocity < 0)
+        if (isGrounded && yVelocity < 0)
         {
             yVelocity = 0;
         }
@@ -72,12 +74,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (IsGrounded()) yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        if (isGrounded) yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
     }
 
     private void StaminaCheck()
     {
-        if (sprintController.CurrentStamina <= 0)
+        if (sprintController.CurrentStamina <= 0.9f)
         {
             StopSprinting();
             return;
@@ -98,8 +100,8 @@ public class PlayerMovement : MonoBehaviour
         isSprinting = false;
     }
 
-    private bool IsGrounded()
+    private void IsGroundedCheck()
     {
-        return Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isGrounded =  Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
     }
 }

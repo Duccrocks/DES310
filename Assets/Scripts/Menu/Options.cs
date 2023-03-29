@@ -100,7 +100,7 @@ public class Options : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("sensitivity"))
         {
-            var previousSensitivity = PlayerPrefs.GetFloat("sensitivity", 5);
+            var previousSensitivity = PlayerPrefs.GetFloat("sensitivity", 0.5f);
             sensSlider.value = previousSensitivity;
             StaticVariables.cameraSensitivity = previousSensitivity;
         }
