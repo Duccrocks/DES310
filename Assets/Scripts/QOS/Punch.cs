@@ -18,7 +18,7 @@ public class Punch : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-       
+            Debug.Log("Hit");
             RaycastHit hit;
             var forward = transform.TransformDirection(Vector3.forward);
             var mask = (1 << LayerMask.NameToLayer(excludedLayer)) | layerMaskInteract.value;

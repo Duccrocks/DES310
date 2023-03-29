@@ -11,7 +11,7 @@ public class GuardSpawn : MonoBehaviour
     {
         foreach (var guardPos in guardSpawnPos)
         {
-            var spawnedGuard = Instantiate(guardPrefab,transform.position,Quaternion.identity);
+            var spawnedGuard = Instantiate(guardPrefab,guardPos.position,Quaternion.identity);
         }
         
     }

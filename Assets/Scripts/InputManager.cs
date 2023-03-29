@@ -53,6 +53,7 @@ public class InputManager : MonoBehaviour
                 sonarPulses = GetComponent<SonarPulses>();
                 break;
             case ControlType.MaryQueenOfScots:
+            break;
             case ControlType.DuckMiniGame:
                 Debug.LogError("We haven't made Duck game yet.");
                 break;

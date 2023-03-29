@@ -10,7 +10,7 @@ public class MQSAI : MonoBehaviour
     private PlayerHealth playerHealth;
     [SerializeField] private LayerMask layerMask;
 
-    private float attackRange = 5;
+    [SerializeField] private float attackRange = 5;
     private bool canAttack = true;
 
     void Awake()
