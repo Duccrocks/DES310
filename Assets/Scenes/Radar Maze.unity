@@ -7058,6 +7058,7 @@ MonoBehaviour:
   - {fileID: 555281423}
   - {fileID: 1497603876}
   - {fileID: 1338981694}
+  ambience: {fileID: 8300000, guid: ad3015d3706d1cd43804fb4bfad98784, type: 3}
 --- !u!4 &430960429
 Transform:
   m_ObjectHideFlags: 0

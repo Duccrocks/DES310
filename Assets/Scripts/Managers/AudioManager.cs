@@ -7,8 +7,6 @@ using UnityEngine.Audio;
 /// </summary>
 public class AudioManager : MonoBehaviour
 {
-    //[SerializeField] private AudioClip clip;
-
     private bool firstMusicSourceIsPlaying;
 
     private AudioSource musicSource;
@@ -39,7 +37,7 @@ public class AudioManager : MonoBehaviour
         musicSource2 = gameObject.AddComponent<AudioSource>();
 
         AudioMixerGroup audioMixerGroup = sfxSource.outputAudioMixerGroup;
-        
+
         musicSource.outputAudioMixerGroup = audioMixerGroup;
         musicSource2.outputAudioMixerGroup = audioMixerGroup;
 
@@ -50,6 +48,16 @@ public class AudioManager : MonoBehaviour
         //Loops the music tracks, just incase a new one doesn't play in time.
         musicSource.loop = true;
         musicSource2.loop = true;
+    }
+
+    private void OnEnable()
+    {
+        PauseMenu.OnPause += TogglePause;
+    }
+
+    private void OnDisable()
+    {
+        PauseMenu.OnPause -= TogglePause;
     }
 
     /// <summary>
@@ -155,5 +163,28 @@ public class AudioManager : MonoBehaviour
         sfxSource.clip = sfxClip;
         //Oneshot used so sounds don't overlap.
         sfxSource.PlayOneShot(sfxClip, volume);
+    }
+
+    public void TogglePause(bool isPaused)
+    {
+        if (isPaused)
+        {
+            musicSource.Pause();
+            musicSource2.Pause();
+            sfxSource.Pause();
+        }
+        else
+        {
+            musicSource.UnPause();
+            musicSource2.UnPause();
+            sfxSource.UnPause();
+        }
+    }
+
+    public void StopAll()
+    {
+        musicSource.Stop();
+        musicSource2.Stop();
+        sfxSource.Stop();
     }
 }
