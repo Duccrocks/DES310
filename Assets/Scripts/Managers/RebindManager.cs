@@ -125,6 +125,7 @@ public class RebindManager : MonoBehaviour
     //Loads previously saved bindings from player prefs.
     public static void LoadBindingOverride(string actionName)
     {
+
         if (inputActions == null)
             inputActions = new PlayerControls();
 

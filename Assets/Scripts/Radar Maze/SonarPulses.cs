@@ -44,6 +44,7 @@ public class SonarPulses : MonoBehaviour
         {
             pulseOrigin = transform.position;
             pulseTimer = 0;
+            length = 0;
             pulsing = true;
         }
     }

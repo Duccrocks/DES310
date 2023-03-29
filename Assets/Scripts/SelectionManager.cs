@@ -2,12 +2,19 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(CameraController))]
 public class SelectionManager : MonoBehaviour
 {
+    
+    [Header("Selectable Settings")]
     [SerializeField] private string selectableTag = "SelectableObject";
     [SerializeField] private LayerMask layerMaskInteract;
     [SerializeField] private string excludedLayer;
+    
+    [Header("Ray settings")]
     [SerializeField] [Range(0, 10)] private float rayLength;
+    
+    [Header("HUD")]
     [SerializeField] private RawImage crosshair;
 
     private bool doOnce;
