@@ -28,7 +28,7 @@ public class Punch : MonoBehaviour
                
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    hit.transform.gameObject.GetComponent<PunchResponse>().Punched(forward);
+                    hit.transform.gameObject.GetComponentInParent<PunchResponse>().Punched(forward);
                 }
             }
         }

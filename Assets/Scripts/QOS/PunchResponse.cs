@@ -9,6 +9,8 @@ public class PunchResponse : MonoBehaviour
     [SerializeField] int health = 3;
     private float healthTimer;
     [SerializeField] float IFrameTime=2;
+    [SerializeField]
+    private RaddollManager RaddollManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +70,12 @@ public class PunchResponse : MonoBehaviour
     public void Punched(Vector3 axis)
     {
         direction = axis*speed;
-        GetComponent<Rigidbody>().AddForceAtPosition(direction, new Vector3(0, 0, 0));
+        //GetComponent<Rigidbody>().AddForceAtPosition(direction, new Vector3(0, 0, 0));
+        RaddollManager.ragDollEnabled=true;
+        RaddollManager.EnableRagdoll();
+        foreach (Rigidbody body in RaddollManager.Rigidbodies)
+        {
+            body.AddForceAtPosition(direction, new Vector3(0, 0, 0));
+        }
     }
 }
