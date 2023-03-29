@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private CameraController cameraController; 
     private EventSystem eventSystem;
 
     [Header("HUD Elements")] 
@@ -16,12 +15,11 @@ public class PauseMenu : MonoBehaviour
 
 
     private bool isPaused;
-    public static event Action<bool> HasPaused;
+    public static Action<bool> OnPause;
 
 
     private void Awake()
     {
-        cameraController = FindObjectOfType<CameraController>();
         eventSystem = EventSystem.current;
     }
 
@@ -35,28 +33,34 @@ public class PauseMenu : MonoBehaviour
         else
             UnPauseGame();
         //Fires an event stating if the game has been paused or not.
-        HasPaused?.Invoke(isPaused);
     }
 
     private void PauseGame()
     {
+        OnPause?.Invoke(true);
         Time.timeScale = 0.0f;
         pauseHud.SetActive(true);
         hudPanel.SetActive(false);
-        eventSystem.SetSelectedGameObject(resumeButton);
-        cameraController.enabled = false;
+        try
+        {
+            eventSystem.SetSelectedGameObject(resumeButton);
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log($"Event system null {e}");
+        }
         Cursor.lockState = CursorLockMode.None;
         isPaused = true;
     }
 
     private void UnPauseGame()
     {
+         OnPause?.Invoke(false);
         Time.timeScale = 1.0f;
         settingsPanel.SetActive(false);
         pausePanel.SetActive(true);
         pauseHud.SetActive(false);
         hudPanel.SetActive(true);
-        cameraController.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         isPaused = false;
     }

@@ -7,7 +7,6 @@ public class SonarShaderManager : MonoBehaviour
    public GameObject pillar;
    public Transform playerPos;
    public SonarPulses pulseManager;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +24,16 @@ public class SonarShaderManager : MonoBehaviour
         }
         for (int i =0; i< pillar.GetComponent<Renderer>().materials.Length;++i)
         {
-
+            Vector3 scale = pillar.transform.localScale;
+            if (pillar.tag == "SelectableObject")
+            {
+                scale = new Vector3(2.5f, 2.5f, 2.5f);
+            }
+            // scale.x /= 5;
+            // scale.y /= 5;
+            // scale.z /= 5;
             pillar.GetComponent<Renderer>().materials[i].SetVector("_PlayerPos", pulseManager.pulseOrigin);
+            pillar.GetComponent<Renderer>().materials[i].SetVector("_Scale", scale);
             pillar.GetComponent<Renderer>().materials[i].SetFloat("_PulseLen", pulseManager.length);
             //pillar.GetComponent<Renderer>().materials[i].SetFloat("_isTerrain", isTerrain);
         }
