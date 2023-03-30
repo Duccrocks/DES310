@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Radar Maze.unity
     guid: 342640b9609f8284fa5ae6c225b0a585
+  - enabled: 1
+    path: Assets/Scenes/Mary QOS.unity
+    guid: b4a34d71a31ce4d4e9cc01b968a06247
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fe72aa3d9c424b94c99ded2df87f713c, type: 2}

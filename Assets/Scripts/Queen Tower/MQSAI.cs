@@ -23,7 +23,7 @@ public class MQSAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(PlayerInView());
+        //Debug.Log(PlayerInView());
         if(PlayerInView())
         {
             agent.isStopped = false;
@@ -44,9 +44,9 @@ public class MQSAI : MonoBehaviour
         
 
         if (hit.transform == null) return false;
-        if (hit.transform.tag == player.tag) return true;
+        if (hit.transform.CompareTag(player.tag)) return true;
         
-        Debug.Log("Hit was not null but obj hit is not player");
+//        Debug.Log("Hit was not null but obj hit is not player");
         
         return false;
     }
