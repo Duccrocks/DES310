@@ -13,7 +13,7 @@ public class Punch : MonoBehaviour
 
         var forward = transform.TransformDirection(Vector3.forward);
         var mask = (1 << LayerMask.NameToLayer(excludedLayer)) | layerMaskInteract.value;
-
+        Debug.DrawRay(transform.position, forward * attackRange, Color.black);
         if (Physics.Raycast(transform.position, forward, out var hit, attackRange, mask))
         {
             if (hit.collider.CompareTag("Enemy"))

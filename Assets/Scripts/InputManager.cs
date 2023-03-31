@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
 {
+    
+    
     private enum ControlType
     {
         General,
@@ -13,9 +15,9 @@ public class InputManager : MonoBehaviour
         DuckMiniGame
     }
 
-    [Header("Controls Enum")]
-    [Tooltip("Which scenes controls to use.")] 
-    [SerializeField] private ControlType controlType;
+    
+    [Header("Controls Enum")] [Tooltip("Which scenes controls to use.")] [SerializeField]
+    private ControlType controlType;
 
     private CameraController cameraController;
     private bool isPaused;
@@ -24,9 +26,9 @@ public class InputManager : MonoBehaviour
 
     //Reference to all player controls.
     private PlayerMovement playerMovement;
+    private Punch punch;
     private SelectionManager selectionManager;
     private SonarPulses sonarPulses;
-    private Punch punch;
 
     private void Awake()
     {
@@ -52,9 +54,18 @@ public class InputManager : MonoBehaviour
                 return;
             case ControlType.RadarMaze:
                 sonarPulses = GetComponent<SonarPulses>();
+                if (TryGetComponent(out SonarPulses sonarPulsesComponent))
+                    sonarPulses = sonarPulsesComponent;
+                else
+                    Debug.LogError("SonarPulses Null\n " +
+                                   "If you're not in Kelpie then switch controlType, else add a Punch script");
                 break;
             case ControlType.MaryQueenOfScots:
-                punch = GetComponent<Punch>();
+                if (TryGetComponent(out Punch punchComponent))
+                    punch = punchComponent;
+                else
+                    Debug.LogError("Punch Null\n " +
+                                   "If you're not in MQoS then switch controlType, else add a Punch script");
                 break;
             case ControlType.DuckMiniGame:
                 Debug.LogError("We haven't made Duck game yet.");
@@ -129,11 +140,8 @@ public class InputManager : MonoBehaviour
             playerControls.Player.Sprint.canceled += StopSprinting;
             if (sonarPulses) playerControls.Player.SonarPulse.performed += SonarPulse;
             if (punch) playerControls.Player.Punch.performed += PunchEnemy;
-
         }
     }
-
-
 
 
     #region Player Controls events

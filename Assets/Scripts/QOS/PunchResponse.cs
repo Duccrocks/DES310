@@ -1,16 +1,24 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PunchResponse : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private int health = 3;
     [SerializeField] private float IFrameTime = 2;
-
-    [SerializeField] private RaddollManager RaddollManager;
+    
+    private RaddollManager RaddollManager;
+    private NavMeshAgent navMeshAgent;
 
     private Vector3 direction;
 
     private float healthTimer;
+
+    private void Awake()
+    {
+        RaddollManager = GetComponent<RaddollManager>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -65,10 +73,13 @@ public class PunchResponse : MonoBehaviour
 
     public void Punched(Vector3 axis)
     {
+        Destroy(navMeshAgent);
+        Destroy(GetComponent<MQSAI>());
         direction = axis * speed;
         //GetComponent<Rigidbody>().AddForceAtPosition(direction, new Vector3(0, 0, 0));
         RaddollManager.ragDollEnabled = true;
         RaddollManager.EnableRagdoll();
+
         foreach (var body in RaddollManager.Rigidbodies)
         {
             body.AddForceAtPosition(direction, new Vector3(0, 0, 0));
