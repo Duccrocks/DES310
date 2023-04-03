@@ -141,9 +141,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  sprintMultiplier: 2
   jumpHeight: 2
   gravity: -19.62
-  sprintMultiplier: 2
   groundMask:
     serializedVersion: 2
     m_Bits: 64

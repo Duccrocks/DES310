@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
 {
+    
+    
     private enum ControlType
     {
         General,
@@ -12,10 +14,10 @@ public class InputManager : MonoBehaviour
         MaryQueenOfScots,
         DuckMiniGame
     }
+
     
-    [Header("Controls Enum")]
-    [Tooltip("Which scenes controls to use.")]
-    [SerializeField] private ControlType controlType;
+    [Header("Controls Enum")] [Tooltip("Which scenes controls to use.")] [SerializeField]
+    private ControlType controlType;
 
     private CameraController cameraController;
     private bool isPaused;
@@ -24,6 +26,7 @@ public class InputManager : MonoBehaviour
 
     //Reference to all player controls.
     private PlayerMovement playerMovement;
+    private Punch punch;
     private SelectionManager selectionManager;
     private SonarPulses sonarPulses;
 
@@ -51,8 +54,18 @@ public class InputManager : MonoBehaviour
                 return;
             case ControlType.RadarMaze:
                 sonarPulses = GetComponent<SonarPulses>();
+                if (TryGetComponent(out SonarPulses sonarPulsesComponent))
+                    sonarPulses = sonarPulsesComponent;
+                else
+                    Debug.LogError("SonarPulses Null\n " +
+                                   "If you're not in Kelpie then switch controlType, else add a Punch script");
                 break;
             case ControlType.MaryQueenOfScots:
+            punch = GetComponentInChildren<Punch>();
+                if (!punch)
+                    Debug.LogError("Punch Null\n " +
+                                   "If you're not in MQoS then switch controlType, else add a Punch script");
+                break;
             case ControlType.DuckMiniGame:
                 Debug.LogError("We haven't made Duck game yet.");
                 break;
@@ -85,6 +98,7 @@ public class InputManager : MonoBehaviour
         playerControls.Player.Sprint.canceled += StopSprinting;
         if (pauseMenu) playerControls.Player.Pause.performed += TogglePause;
         if (sonarPulses) playerControls.Player.SonarPulse.performed += SonarPulse;
+        if (punch) playerControls.Player.Punch.performed += PunchEnemy;
 
         PauseMenu.OnPause += OnPause;
     }
@@ -100,7 +114,8 @@ public class InputManager : MonoBehaviour
         playerControls.Player.Sprint.canceled -= StopSprinting;
         playerControls.Player.Pause.performed -= TogglePause;
         playerControls.Player.SonarPulse.performed -= SonarPulse;
-        
+        playerControls.Player.Punch.performed -= PunchEnemy;
+
         PauseMenu.OnPause -= OnPause;
     }
 
@@ -114,6 +129,7 @@ public class InputManager : MonoBehaviour
             playerControls.Player.Sprint.performed -= StartSprinting;
             playerControls.Player.Sprint.canceled -= StopSprinting;
             playerControls.Player.SonarPulse.performed -= SonarPulse;
+            playerControls.Player.Punch.performed -= PunchEnemy;
         }
         else
         {
@@ -122,9 +138,9 @@ public class InputManager : MonoBehaviour
             playerControls.Player.Sprint.performed += StartSprinting;
             playerControls.Player.Sprint.canceled += StopSprinting;
             if (sonarPulses) playerControls.Player.SonarPulse.performed += SonarPulse;
+            if (punch) playerControls.Player.Punch.performed += PunchEnemy;
         }
     }
-
 
 
     #region Player Controls events
@@ -158,6 +174,11 @@ public class InputManager : MonoBehaviour
     private void SonarPulse(InputAction.CallbackContext ctx)
     {
         if (ctx.performed) sonarPulses.Pulse();
+    }
+
+    private void PunchEnemy(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) punch.PunchEnemy();
     }
 
     #endregion
