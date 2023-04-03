@@ -6,13 +6,13 @@ public class PunchResponse : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private int health = 3;
     [SerializeField] private float IFrameTime = 2;
-    
-    private RaddollManager RaddollManager;
-    private NavMeshAgent navMeshAgent;
 
     private Vector3 direction;
 
     private float healthTimer;
+    private NavMeshAgent navMeshAgent;
+
+    private RaddollManager RaddollManager;
 
     private void Awake()
     {
@@ -40,8 +40,9 @@ public class PunchResponse : MonoBehaviour
     {
         if (!collision.transform.CompareTag("Ground"))
         {
-            Debug.Log("hit simmin");
+            //Debug.Log("hit simmin");
         }
+
         if (collision.transform.CompareTag("Enemy"))
         {
             Debug.Log("hit an enemy gamer");
@@ -50,12 +51,18 @@ public class PunchResponse : MonoBehaviour
                 health--;
                 healthTimer = 0;
                 var dir = Vector3.Normalize(transform.position - collision.transform.position) * speed * 0.2f;
+                
+                var collisionPunchResponse = GetComponentInParent<PunchResponse>();
+                collisionPunchResponse.DestroyAI();
 
-                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-                GetComponent<Rigidbody>().AddForceAtPosition(dir, new Vector3(0, 0, 0));
-
-                collision.transform.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-                collision.transform.gameObject.GetComponent<Rigidbody>().AddForceAtPosition(-dir, new Vector3(0, 0, 0));
+                var collisionRagdoll = collisionPunchResponse.gameObject.GetComponent<RaddollManager>();
+                collisionRagdoll.ragDollEnabled = true;
+                collisionRagdoll.EnableRagdoll();
+                
+                foreach (var body in collisionRagdoll.Rigidbodies)
+                {
+                    body.AddForceAtPosition(dir, new Vector3(0, 0, 0));
+                }
             }
         }
 
@@ -73,8 +80,7 @@ public class PunchResponse : MonoBehaviour
 
     public void Punched(Vector3 axis)
     {
-        Destroy(navMeshAgent);
-        Destroy(GetComponent<MQSAI>());
+        DestroyAI();
         direction = axis * speed;
         //GetComponent<Rigidbody>().AddForceAtPosition(direction, new Vector3(0, 0, 0));
         RaddollManager.ragDollEnabled = true;
@@ -84,5 +90,11 @@ public class PunchResponse : MonoBehaviour
         {
             body.AddForceAtPosition(direction, new Vector3(0, 0, 0));
         }
+    }
+
+    public void DestroyAI()
+    {
+        Destroy(navMeshAgent);
+        Destroy(GetComponent<MQSAI>());
     }
 }

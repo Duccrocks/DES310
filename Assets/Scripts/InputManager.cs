@@ -61,9 +61,8 @@ public class InputManager : MonoBehaviour
                                    "If you're not in Kelpie then switch controlType, else add a Punch script");
                 break;
             case ControlType.MaryQueenOfScots:
-                if (TryGetComponent(out Punch punchComponent))
-                    punch = punchComponent;
-                else
+            punch = GetComponentInChildren<Punch>();
+                if (!punch)
                     Debug.LogError("Punch Null\n " +
                                    "If you're not in MQoS then switch controlType, else add a Punch script");
                 break;

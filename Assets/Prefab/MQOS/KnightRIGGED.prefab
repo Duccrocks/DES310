@@ -221,8 +221,8 @@ GameObject:
   - component: {fileID: 4865925492876504669}
   - component: {fileID: 3828468033955369076}
   - component: {fileID: 5380863047433262773}
-  - component: {fileID: 1974544398572332401}
   - component: {fileID: 8873318295079083131}
+  - component: {fileID: 2054469576885288605}
   m_Layer: 7
   m_Name: KnightRIGGED
   m_TagString: Enemy
@@ -327,20 +327,6 @@ MonoBehaviour:
   ragDollEnabled: 0
   Rigidbodies: []
   collider: {fileID: 7295673618885205841}
---- !u!64 &1974544398572332401
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086267441574374937}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &8873318295079083131
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -357,6 +343,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!64 &2054469576885288605
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086267441574374937}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1245011021570155685
 GameObject:
   m_ObjectHideFlags: 0
