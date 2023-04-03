@@ -9,7 +9,12 @@ ModelImporter:
   - first:
       74: 8003312214571475973
     second: Armature|Armature|Armature|ArmatureAction.001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Book1
+    second: {fileID: 2100000, guid: 1f4bca63c165acb4a8b4810d8f981eae, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -53,7 +58,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
