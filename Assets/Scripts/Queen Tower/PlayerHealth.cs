@@ -1,11 +1,10 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
-    private int health;
+    [SerializeField] private int health;
 
     private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
     private Coroutine regen;
@@ -36,7 +35,14 @@ public class PlayerHealth : MonoBehaviour
 
     private void HealthChange()
     {
-        if (health <= 0) SceneManager.LoadScene(1);
+        if (health <= 0) Die();
+    }
+
+    public void Die()
+    {
+        //Play death animation here 
+
+        LevelManager.instance.LoadScene("Library");
     }
 
     private IEnumerator RegenHealth()
