@@ -4585,7 +4585,7 @@ PrefabInstance:
     - target: {fileID: 8736951696169770646, guid: dc677f9018cd65744a133ceb49680718, type: 3}
       propertyPath: staminaBar
       value: 
-      objectReference: {fileID: 819251250}
+      objectReference: {fileID: 649479424}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: dc677f9018cd65744a133ceb49680718, type: 3}
@@ -7837,6 +7837,7 @@ MonoBehaviour:
   - {fileID: 407012295}
   - {fileID: 866426179}
   - {fileID: 1997058564}
+  ambience: {fileID: 8300000, guid: ad3015d3706d1cd43804fb4bfad98784, type: 3}
 --- !u!4 &430960429
 Transform:
   m_ObjectHideFlags: 0
@@ -12988,6 +12989,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647932942}
   m_Mesh: {fileID: 2494185979427425891, guid: 4b6f0b3501d5f4f4490c3ed3a23a0c50, type: 3}
+--- !u!114 &649479424 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8466662256250421169, guid: f61ba12cc2da14546b17d1ad5a8e3aa7, type: 3}
+  m_PrefabInstance: {fileID: 2137664775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &652587447
 GameObject:
   m_ObjectHideFlags: 0
@@ -16658,17 +16670,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811960641}
   m_Mesh: {fileID: 2494185979427425891, guid: 4b6f0b3501d5f4f4490c3ed3a23a0c50, type: 3}
---- !u!114 &819251250 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3693541187128298902, guid: f61ba12cc2da14546b17d1ad5a8e3aa7, type: 3}
-  m_PrefabInstance: {fileID: 2137664775}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &826609349
 GameObject:
   m_ObjectHideFlags: 0
@@ -40718,6 +40719,14 @@ PrefabInstance:
     - target: {fileID: 4286221871847072950, guid: f61ba12cc2da14546b17d1ad5a8e3aa7, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836081123121775832, guid: f61ba12cc2da14546b17d1ad5a8e3aa7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836081123121775832, guid: f61ba12cc2da14546b17d1ad5a8e3aa7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

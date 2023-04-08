@@ -38,7 +38,14 @@ public class RadarGameManager : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Instance.PlayMusicWithFade(ambience);
+        try
+        {
+            AudioManager.Instance.PlayMusicWithFade(ambience);
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.LogError("Audio Manager Null");
+        }
     }
     void FixedUpdate()
     {
