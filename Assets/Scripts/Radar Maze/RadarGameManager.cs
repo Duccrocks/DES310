@@ -66,6 +66,7 @@ public class RadarGameManager : MonoBehaviour
 
     public void Victory()
     {
+        MiniGameProgression.RadarMazeCompleted = true;
         LevelManager.instance.LoadScene("Library");
     }
 

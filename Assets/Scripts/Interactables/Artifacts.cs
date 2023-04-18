@@ -12,7 +12,6 @@ public class Artifacts : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Debug.Log("Hit radar maze artifact");
         Destroy(gameObject);
         try
         {
