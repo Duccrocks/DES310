@@ -53,7 +53,7 @@ public class MQSAI : MonoBehaviour
 
     void Attack()
     {
-        playerHealth.HealthDecrease(40);
+        playerHealth.HealthDecrease(50);
         canAttack = false;
         Invoke(nameof(AttackReset), 2f);
     }

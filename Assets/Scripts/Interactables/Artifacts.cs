@@ -8,20 +8,19 @@ public class Artifacts : MonoBehaviour, IInteractable
     void Awake()
     {
         transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position;
-        kelpie = GameObject.FindGameObjectWithTag("Enemy");
     }
 
     public void Interact()
     {
-        ArtifactObtained();
+        Debug.Log("Hit radar maze artifact");
         Destroy(gameObject);
-    }
-
-    void ArtifactObtained()
-    {
-        kelpie.GetComponent<KelpieAI>().IncreaseDiff(); 
-        GameObject[] artifactsLeft = GameObject.FindGameObjectsWithTag("SelectableObject");
-
-        if (artifactsLeft.Length <= 1) RadarGameManager.Instance.Victory();
+        try
+        {
+            RadarGameManager.Instance.ArtifactObtained();
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.LogError("RadarGame Manager null");
+        }
     }
 }
