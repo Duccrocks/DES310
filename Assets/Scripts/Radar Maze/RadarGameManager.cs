@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.AI;
 
 public class RadarGameManager : MonoBehaviour
 {
@@ -13,6 +9,9 @@ public class RadarGameManager : MonoBehaviour
     [SerializeField] GameObject[] keyObjects;
 
     [SerializeField] private AudioClip ambience;
+
+    private KelpieAI kelpie;
+    private int artifactsCount;
 
     public static RadarGameManager Instance
 
@@ -46,6 +45,9 @@ public class RadarGameManager : MonoBehaviour
         {
             Debug.LogError("Audio Manager Null");
         }
+
+        kelpie = FindObjectOfType<KelpieAI>();
+        artifactsCount = FindObjectsOfType<Artifacts>().Length;
     }
     void FixedUpdate()
     {
@@ -64,12 +66,22 @@ public class RadarGameManager : MonoBehaviour
 
     public void Victory()
     {
-        //LevelManager.instance.LoadScene("Menu");
-        SceneManager.LoadScene(0);
+        MiniGameProgression.RadarMazeCompleted = true;
+        LevelManager.instance.LoadScene("Library");
     }
 
     public void Death()
     {
         LevelManager.instance.LoadScene("Library");
+    }
+
+    public void ArtifactObtained()
+    {
+        kelpie.IncreaseDiff(); 
+        artifactsCount--;
+        if(artifactsCount <= 0 )
+        {
+            Victory();
+        }
     }
 }
