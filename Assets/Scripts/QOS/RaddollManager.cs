@@ -48,7 +48,7 @@ public class RaddollManager : MonoBehaviour
     public void EnableRagdoll()
     {
         collider.enabled = false;
-        Animator.enabled = false;
+        //Animator.enabled = false;
         foreach (CharacterJoint joint in joints)
         {
 
@@ -68,7 +68,7 @@ public class RaddollManager : MonoBehaviour
     public void DisableRagdoll() 
     {
         collider.enabled = true;
-        Animator.enabled = true;
+        //Animator.enabled = true;
         foreach (CharacterJoint joint in joints)
         {
 
