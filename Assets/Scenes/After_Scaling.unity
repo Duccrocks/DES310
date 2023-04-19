@@ -4261,7 +4261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &154299354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18951,10 +18951,6 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1837645088533239023, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1837645088533239023, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
       objectReference: {fileID: 0}
@@ -19036,11 +19032,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6819884000814390082, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_text
-      value: Press F to use ECHOLOCATION.
+      value: Press %BINDING% to use echolocation to spot the Kelpie.
       objectReference: {fileID: 0}
     - target: {fileID: 6819884000814390082, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_fontSize
-      value: 18
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 6819884000814390082, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_fontColor.a
@@ -19057,6 +19053,10 @@ PrefabInstance:
     - target: {fileID: 6819884000814390082, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_fontColor.r
       value: 0.9850404
+      objectReference: {fileID: 0}
+    - target: {fileID: 6819884000814390082, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
+      propertyPath: m_overflowMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6819884000814390082, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_isRightToLeft
