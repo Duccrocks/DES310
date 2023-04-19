@@ -56,4 +56,9 @@ public class PlayerHealth : MonoBehaviour
         }
         regen = null;
     }
+
+    public int getHealth()
+    {
+        return health;
+    }
 }
