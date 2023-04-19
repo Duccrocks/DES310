@@ -70,7 +70,7 @@ public class HoverText : MonoBehaviour
         // var displayString = action.GetBindingDisplayString(bindingIndex, out string deviceLayoutName, out string controlPath);
 
         var displayString = RebindManager.GetBindingName(inputActionReference.name, bindingIndex);
-        bindingText.text = $"Press {displayString} to interact";
+        bindingText.text = $"Press {displayString} to {action.name}";
     }
 
 
