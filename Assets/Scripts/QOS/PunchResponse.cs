@@ -102,8 +102,8 @@ public class PunchResponse : MonoBehaviour
 
     public void DestroyAI()
     {
-        Destroy(GetComponent<Animator>());
         Destroy(navMeshAgent);
         Destroy(GetComponent<MQSAI>());
+        Destroy(GetComponent<Animator>());
     }
 }

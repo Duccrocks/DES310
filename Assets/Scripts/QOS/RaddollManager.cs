@@ -9,13 +9,12 @@ public class RaddollManager : MonoBehaviour
     [SerializeField]
     public bool ragDollEnabled=false;
     [SerializeField]
-    private Animator Animator;
+    private Animator animator;
 
     public Rigidbody[] Rigidbodies;
     private CharacterJoint[] joints;
     private Collider[] colliders;
-    [SerializeField]
-    private Collider collider;
+    [SerializeField] private Collider collider;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +47,7 @@ public class RaddollManager : MonoBehaviour
     public void EnableRagdoll()
     {
         collider.enabled = false;
-        //Animator.enabled = false;
+        animator.enabled = false;
         foreach (CharacterJoint joint in joints)
         {
 
@@ -68,7 +67,7 @@ public class RaddollManager : MonoBehaviour
     public void DisableRagdoll() 
     {
         collider.enabled = true;
-        //Animator.enabled = true;
+        animator.enabled = true;
         foreach (CharacterJoint joint in joints)
         {
 

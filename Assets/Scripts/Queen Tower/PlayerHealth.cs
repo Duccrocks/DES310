@@ -41,8 +41,14 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         //Play death animation here 
-
-        LevelManager.instance.LoadScene("Library");
+        try
+        {
+            LevelManager.instance.LoadScene("Library");
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.LogError("Level Manager Null");
+        }
     }
 
     private IEnumerator RegenHealth()
