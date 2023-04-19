@@ -14,10 +14,10 @@ public class InputManager : MonoBehaviour
         MaryQueenOfScots,
         DuckMiniGame
     }
-
     
-    [Header("Controls Enum")] [Tooltip("Which scenes controls to use.")] [SerializeField]
-    private ControlType controlType;
+    [Header("Controls Enum")] 
+    [Tooltip("Which scenes controls to use.")]
+    [SerializeField] private ControlType controlType;
 
     private CameraController cameraController;
     private bool isPaused;
@@ -29,6 +29,9 @@ public class InputManager : MonoBehaviour
     private Punch punch;
     private SelectionManager selectionManager;
     private SonarPulses sonarPulses;
+    
+    public static event Action PlayerDeviceChanged;
+
 
     private void Awake()
     {
@@ -70,6 +73,11 @@ public class InputManager : MonoBehaviour
                 Debug.LogError("We haven't made Duck game yet.");
                 break;
         }
+    }
+
+    public void HandleDeviceChange()
+    {
+        PlayerDeviceChanged?.Invoke();
     }
 
 
