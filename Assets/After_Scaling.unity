@@ -9667,6 +9667,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  mapManager: {fileID: 0}
   ambience: {fileID: 8300000, guid: ad3015d3706d1cd43804fb4bfad98784, type: 3}
 --- !u!4 &430960429
 Transform:
@@ -21769,9 +21770,9 @@ MonoBehaviour:
   kelpie: {fileID: 895472241}
   player: {fileID: 1772213007}
   keyAreas:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1340364536}
+  - {fileID: 1211650171}
+  - {fileID: 847219254}
   kelpieRange: 75
 --- !u!1 &897939861
 GameObject:
