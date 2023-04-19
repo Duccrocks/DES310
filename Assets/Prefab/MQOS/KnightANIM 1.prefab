@@ -1385,7 +1385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ragDollRoot: {fileID: 9071054795344928364}
   ragDollEnabled: 0
-  Animator: {fileID: 7427265240452090021}
+  animator: {fileID: 7427265240452090021}
   Rigidbodies: []
   collider: {fileID: 4358918731708251533}
 --- !u!54 &3581081377697513185
