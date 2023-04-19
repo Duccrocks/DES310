@@ -10,13 +10,14 @@ public class RadarGameManager : MonoBehaviour
     [SerializeField] private GameObject[] treePrefabs;
     [SerializeField] private GameObject wispPrefab;
     [SerializeField] private GameObject[] keyObjects;
+    [SerializeField] private MapManager mapManager;
     
     [Header("Audio")]
     [SerializeField] private AudioClip ambience;
 
     private int artifactsCount;
     private KelpieAI kelpie;
-
+    
     public static RadarGameManager Instance
 
     {
@@ -78,6 +79,7 @@ public class RadarGameManager : MonoBehaviour
     {
         kelpie.IncreaseDiff();
         artifactsCount--;
+        mapManager.peiceCollected(artifactsCount);
         if (artifactsCount <= 0) Victory();
     }
 }
