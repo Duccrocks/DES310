@@ -104,6 +104,5 @@ public class PunchResponse : MonoBehaviour
     {
         Destroy(navMeshAgent);
         Destroy(GetComponent<MQSAI>());
-        Destroy(GetComponent<Animator>());
     }
 }
