@@ -1,15 +1,18 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField] private string sceneToLoad;
+    [SerializeField] private AudioClip clip;
 
     private void Start()
     {
         //Locks the cursor.
         Cursor.lockState = CursorLockMode.None;
+        AudioManager.Instance.PlayMusicWithFade(clip);
     }
 
     /// <summary>
@@ -19,7 +22,7 @@ public class Menu : MonoBehaviour
     {
         try
         {
-            LevelManager.instance.LoadScene(sceneToLoad);
+            LevelManager.instance.LoadScene(sceneToLoad, stopAudio: false);
         }
         catch (NullReferenceException e)
         {

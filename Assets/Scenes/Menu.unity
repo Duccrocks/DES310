@@ -2433,6 +2433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Library
+  clip: {fileID: 8300000, guid: f6ecd3abea5632842ad25781269a5c5f, type: 3}
 --- !u!1 &1980622626
 GameObject:
   m_ObjectHideFlags: 0
