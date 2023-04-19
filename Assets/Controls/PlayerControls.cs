@@ -82,7 +82,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SonarPulse"",
+                    ""name"": ""Echolocation"",
                     ""type"": ""Button"",
                     ""id"": ""025b5607-d35e-45df-8c24-b114710bfac8"",
                     ""expectedControlType"": ""Button"",
@@ -306,7 +306,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""SonarPulse"",
+                    ""action"": ""Echolocation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -317,7 +317,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad;Joystick"",
-                    ""action"": ""SonarPulse"",
+                    ""action"": ""Echolocation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -417,7 +417,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
-        m_Player_SonarPulse = m_Player.FindAction("SonarPulse", throwIfNotFound: true);
+        m_Player_Echolocation = m_Player.FindAction("Echolocation", throwIfNotFound: true);
         m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
     }
 
@@ -484,7 +484,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Pause;
-    private readonly InputAction m_Player_SonarPulse;
+    private readonly InputAction m_Player_Echolocation;
     private readonly InputAction m_Player_Punch;
     public struct PlayerActions
     {
@@ -496,7 +496,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
-        public InputAction @SonarPulse => m_Wrapper.m_Player_SonarPulse;
+        public InputAction @Echolocation => m_Wrapper.m_Player_Echolocation;
         public InputAction @Punch => m_Wrapper.m_Player_Punch;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -525,9 +525,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
-                @SonarPulse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSonarPulse;
-                @SonarPulse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSonarPulse;
-                @SonarPulse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSonarPulse;
+                @Echolocation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEcholocation;
+                @Echolocation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEcholocation;
+                @Echolocation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEcholocation;
                 @Punch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
                 @Punch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
                 @Punch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
@@ -553,9 +553,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @SonarPulse.started += instance.OnSonarPulse;
-                @SonarPulse.performed += instance.OnSonarPulse;
-                @SonarPulse.canceled += instance.OnSonarPulse;
+                @Echolocation.started += instance.OnEcholocation;
+                @Echolocation.performed += instance.OnEcholocation;
+                @Echolocation.canceled += instance.OnEcholocation;
                 @Punch.started += instance.OnPunch;
                 @Punch.performed += instance.OnPunch;
                 @Punch.canceled += instance.OnPunch;
@@ -616,7 +616,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnSonarPulse(InputAction.CallbackContext context);
+        void OnEcholocation(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
     }
 }

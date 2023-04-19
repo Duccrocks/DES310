@@ -79,7 +79,7 @@ public class RadarGameManager : MonoBehaviour
     {
         kelpie.IncreaseDiff();
         artifactsCount--;
-        mapManager.peiceCollected(artifactsCount);
-        if (artifactsCount <= 1) Victory();
+        mapManager.PieceCollected(artifactsCount);
+        if (artifactsCount <= 0) Victory();
     }
 }

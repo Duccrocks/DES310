@@ -12,14 +12,14 @@ public class Artifacts : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Destroy(gameObject);
         try
         {
             RadarGameManager.Instance.ArtifactObtained();
         }
-        catch (System.NullReferenceException)
+        catch (System.NullReferenceException e)
         {
-            Debug.LogError("RadarGame Manager null");
+            Debug.LogError(e);
         }
+        Destroy(gameObject);
     }
 }

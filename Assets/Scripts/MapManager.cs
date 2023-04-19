@@ -6,31 +6,31 @@ using UnityEngine.UI;
 public class MapManager : MonoBehaviour
 {
     [SerializeField] private Image starting;
-    [SerializeField] private Image onePeice;
+    [SerializeField] private Image onePiece;
     [SerializeField] private Image finale;
     private void Start()
     {
-        starting.enabled =false;
-        onePeice.enabled =false;
-        finale.enabled =false;
+        starting.enabled = false;
+        onePiece.enabled = false;
+        finale.enabled = false;
 
     }
-    public void peiceCollected(int artifactNum)
+    public void PieceCollected(int artifactNum)
     {
 
         switch (artifactNum)
         {
             case 3:
-                starting.enabled =true;
+                starting.enabled = true;
                 finale.enabled = false;
                 break;
             case 2:
-                onePeice.enabled = true;
+                onePiece.enabled = true;
                 finale.enabled = false;
                 break;
             case 1:
                 finale.enabled = true;
-                onePeice.enabled = false;
+                onePiece.enabled = false;
                 starting.enabled = false;
                 break;
             default:

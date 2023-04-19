@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SonarPulse",
+                    "name": "Echolocation",
                     "type": "Button",
                     "id": "025b5607-d35e-45df-8c24-b114710bfac8",
                     "expectedControlType": "Button",
@@ -284,7 +284,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "SonarPulse",
+                    "action": "Echolocation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -295,7 +295,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad;Joystick",
-                    "action": "SonarPulse",
+                    "action": "Echolocation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
