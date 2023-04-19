@@ -18896,7 +18896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1837645088533239023, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 1837645088533239023, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_SizeDelta.y
@@ -18980,7 +18980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6819884000814390082, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_text
-      value: Press F to use ECHOLOCATION.
+      value: Press %BINDING% to use echolocation to spot the Kelpie
       objectReference: {fileID: 0}
     - target: {fileID: 6819884000814390082, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_fontSize
