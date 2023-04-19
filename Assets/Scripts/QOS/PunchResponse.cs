@@ -43,7 +43,7 @@ public class PunchResponse : MonoBehaviour
             //Debug.Log("hit simmin");
         }
 
-        if (collision.transform.CompareTag("Enemy"))
+        if (collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Physics Object"))
         {
             Debug.Log("hit an enemy gamer");
             if (healthTimer > IFrameTime)

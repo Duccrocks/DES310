@@ -20,6 +20,12 @@ public class Punch : MonoBehaviour
             {
                 Debug.Log("Hit Enemy");
                 hit.transform.gameObject.GetComponentInParent<PunchResponse>().Punched(forward);
+                return;
+            }
+            else if (hit.collider.CompareTag("Physics Object"))
+            {
+                hit.transform.gameObject.GetComponent<GenericPunchResponse>().Punched(forward);
+
             }
         }
     }
