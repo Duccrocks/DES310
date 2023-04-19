@@ -9664,9 +9664,9 @@ MonoBehaviour:
   treePrefabs: []
   wispPrefab: {fileID: 177481724565558275, guid: 264a7c30fd0750e4281152e9e9064859, type: 3}
   keyObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1340364536}
+  - {fileID: 1211650171}
+  - {fileID: 847219254}
   mapManager: {fileID: 0}
   ambience: {fileID: 8300000, guid: ad3015d3706d1cd43804fb4bfad98784, type: 3}
 --- !u!4 &430960429
