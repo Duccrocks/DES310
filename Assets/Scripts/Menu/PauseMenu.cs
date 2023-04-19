@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
 
 
     private bool isPaused;
-    public static Action<bool> OnPause;
+    public static event Action<bool> OnPause;
 
 
     private void Awake()

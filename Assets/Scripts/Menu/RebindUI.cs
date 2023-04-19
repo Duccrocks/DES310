@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,7 +9,7 @@ public class RebindUI : MonoBehaviour
     [Header("Control to Rebind")]
     [SerializeField] private InputActionReference inputActionReference; //this is on the SO
     
-    [Header("Binding Info - DO NOT EDIT")] 
+    [Header("Binding Info - DO NOT MANUALLY EDIT")] 
     [SerializeField] private InputBinding inputBinding;
     
     [Header("Rebind settings")]
