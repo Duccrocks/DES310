@@ -43,7 +43,7 @@ public class PlayerHealth : MonoBehaviour
         //Play death animation here 
         try
         {
-            LevelManager.instance.LoadScene("Library");
+            LevelManager.instance.LoadScene("Mary QOS");
         }
         catch (System.NullReferenceException)
         {
