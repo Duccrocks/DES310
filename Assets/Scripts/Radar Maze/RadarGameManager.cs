@@ -87,4 +87,9 @@ public class RadarGameManager : MonoBehaviour
         mapManager.PieceCollected(artifactsCount);
         if (artifactsCount <= 0) Victory();
     }
+
+    public void collectStartingMap()
+    {
+        mapManager.PieceCollected(artifactsCount);
+    }
 }

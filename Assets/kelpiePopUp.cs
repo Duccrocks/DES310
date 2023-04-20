@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class kelpiePopUp : MonoBehaviour
+public class kelpiePopUp : MonoBehaviour, IInteractable
 {
     // Start is called before the first frame update
     [SerializeField] GameObject popUp;
@@ -10,12 +10,10 @@ public class kelpiePopUp : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.E))
+
+        if (Input.GetKey(KeyCode.X))
         {
-            show();
-        }
-        if(Input.GetKey(KeyCode.Escape)) { 
-            hide(); 
+            hide();
         }
     }
 
@@ -29,5 +27,18 @@ public class kelpiePopUp : MonoBehaviour
     {
         popUp.active = false;
         hud.active = true;
+    }
+
+    public void Interact()
+    {
+        try
+        {
+            show();
+        }
+        catch (System.NullReferenceException e)
+        {
+            Debug.LogError(e);
+        }
+       
     }
 }
