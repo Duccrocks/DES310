@@ -49769,11 +49769,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 35750762}
     - target: {fileID: 5032270989000900729, guid: cc3b01f4764563a4ba6801a2834155ee, type: 3}
+      propertyPath: hudPanel
+      value: 
+      objectReference: {fileID: 35750762}
+    - target: {fileID: 5032270989000900729, guid: cc3b01f4764563a4ba6801a2834155ee, type: 3}
+      propertyPath: mapHudPanel
+      value: 
+      objectReference: {fileID: 35750762}
+    - target: {fileID: 5032270989000900729, guid: cc3b01f4764563a4ba6801a2834155ee, type: 3}
       propertyPath: TopLeftImage
       value: 
       objectReference: {fileID: 1224474702}
     - target: {fileID: 5032270989000900729, guid: cc3b01f4764563a4ba6801a2834155ee, type: 3}
+      propertyPath: topLeftImage
+      value: 
+      objectReference: {fileID: 1224474702}
+    - target: {fileID: 5032270989000900729, guid: cc3b01f4764563a4ba6801a2834155ee, type: 3}
+      propertyPath: tutorialText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032270989000900729, guid: cc3b01f4764563a4ba6801a2834155ee, type: 3}
       propertyPath: TopRightImage
+      value: 
+      objectReference: {fileID: 821230863}
+    - target: {fileID: 5032270989000900729, guid: cc3b01f4764563a4ba6801a2834155ee, type: 3}
+      propertyPath: topRightImage
       value: 
       objectReference: {fileID: 821230863}
     - target: {fileID: 5032270989000900729, guid: cc3b01f4764563a4ba6801a2834155ee, type: 3}
@@ -49781,7 +49801,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1894434159}
     - target: {fileID: 5032270989000900729, guid: cc3b01f4764563a4ba6801a2834155ee, type: 3}
+      propertyPath: bottomLeftImage
+      value: 
+      objectReference: {fileID: 1894434159}
+    - target: {fileID: 5032270989000900729, guid: cc3b01f4764563a4ba6801a2834155ee, type: 3}
       propertyPath: BottomRightImage
+      value: 
+      objectReference: {fileID: 794931267}
+    - target: {fileID: 5032270989000900729, guid: cc3b01f4764563a4ba6801a2834155ee, type: 3}
+      propertyPath: bottomRightImage
       value: 
       objectReference: {fileID: 794931267}
     - target: {fileID: 5032270989000900732, guid: cc3b01f4764563a4ba6801a2834155ee, type: 3}

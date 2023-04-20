@@ -169,11 +169,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82e4f787f3959a43a2e6825801c6cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starting: {fileID: 5552510543450830280}
-  onePiece: {fileID: 5552510544522988968}
-  finale: {fileID: 5552510542509879529}
+  bottomLeftImage: {fileID: 0}
+  bottomRightImage: {fileID: 0}
+  topLeftImage: {fileID: 0}
+  topRightImage: {fileID: 0}
   panel: {fileID: 5032270989000900733}
   hud: {fileID: 0}
+  tutorialText: {fileID: 0}
+  mapActionReference: {fileID: -7069841604915102398, guid: 1497e31286266994e899dc6914d06967, type: 3}
+  bottomLeftCollected: 0
 --- !u!1 &5552510542509879531
 GameObject:
   m_ObjectHideFlags: 0
