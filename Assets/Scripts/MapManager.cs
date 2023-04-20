@@ -3,20 +3,29 @@ using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
-    [SerializeField] private Image starting;
-    [SerializeField] private Image onePiece;
-    [SerializeField] private Image finale;
+    [SerializeField] private Image BottomLeftImage;
+    [SerializeField] private Image BottomRightImage;
+    [SerializeField] private Image TopLeftImage;
+    [SerializeField] private Image TopRightImage;
     [SerializeField] private Image panel;
     [SerializeField] private GameObject hud;
     private int artifactNum;
+
     private bool mapOpened;
+
+    public bool bottomRightCollected;
+    public bool bottomLeftCollected;
+    public bool TopRightCollected;
+    public bool TopLeftCollected;
 
     private void Start()
     {
-        starting.enabled = false;
-        onePiece.enabled = false;
-        finale.enabled = false;
-        panel.enabled = false;
+        bottomLeftCollected= false;
+        bottomRightCollected= false;
+        TopLeftCollected= false;
+        TopRightCollected= false;
+        CloseMap();
+        
     }
 
     // private void Update()
@@ -36,14 +45,23 @@ public class MapManager : MonoBehaviour
     //     }
     // }
 
-    public void PieceCollected(int artNum)
+    public void PieceCollected(int id)
     {
-        artifactNum = artNum;
+        switch (id)
+        {
+            case 0: TopLeftCollected = true;
+                break;
+            case 1: TopRightCollected= true;
+                break;
+            case 2: bottomRightCollected= true;
+                break;
+            default: break;
+        }
     }
 
     public void ToggleMap()
     {
-        if (artifactNum <= 0) return;
+        
         if (mapOpened)
         {
             CloseMap();
@@ -60,32 +78,21 @@ public class MapManager : MonoBehaviour
     {
         hud.SetActive(false);
         panel.enabled = true;
-        switch (artifactNum)
-        {
-            case 3:
-                starting.enabled = true;
-                onePiece.enabled = false;
-                finale.enabled = false;
-                break;
-            case 2:
-                onePiece.enabled = true;
-                starting.enabled = true;
-                finale.enabled = false;
-                break;
-            case 1:
-                finale.enabled = true;
-                onePiece.enabled = false;
-                starting.enabled = false;
-                break;
-        }
+
+        TopLeftImage.enabled = TopLeftCollected;
+        TopRightImage.enabled = TopRightCollected;
+        BottomLeftImage.enabled = bottomLeftCollected;
+        BottomRightImage.enabled = bottomRightCollected;
     }
 
     private void CloseMap()
     {
         hud.SetActive(true);
+
         panel.enabled = false;
-        onePiece.enabled = false;
-        finale.enabled = false;
-        starting.enabled = false;
+        TopLeftImage.enabled = false;
+        TopRightImage.enabled = false;
+        BottomLeftImage.enabled = false;
+        BottomRightImage.enabled = false;
     }
 }
