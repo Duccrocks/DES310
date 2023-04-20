@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LibraryManager : MonoBehaviour
 {
-    private AudioClip clip;
+    [SerializeField] private AudioClip clip;
     private void Start()
     {
         try
