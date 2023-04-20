@@ -4,7 +4,7 @@ public class StartingMap : MonoBehaviour, IInteractable
 {
     public void Interact()
     {
-        RadarGameManager.Instance.collectStartingMap();
+        RadarGameManager.Instance.CollectStartingMap();
         Destroy(gameObject);
     }
 }

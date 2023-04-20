@@ -22,7 +22,7 @@ public class Menu : MonoBehaviour
     {
         try
         {
-            LevelManager.instance.LoadScene(sceneToLoad, stopAudio: false);
+            LevelManager.instance.LoadScene(sceneToLoad);
         }
         catch (NullReferenceException e)
         {
