@@ -8,7 +8,7 @@ public class RadarGameManager : MonoBehaviour
     
     [Header("Game Objects")]
     [SerializeField] private GameObject[] treePrefabs;
-    [SerializeField] private MapManager mapManager;
+    [SerializeField] public MapManager mapManager;
 
     [Header("Wisps")]
     [SerializeField] private GameObject[] keyObjects;
@@ -80,16 +80,16 @@ public class RadarGameManager : MonoBehaviour
         LevelManager.instance.LoadScene("Library");
     }
 
-    public void ArtifactObtained()
+    public void ArtifactObtained(int id)
     {
         kelpie.IncreaseDiff();
         artifactsCount--;
-        mapManager.PieceCollected(artifactsCount);
+        mapManager.PieceCollected(id);
         if (artifactsCount <= 0) Victory();
     }
 
     public void collectStartingMap()
     {
-        mapManager.PieceCollected(artifactsCount);
+        mapManager.bottomLeftCollected = true;
     }
 }
