@@ -98,6 +98,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Map"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe6c8b3d-077c-4dcd-8664-54fc45153ef4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -342,6 +351,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Punch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0409a922-3b5d-4a7a-b0b3-41ac0803f024"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Map"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""059c4ea0-7fc2-488a-987a-ca10f69694f9"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Map"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -419,6 +450,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Echolocation = m_Player.FindAction("Echolocation", throwIfNotFound: true);
         m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
+        m_Player_Map = m_Player.FindAction("Map", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -486,6 +518,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Echolocation;
     private readonly InputAction m_Player_Punch;
+    private readonly InputAction m_Player_Map;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -498,6 +531,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Echolocation => m_Wrapper.m_Player_Echolocation;
         public InputAction @Punch => m_Wrapper.m_Player_Punch;
+        public InputAction @Map => m_Wrapper.m_Player_Map;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -531,6 +565,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Punch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
                 @Punch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
                 @Punch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
+                @Map.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMap;
+                @Map.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMap;
+                @Map.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMap;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -559,6 +596,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Punch.started += instance.OnPunch;
                 @Punch.performed += instance.OnPunch;
                 @Punch.canceled += instance.OnPunch;
+                @Map.started += instance.OnMap;
+                @Map.performed += instance.OnMap;
+                @Map.canceled += instance.OnMap;
             }
         }
     }
@@ -618,5 +658,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnEcholocation(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
+        void OnMap(InputAction.CallbackContext context);
     }
 }

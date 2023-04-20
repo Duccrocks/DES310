@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,40 +8,58 @@ public class MapManager : MonoBehaviour
     [SerializeField] private Image finale;
     [SerializeField] private Image panel;
     [SerializeField] private GameObject hud;
-    bool mapOpened=false;
-    private int artifactNum = 0;
+    private int artifactNum;
+    private bool mapOpened;
+
     private void Start()
     {
         starting.enabled = false;
         onePiece.enabled = false;
         finale.enabled = false;
         panel.enabled = false;
-
     }
+
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.M))
+    //     {
+    //         if (mapOpened)
+    //         {
+    //             CloseMap();
+    //             mapOpened = false;
+    //         }
+    //         else
+    //         {
+    //             OpenMap();
+    //             mapOpened = true;
+    //         }
+    //     }
+    // }
+
     public void PieceCollected(int artNum)
     {
         artifactNum = artNum;
     }
-    private void Update()
+
+    public void ToggleMap()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (artifactNum <= 0) return;
+        if (mapOpened)
         {
-            if (mapOpened)
-            {
-                CloseMap();
-                mapOpened= false;
-            }
-            else
-            {
-                OpenMap();
-                mapOpened = true;
-            }
+            CloseMap();
+            mapOpened = false;
+        }
+        else
+        {
+            OpenMap();
+            mapOpened = true;
         }
     }
-    public void OpenMap()
+
+    private void OpenMap()
     {
         hud.SetActive(false);
-        panel.enabled= true;
+        panel.enabled = true;
         switch (artifactNum)
         {
             case 3:
@@ -61,18 +77,15 @@ public class MapManager : MonoBehaviour
                 onePiece.enabled = false;
                 starting.enabled = false;
                 break;
-            default:
-                break;
         }
     }
 
-    public void CloseMap()
+    private void CloseMap()
     {
         hud.SetActive(true);
-        panel.enabled= false;
-        onePiece.enabled=false;
-        finale.enabled=false;
+        panel.enabled = false;
+        onePiece.enabled = false;
+        finale.enabled = false;
         starting.enabled = false;
     }
 }
-
