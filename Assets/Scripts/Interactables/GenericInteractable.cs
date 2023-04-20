@@ -14,6 +14,7 @@ public class GenericInteractable : MonoBehaviour, IInteractable
         {
             if(doOnce) return;
             interactableTriggered.Invoke();
+            doOnce = true;
         }
         else
         {

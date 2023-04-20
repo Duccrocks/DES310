@@ -1355,7 +1355,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 2147483647
-  attackRange: 5
+  attackRange: 2
 --- !u!114 &3581081377697513186
 MonoBehaviour:
   m_ObjectHideFlags: 0

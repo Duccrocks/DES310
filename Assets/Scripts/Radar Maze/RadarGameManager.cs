@@ -88,7 +88,7 @@ public class RadarGameManager : MonoBehaviour
         if (artifactsCount <= 0) Victory();
     }
 
-    public void collectStartingMap()
+    public void CollectStartingMap()
     {
         mapManager.bottomLeftCollected = true;
     }
