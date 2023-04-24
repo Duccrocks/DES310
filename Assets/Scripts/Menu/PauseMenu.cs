@@ -6,7 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     private EventSystem eventSystem;
 
-    [Header("HUD Elements")] 
+    [Header("HUD Elements")]
     [SerializeField] private GameObject pauseHud;
     [SerializeField] private GameObject hudPanel;
     [SerializeField] private GameObject resumeButton;
@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
 
 
     private bool isPaused;
-    public static Action<bool> OnPause;
+    public static event Action<bool> OnPause;
 
 
     private void Awake()
@@ -26,20 +26,23 @@ public class PauseMenu : MonoBehaviour
     /// <summary>
     ///     Toggles if the game is paused or not.
     /// </summary>
-    public void TogglePause()
+    public void TogglePause(bool shouldPauseMenuShow = true)
     {
         if (!isPaused)
-            PauseGame();
+            PauseGame(shouldPauseMenuShow);
         else
             UnPauseGame();
         //Fires an event stating if the game has been paused or not.
     }
 
-    private void PauseGame()
+    private void PauseGame(bool shouldPauseMenuShow)
     {
         OnPause?.Invoke(true);
         Time.timeScale = 0.0f;
-        pauseHud.SetActive(true);
+        if (shouldPauseMenuShow)
+        {
+            pauseHud.SetActive(true);
+        }
         hudPanel.SetActive(false);
         try
         {
@@ -50,18 +53,20 @@ public class PauseMenu : MonoBehaviour
             Debug.Log($"Event system null {e}");
         }
         Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
         isPaused = true;
     }
 
     private void UnPauseGame()
     {
-         OnPause?.Invoke(false);
+        OnPause?.Invoke(false);
         Time.timeScale = 1.0f;
         settingsPanel.SetActive(false);
         pausePanel.SetActive(true);
         pauseHud.SetActive(false);
         hudPanel.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         isPaused = false;
     }
 

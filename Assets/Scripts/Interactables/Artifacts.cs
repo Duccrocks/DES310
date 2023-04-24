@@ -4,24 +4,23 @@ public class Artifacts : MonoBehaviour, IInteractable
 {
     [SerializeField] private Transform[] spawnPoints;
     private GameObject kelpie;
+    [SerializeField] private int artifactID;
 
     void Awake()
     {
-        transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position;
-        kelpie = GameObject.FindGameObjectWithTag("Enemy");
+        //transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position;
     }
 
     public void Interact()
     {
-        ArtifactObtained();
+        try
+        {
+            RadarGameManager.Instance.ArtifactObtained(artifactID);
+        }
+        catch (System.NullReferenceException e)
+        {
+            Debug.LogError(e);
+        }
         Destroy(gameObject);
-    }
-
-    void ArtifactObtained()
-    {
-        kelpie.GetComponent<KelpieAI>().IncreaseDiff(); 
-        GameObject[] artifactsLeft = GameObject.FindGameObjectsWithTag("SelectableObject");
-
-        if (artifactsLeft.Length <= 1) RadarGameManager.Instance.Victory();
     }
 }

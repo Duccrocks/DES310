@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,11 +11,19 @@ public class MQSAI : MonoBehaviour
     [SerializeField] private float attackRange = 5;
     private bool canAttack = true;
 
-    void Awake()
+    void OnEnable()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.GetComponent<PlayerHealth>();
+        if (player.TryGetComponent<PlayerHealth>(out var componentPlayerHealth))
+        {
+            playerHealth = componentPlayerHealth;
+        }
+        else
+        {
+            Debug.LogError("Player Health null in Knight");
+        }
+
     }
 
     // Update is called once per frame
@@ -53,7 +59,7 @@ public class MQSAI : MonoBehaviour
 
     void Attack()
     {
-        playerHealth.HealthDecrease(40);
+        playerHealth.HealthDecrease(50);
         canAttack = false;
         Invoke(nameof(AttackReset), 2f);
     }

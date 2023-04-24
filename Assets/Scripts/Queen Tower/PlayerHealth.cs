@@ -41,8 +41,14 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         //Play death animation here 
-
-        LevelManager.instance.LoadScene("Library");
+        try
+        {
+            LevelManager.instance.LoadScene("Mary QOS");
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.LogError("Level Manager Null");
+        }
     }
 
     private IEnumerator RegenHealth()
@@ -55,5 +61,10 @@ public class PlayerHealth : MonoBehaviour
             yield return regenTick;
         }
         regen = null;
+    }
+
+    public int getHealth()
+    {
+        return health;
     }
 }

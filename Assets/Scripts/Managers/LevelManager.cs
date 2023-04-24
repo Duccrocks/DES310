@@ -24,9 +24,12 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     /// <param name="sceneName">Name of scene to load.</param>
     /// <param name="loadSceneMode">Additive or single loading (defaults to single)</param>
-    public void LoadScene(string sceneName, LoadSceneMode loadSceneMode = LoadSceneMode.Single)
+    public void LoadScene(string sceneName, LoadSceneMode loadSceneMode = LoadSceneMode.Single, bool stopAudio = true)
     {
-        AudioManager.Instance.StopAll();
+        if(stopAudio)
+        {
+            AudioManager.Instance.StopAll();
+        }
         SceneManager.LoadScene(sceneName.Trim());
     }
 
