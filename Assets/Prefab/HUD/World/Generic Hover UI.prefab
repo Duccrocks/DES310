@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Issue to track '
+  m_text: 'Text Here:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 9066706403512921232}
   - component: {fileID: 8235050789498427805}
   - component: {fileID: 248056170013696476}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Generic Hover UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,4 +267,3 @@ MonoBehaviour:
   toTrack: {fileID: 0}
   bindingText: {fileID: 6819884000814390082}
   fadeDuration: 0.75
-  inputText: Fuck Idk man

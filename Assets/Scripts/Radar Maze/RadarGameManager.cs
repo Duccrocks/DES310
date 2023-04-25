@@ -72,7 +72,6 @@ public class RadarGameManager : MonoBehaviour
     public void Victory()
     {
         MiniGameProgression.RadarMazeCompleted = true;
-        //TODO Fuck
         LevelManager.instance.LoadScene("Library");
     }
 

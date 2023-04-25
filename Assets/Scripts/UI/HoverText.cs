@@ -37,7 +37,6 @@ public class HoverText : MonoBehaviour
         UpdateBinding();
     }
 
-
     private void Update()
     {
         if (istoTrackNull) return;
@@ -89,8 +88,7 @@ public class HoverText : MonoBehaviour
             bindingText.text = $"Press {displayString} to {action.name}";
         }
     }
-
-
+    
     private IEnumerator FadeInText()
     {
         bindingText.gameObject.SetActive(true);

@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class GenericHoverText : MonoBehaviour
 {
-    [Header("Player")]
+    [Header("Player")] 
     [SerializeField] private GameObject toTrack;
 
-    [Header("Text Options")]
+    [Header("Text Options")] 
     [SerializeField] private TMP_Text bindingText;
     [SerializeField] private float fadeDuration = 0.75f;
-    [TextAreaAttribute] [SerializeField] private string inputText;
-
-    private bool istoTrackNull;
     
+    private bool istoTrackNull;
+
     private void Awake()
     {
         toTrack = GameObject.FindWithTag("Player");
         istoTrackNull = toTrack == null;
     }
-
-
+    
     private void Update()
     {
         if (istoTrackNull) return;
@@ -28,7 +26,6 @@ public class GenericHoverText : MonoBehaviour
         //Billboarding affect so the UI always faces the camera.
         transform.rotation = Quaternion.LookRotation(transform.position - toTrack.transform.position);
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -39,8 +36,7 @@ public class GenericHoverText : MonoBehaviour
     {
         StartCoroutine(FadeOutText());
     }
-
-
+    
     private IEnumerator FadeInText()
     {
         bindingText.gameObject.SetActive(true);
