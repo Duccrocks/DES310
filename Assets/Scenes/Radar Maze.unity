@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 2.1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 1f7631edd4929264c9451bd11995b3c2, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3876d0e183013044aab5adba683217d7, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.0071837953, g: 0.007322396, b: 0.01631763, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9209,11 +9209,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treePrefabs: []
-  wispPrefab: {fileID: 177481724565558275, guid: 264a7c30fd0750e4281152e9e9064859, type: 3}
+  mapManager: {fileID: 0}
   keyObjects:
   - {fileID: 1340364536}
   - {fileID: 1211650171}
   - {fileID: 847219254}
+  wispPrefab: {fileID: 177481724565558275, guid: 264a7c30fd0750e4281152e9e9064859, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   ambience: {fileID: 8300000, guid: ad3015d3706d1cd43804fb4bfad98784, type: 3}
 --- !u!4 &430960429
 Transform:
@@ -9388,6 +9392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoints:
   - {fileID: 1556268887}
+  artifactID: 0
 --- !u!65 &432874109
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12689,6 +12694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoints:
   - {fileID: 79474159}
+  artifactID: 0
 --- !u!65 &567625092
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17805,6 +17811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoints:
   - {fileID: 2070602643}
+  artifactID: 0
 --- !u!65 &777169614
 BoxCollider:
   m_ObjectHideFlags: 0
