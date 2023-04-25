@@ -17,7 +17,7 @@ public class SonarShaderManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float isTerrain=0;
+        float isTerrain = 0;
         if (pillar.name=="Terrain")
         {
             isTerrain = 1;

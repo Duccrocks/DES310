@@ -72,11 +72,14 @@ public class RadarGameManager : MonoBehaviour
     public void Victory()
     {
         MiniGameProgression.RadarMazeCompleted = true;
+        //TODO Fuck
         LevelManager.instance.LoadScene("Library");
     }
 
     public void Death()
     {
+        //Play death animation here 
+
         LevelManager.instance.LoadScene("Library");
     }
 

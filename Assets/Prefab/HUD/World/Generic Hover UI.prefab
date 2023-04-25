@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press $ to:'
+  m_text: 'Issue to track '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -148,9 +148,9 @@ GameObject:
   - component: {fileID: 926141546315974924}
   - component: {fileID: 9066706403512921232}
   - component: {fileID: 8235050789498427805}
-  - component: {fileID: 2384782356467491416}
+  - component: {fileID: 248056170013696476}
   m_Layer: 5
-  m_Name: Hover UI
+  m_Name: Generic Hover UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &9066706403512921232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +252,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 100
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2384782356467491416
+--- !u!114 &248056170013696476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,10 +261,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5907874174531648652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 321158ac5a0a8614f9535d7675d20028, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a646e4d858895342ad2396e30e66f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   toTrack: {fileID: 0}
-  inputActionReference: {fileID: 3519979464515822400, guid: 1497e31286266994e899dc6914d06967, type: 3}
   bindingText: {fileID: 6819884000814390082}
-  fadeDuration: 1
+  fadeDuration: 0.75
+  inputText: Fuck Idk man

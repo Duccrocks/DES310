@@ -45,28 +45,28 @@ public class PunchResponse : MonoBehaviour
 
         if (collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Physics Object"))
         {
-            if(collision.transform.CompareTag("Physics Object"))
+            if (collision.transform.CompareTag("Physics Object"))
             {
-                if(collision.gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero )
+                if (collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude < 0.25)
                 {
                     return;
                 }
             }
             Debug.Log("hit an enemy gamer");
-            
+
             if (healthTimer > IFrameTime)
             {
                 health--;
                 healthTimer = 0;
                 var dir = Vector3.Normalize(transform.position - collision.transform.position) * speed * 0.2f;
-                
+
                 var collisionPunchResponse = GetComponentInParent<PunchResponse>();
                 collisionPunchResponse.DestroyAI();
 
                 var collisionRagdoll = collisionPunchResponse.gameObject.GetComponent<RaddollManager>();
                 collisionRagdoll.ragDollEnabled = true;
                 collisionRagdoll.EnableRagdoll();
-                
+
                 foreach (var body in collisionRagdoll.Rigidbodies)
                 {
                     body.AddForceAtPosition(dir, new Vector3(0, 0, 0));
