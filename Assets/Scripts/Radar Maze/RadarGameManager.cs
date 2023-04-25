@@ -77,6 +77,8 @@ public class RadarGameManager : MonoBehaviour
 
     public void Death()
     {
+        //Play death animation here 
+
         LevelManager.instance.LoadScene("Library");
     }
 

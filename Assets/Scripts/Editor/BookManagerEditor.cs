@@ -6,7 +6,6 @@ using UnityEditor;
 [CustomEditor(typeof(BookManager)), CanEditMultipleObjects]
 public class BookManagerEditor : Editor
 {
-    // Start is called before the first frame update
     public override void OnInspectorGUI()
     {
         BookManager books = (BookManager)target;

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -70,7 +68,6 @@ public class KelpieAI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             RadarGameManager.Instance.Death();
-            // Go to death screen
         }
     }
 }
