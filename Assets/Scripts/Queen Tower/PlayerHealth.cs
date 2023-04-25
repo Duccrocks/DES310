@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
         health += amount;
     }
 
-    public void HealthDecrease(int amount = 1)
+    public void HealthDecrease(int amount = 1,int delay = 0)
     {
         health -= amount;
         HealthChange();
@@ -31,6 +31,11 @@ public class PlayerHealth : MonoBehaviour
         }
 
         regen = StartCoroutine(RegenHealth());
+    }
+
+    void DamagePlayer(int amount) 
+    {
+        
     }
 
     private void HealthChange()
