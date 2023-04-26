@@ -75,7 +75,7 @@ public class PauseMenu : MonoBehaviour
         try
         {
             UnPauseGame();
-            LevelManager.instance.LoadScene("Menu");
+            LevelManager.instance.LoadScene("Menu",shouldTransitionEffect: false);
         }
         catch (NullReferenceException e)
         {
