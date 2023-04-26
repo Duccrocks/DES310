@@ -5,24 +5,32 @@ using System.Linq;
 public class FadeOutController : MonoBehaviour
 {
     private float fadeTimer;
-    [SerializeField] float fadeDuration;
+    public float fadeDuration;
     public float isFading;
     [SerializeField] private UniversalRendererData rendererData = null;
     [SerializeField] private string featureName = null;
+    int fadeMult;
     // Start is called before the first frame update
     void Start()
     {
-        startFade();
+        startFadeIn();
+        isFading = 0;
     }
     void startFade()
     {
         isFading = 1;
         fadeTimer = 0;
+
     }
     // Update is called once per frame
     void Update()
     {
-        fadeTimer += Time.deltaTime;
+        if (fadeTimer < 0) { fadeTimer = 0; isFading = 0; }
+        if (fadeTimer > 2){ fadeTimer = 2; isFading = 0; }
+                
+
+
+        fadeTimer += Time.deltaTime*fadeMult;
         if (TryGetFeature(out var feature))
         {
 
@@ -54,5 +62,19 @@ public class FadeOutController : MonoBehaviour
             material.SetFloat("_fadeDuration", fadeDuration);
             material.SetFloat("_shouldFade",isFading);
         }
+    }
+
+    public void startFadeOut()
+    {
+        isFading = 1;
+        fadeTimer= 0;
+        fadeMult = 1;
+    }
+
+    public void startFadeIn()
+    {
+        fadeTimer = fadeDuration;
+        isFading = 1;
+        fadeMult= -1;
     }
 }

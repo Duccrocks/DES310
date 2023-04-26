@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
+    [SerializeField] public FadeOutController fadeOutController;
 
     private void Awake()
     {
@@ -18,7 +19,7 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+   
     /// <summary>
     ///     Loads scene through the scenes name.
     /// </summary>
@@ -30,7 +31,14 @@ public class LevelManager : MonoBehaviour
         {
             AudioManager.Instance.StopAll();
         }
-        SceneManager.LoadScene(sceneName.Trim());
+        //START FADE OUT EFFECT
+        StartCoroutine("SceneSwap", sceneName);
+        fadeOutController.startFadeOut();
+        var UI = GameObject.FindGameObjectsWithTag("UI");
+        foreach(GameObject obj in UI)
+        {
+            obj.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -62,5 +70,16 @@ public class LevelManager : MonoBehaviour
             yield return null;
         Debug.Log($"Scene: {sceneName} has unloaded");
         
+    }
+
+    IEnumerator SceneSwap(string sceneName)
+    {
+        yield return new WaitForSeconds(fadeOutController.fadeDuration-0.01f);
+        SceneManager.LoadScene(sceneName.Trim());
+    }
+
+    public void SceneLoaded()
+    {
+        fadeOutController.startFadeIn();
     }
 }

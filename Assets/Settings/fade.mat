@@ -123,7 +123,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _fadeDuration: 1.5
+    - _fadeDuration: 2
     - _fadeOut: 0
     - _fadeTimer: 0
     - _shouldFade: 0
