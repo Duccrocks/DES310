@@ -1968,6 +1968,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hover UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5907874174531648652, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
     - target: {fileID: 6819884000814390082, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_text
       value: Press $ to Interact
@@ -16144,6 +16148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hover UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5907874174531648652, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
     - target: {fileID: 6819884000814390082, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_text
       value: Press $ to Interact
@@ -18982,6 +18990,10 @@ PrefabInstance:
     - target: {fileID: 5907874174531648652, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_Name
       value: Hover UI (Rules_Radar)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907874174531648652, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
+      propertyPath: m_TagString
+      value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 6819884000814390082, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_text
@@ -42403,6 +42415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hover UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5907874174531648652, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
     - target: {fileID: 6819884000814390082, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_text
       value: Press $ to Interact
@@ -44585,6 +44601,10 @@ PrefabInstance:
     - target: {fileID: 5907874174531648652, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_Name
       value: Hover UI (Rules_Map)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907874174531648652, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
+      propertyPath: m_TagString
+      value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 6819884000814390082, guid: 7804ec56d2b6ebf429975a2267709d76, type: 3}
       propertyPath: m_text
@@ -49135,6 +49155,10 @@ PrefabInstance:
     - target: {fileID: 2716663060395373167, guid: f61ba12cc2da14546b17d1ad5a8e3aa7, type: 3}
       propertyPath: m_Name
       value: HUD Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716663060395373167, guid: f61ba12cc2da14546b17d1ad5a8e3aa7, type: 3}
+      propertyPath: m_TagString
+      value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 3072386033446524018, guid: f61ba12cc2da14546b17d1ad5a8e3aa7, type: 3}
       propertyPath: m_IsActive
