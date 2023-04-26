@@ -5,27 +5,35 @@ using UnityEngine.InputSystem;
 
 public class HoverText : MonoBehaviour
 {
-    [Header("Player")] [SerializeField] private GameObject toTrack;
+    [Header("Player")]
+    [SerializeField] private GameObject toTrack;
 
-    [Header("Control")] [SerializeField] private InputActionReference inputActionReference;
+    [Header("Control")]
+    [SerializeField] private InputActionReference inputActionReference;
 
-    [Header("Text Options")] [SerializeField]
-    private TMP_Text bindingText;
+    [Header("Text Options")]
+    [SerializeField] private TMP_Text bindingText;
 
     [SerializeField] private float fadeDuration = 0.75f;
     private bool istoTrackNull;
 
     private PlayerInput playerInput;
+    private string inputText;
 
+    private InputAction action;
     private void Awake()
     {
         toTrack = GameObject.FindWithTag("Player");
         istoTrackNull = toTrack == null;
         playerInput = FindObjectOfType<PlayerInput>();
+        inputText = bindingText.text;
     }
 
     private void Start()
     {
+        action = playerInput.actions.FindAction(inputActionReference.name);
+
+        RebindManager.LoadBindingOverride(action.name);
         UpdateBinding();
     }
 
@@ -63,14 +71,23 @@ public class HoverText : MonoBehaviour
 
     private void UpdateBinding()
     {
-        var action = playerInput.actions.FindAction(inputActionReference.name);
+        Debug.Log(inputText);
 
         var bindingIndex = action.GetBindingIndex(playerInput.currentControlScheme);
 
-        // var displayString = action.GetBindingDisplayString(bindingIndex, out string deviceLayoutName, out string controlPath);
-
         var displayString = RebindManager.GetBindingName(inputActionReference.name, bindingIndex);
-        bindingText.text = $"Press {displayString} to interact";
+        
+        if (inputText.Contains("%BINDING%"))
+        {
+            string newBindingText = inputText.Replace("%BINDING%", displayString);
+           // Debug.Log($"String Interpolation: {newBindingText}");
+            
+            bindingText.text = newBindingText;
+        }
+        else
+        {
+            bindingText.text = $"Press {displayString} to {action.name}";
+        }
     }
 
 

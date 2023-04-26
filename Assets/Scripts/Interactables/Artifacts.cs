@@ -4,22 +4,23 @@ public class Artifacts : MonoBehaviour, IInteractable
 {
     [SerializeField] private Transform[] spawnPoints;
     private GameObject kelpie;
+    [SerializeField] private int artifactID;
 
     void Awake()
     {
-        transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position;
+        //transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position;
     }
 
     public void Interact()
     {
-        Destroy(gameObject);
         try
         {
-            RadarGameManager.Instance.ArtifactObtained();
+            RadarGameManager.Instance.ArtifactObtained(artifactID);
         }
-        catch (System.NullReferenceException)
+        catch (System.NullReferenceException e)
         {
-            Debug.LogError("RadarGame Manager null");
+            Debug.LogError(e);
         }
+        Destroy(gameObject);
     }
 }

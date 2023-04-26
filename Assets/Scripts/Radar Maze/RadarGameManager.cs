@@ -8,9 +8,12 @@ public class RadarGameManager : MonoBehaviour
     
     [Header("Game Objects")]
     [SerializeField] private GameObject[] treePrefabs;
-    [SerializeField] private GameObject wispPrefab;
+    [SerializeField] public MapManager mapManager;
+
+    [Header("Wisps")]
     [SerializeField] private GameObject[] keyObjects;
-    [SerializeField] private MapManager mapManager;
+    [SerializeField] private GameObject wispPrefab;
+    [SerializeField] LayerMask layerMask;
     
     [Header("Audio")]
     [SerializeField] private AudioClip ambience;
@@ -51,17 +54,19 @@ public class RadarGameManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Random.Range(1, 500) == 1)
-        {
-            // Key objects random spawn
-            var objPos = keyObjects[Random.Range(0, keyObjects.Length)].transform.position;
-            var spawnPos = new Vector3(objPos.x + Random.Range(-30, 30), 3, objPos.z + Random.Range(-30, 30));
+        // if (Random.Range(1, 500) == 1)
+        // {
+        //     // Key objects random spawn
 
-            // Random spawn
-            //Vector3 spawnPos = new Vector3(Random.Range(-250, 250), Random.Range(1.5f, 4.5f), Random.Range(100, -50));
+        //     Vector3 objPos = keyObjects[Random.Range(0, keyObjects.Length - 1)].transform.position;
+        //     Vector3 spawnPos = new Vector3(objPos.x + Random.Range(-30, 30), 0, objPos.z + Random.Range(-30, 30));
 
-            Instantiate(wispPrefab, spawnPos, Quaternion.identity);
-        }
+        //     Physics.Raycast(new Vector3(spawnPos.x, 100.0f, spawnPos.z), Vector3.down, out var hit, 200.0f);
+
+        //     Debug.Log(hit.transform.position);
+
+        //     Instantiate(wispPrefab, new Vector3(spawnPos.x, hit.transform.position.y, spawnPos.z), Quaternion.identity);
+        // }
     }
 
     public void Victory()
@@ -75,11 +80,16 @@ public class RadarGameManager : MonoBehaviour
         LevelManager.instance.LoadScene("Library");
     }
 
-    public void ArtifactObtained()
+    public void ArtifactObtained(int id)
     {
         kelpie.IncreaseDiff();
         artifactsCount--;
-        mapManager.peiceCollected(artifactsCount);
+        mapManager.PieceCollected(id);
         if (artifactsCount <= 0) Victory();
+    }
+
+    public void CollectStartingMap()
+    {
+        mapManager.bottomLeftCollected = true;
     }
 }

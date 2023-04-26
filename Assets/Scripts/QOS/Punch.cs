@@ -7,9 +7,19 @@ public class Punch : MonoBehaviour
 
     [SerializeField] private float attackRange = 5;
 
+
+    Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponentInChildren<Animator > ();
+    }
+
     public void PunchEnemy()
     {
         Debug.Log("Punching");
+
+        anim.SetTrigger("Attack");
 
         var forward = transform.TransformDirection(Vector3.forward);
         var mask = (1 << LayerMask.NameToLayer(excludedLayer)) | layerMaskInteract.value;

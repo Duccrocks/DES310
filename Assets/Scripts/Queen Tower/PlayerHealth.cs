@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
         health += amount;
     }
 
-    public void HealthDecrease(int amount = 1)
+    public void HealthDecrease(int amount = 1,int delay = 0)
     {
         health -= amount;
         HealthChange();
@@ -33,6 +33,11 @@ public class PlayerHealth : MonoBehaviour
         regen = StartCoroutine(RegenHealth());
     }
 
+    void DamagePlayer(int amount) 
+    {
+        
+    }
+
     private void HealthChange()
     {
         if (health <= 0) Die();
@@ -41,8 +46,14 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         //Play death animation here 
-
-        LevelManager.instance.LoadScene("Library");
+        try
+        {
+            LevelManager.instance.LoadScene("Mary QOS");
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.LogError("Level Manager Null");
+        }
     }
 
     private IEnumerator RegenHealth()
@@ -55,5 +66,10 @@ public class PlayerHealth : MonoBehaviour
             yield return regenTick;
         }
         regen = null;
+    }
+
+    public int getHealth()
+    {
+        return health;
     }
 }
