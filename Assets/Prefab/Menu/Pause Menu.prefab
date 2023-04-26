@@ -1334,6 +1334,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5448275452473181052, guid: d9bed21044642f94eaaac43be65dfcd6, type: 3}
+      propertyPath: onCancel.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2363166745792627453}
+    - target: {fileID: 5448275452473181052, guid: d9bed21044642f94eaaac43be65dfcd6, type: 3}
+      propertyPath: onCancel.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 6277560302852361589}
     - target: {fileID: 5589638440042739297, guid: d9bed21044642f94eaaac43be65dfcd6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
