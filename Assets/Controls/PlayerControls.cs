@@ -332,6 +332,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""20302a8b-0d6d-46ae-b8e4-011c14ca8c4c"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Echolocation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a908be29-b11f-49bc-b621-89f0f5685db3"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
