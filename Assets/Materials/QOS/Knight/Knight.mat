@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Knight
-  m_Shader: {fileID: -6465566751694194690, guid: 836fbfb1aa28db140ba93d0a67797f37, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 9b54b8d633a36c243b37fdae0563b435, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -146,9 +146,12 @@ Material:
     - _UseNormalMap: 0
     - _Use_Normal_Map: 0
     - _WorkflowMode: 1
+    - _YaxisFade: 1
     - _ZWrite: 1
+    - _alphaClip: 0
     - _falloff_amount: 0.001
     - _fresnel_size: 0.05
+    - _height: 1
     - _shouldJean: 0
     - _smoothness: 1000
     - _toonRampPoint: 0.41
