@@ -18,7 +18,7 @@ public class AnimPlayer : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            animcamera.SetTrigger("fart");
+            animcamera.SetTrigger("Punch");
         }
 
 
