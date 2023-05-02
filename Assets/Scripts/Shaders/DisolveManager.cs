@@ -6,7 +6,7 @@ public class DisolveManager : MonoBehaviour
 {
     Renderer renderer;
     MeshFilter meshFilter;
-    float clip;
+    public float clip;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +18,11 @@ public class DisolveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float height = meshFilter.mesh.bounds.extents.y;
-        clip -= Time.deltaTime/5.0f;
+       // float height = meshFilter.mesh.bounds.extents.y;
+        clip -= Time.deltaTime*1/2.0f;
         clip = Mathf.Max(clip, 0);
         renderer.material.SetFloat("_alphaClip", clip);
-        renderer.material.SetFloat("_height", height);
+        //renderer.material.SetFloat("_height", height);
     }
 
     private void OnApplicationQuit()

@@ -26,7 +26,7 @@ public class HealthBarManager : MonoBehaviour
             }
             else if (i==current)
             {
-                int quad = (int)(health.getHealth()/(100f/segs)) % segs;
+                int quad = (int)(health.getHealth()/(100/segs)) % segs;
                 hearts[i].fillAmount = quad * (1.0f/segs);
             }
         }
