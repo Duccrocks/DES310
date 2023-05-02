@@ -88,7 +88,7 @@ public class InputManager : MonoBehaviour
         playerControls.Player.Sprint.performed += StartSprinting;
         playerControls.Player.Sprint.canceled += StopSprinting;
         if (pauseMenu) playerControls.Player.Pause.performed += TogglePause;
-        if (sonarPulses) playerControls.Player.Echolocation.performed += SonarPulse;
+        if (sonarPulses) playerControls.Player.Sonar.performed += SonarPulse;
         if (punch) playerControls.Player.Punch.performed += PunchEnemy;
         if (mapManager) playerControls.Player.Map.performed += ToggleMap;
 
@@ -105,7 +105,7 @@ public class InputManager : MonoBehaviour
         playerControls.Player.Sprint.performed -= StartSprinting;
         playerControls.Player.Sprint.canceled -= StopSprinting;
         playerControls.Player.Pause.performed -= TogglePause;
-        playerControls.Player.Echolocation.performed -= SonarPulse;
+        playerControls.Player.Sonar.performed -= SonarPulse;
         playerControls.Player.Punch.performed -= PunchEnemy;
 
         PauseMenu.OnPause -= OnPause;
@@ -151,7 +151,7 @@ public class InputManager : MonoBehaviour
             playerControls.Player.Interact.performed -= Interact;
             playerControls.Player.Sprint.performed -= StartSprinting;
             playerControls.Player.Sprint.canceled -= StopSprinting;
-            playerControls.Player.Echolocation.performed -= SonarPulse;
+            playerControls.Player.Sonar.performed -= SonarPulse;
             playerControls.Player.Punch.performed -= PunchEnemy;
         }
         else
@@ -160,7 +160,7 @@ public class InputManager : MonoBehaviour
             playerControls.Player.Interact.performed += Interact;
             playerControls.Player.Sprint.performed += StartSprinting;
             playerControls.Player.Sprint.canceled += StopSprinting;
-            if (sonarPulses) playerControls.Player.Echolocation.performed += SonarPulse;
+            if (sonarPulses) playerControls.Player.Sonar.performed += SonarPulse;
             if (punch) playerControls.Player.Punch.performed += PunchEnemy;
         }
     }

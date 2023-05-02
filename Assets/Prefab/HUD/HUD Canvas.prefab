@@ -207,7 +207,8 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3317824583335704611, guid: cad45338d4bd57c43ab44c320a4705ef, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: cad45338d4bd57c43ab44c320a4705ef, type: 3}
 --- !u!224 &4286221871847072951 stripped
