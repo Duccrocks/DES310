@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Knight
+  m_Name: PinkKnight
   m_Shader: {fileID: -6465566751694194690, guid: 836fbfb1aa28db140ba93d0a67797f37, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,7 +37,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - MainTex:
-        m_Texture: {fileID: 2800000, guid: c0ec592baafe9fb48aace3c6960e91e9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0de1ddc3dea57dc45a68d87abf82e5c0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
