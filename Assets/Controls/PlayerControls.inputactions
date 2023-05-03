@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Echolocation",
+                    "name": "Sonar",
                     "type": "Button",
                     "id": "025b5607-d35e-45df-8c24-b114710bfac8",
                     "expectedControlType": "Button",
@@ -170,8 +170,8 @@
                     "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "StickDeadzone,ScaleVector2(x=25,y=25)",
-                    "groups": ";Gamepad",
+                    "processors": "StickDeadzone,ScaleVector2(x=28,y=28)",
+                    "groups": "Gamepad",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -293,7 +293,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Echolocation",
+                    "action": "Sonar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -304,7 +304,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad;Joystick",
-                    "action": "Echolocation",
+                    "action": "Sonar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20302a8b-0d6d-46ae-b8e4-011c14ca8c4c",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sonar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
