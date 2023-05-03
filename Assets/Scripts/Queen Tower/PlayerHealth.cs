@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
-    [SerializeField] private int health;
+    [SerializeField] private float maxHealth = 100;
+    [SerializeField] private float health;
 
     private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
     private Coroutine regen;
@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
         health += amount;
     }
 
-    public void HealthDecrease(int amount = 1)
+    public void HealthDecrease(int amount = 1,int delay = 0)
     {
         health -= amount;
         HealthChange();
@@ -31,6 +31,11 @@ public class PlayerHealth : MonoBehaviour
         }
 
         regen = StartCoroutine(RegenHealth());
+    }
+
+    void DamagePlayer(int amount) 
+    {
+        
     }
 
     private void HealthChange()
@@ -63,8 +68,15 @@ public class PlayerHealth : MonoBehaviour
         regen = null;
     }
 
-    public int getHealth()
+    public float getHealth()
     {
         return health;
     }
+
+    public float getMaxHealth()
+    {
+        return maxHealth;
+    }
+
+
 }

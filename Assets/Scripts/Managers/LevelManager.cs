@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
+    [SerializeField] public FadeOutController fadeOutController;
 
     private void Awake()
     {
@@ -18,19 +19,35 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+   
     /// <summary>
     ///     Loads scene through the scenes name.
     /// </summary>
     /// <param name="sceneName">Name of scene to load.</param>
     /// <param name="loadSceneMode">Additive or single loading (defaults to single)</param>
-    public void LoadScene(string sceneName, LoadSceneMode loadSceneMode = LoadSceneMode.Single, bool stopAudio = true)
+    public void LoadScene(string sceneName, LoadSceneMode loadSceneMode = LoadSceneMode.Single, bool stopAudio = true, bool shouldTransitionEffect = true)
     {
         if(stopAudio)
         {
             AudioManager.Instance.StopAll();
         }
-        SceneManager.LoadScene(sceneName.Trim());
+        if(shouldTransitionEffect)
+        {
+
+            //START FADE OUT EFFECT
+            StartCoroutine("SceneSwap", sceneName);
+            fadeOutController.startFadeOut();
+            var UI = GameObject.FindGameObjectsWithTag("UI");
+            foreach(GameObject obj in UI)
+            {
+                obj.SetActive(false);
+            }
+
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName.Trim());
+        }
     }
 
     /// <summary>
@@ -62,5 +79,16 @@ public class LevelManager : MonoBehaviour
             yield return null;
         Debug.Log($"Scene: {sceneName} has unloaded");
         
+    }
+
+    IEnumerator SceneSwap(string sceneName)
+    {
+        yield return new WaitForSeconds(fadeOutController.fadeDuration-0.01f);
+        SceneManager.LoadScene(sceneName.Trim());
+    }
+
+    public void SceneLoaded()
+    {
+        fadeOutController.startFadeIn();
     }
 }

@@ -104,6 +104,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 025b5607-d35e-45df-8c24-b114710bfac8
     m_ActionName: Player/SonarPulse[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b2feb0b3-4deb-4b8e-bb2b-ba53864e2afc
+    m_ActionName: Player/Punch[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fe6c8b3d-077c-4dcd-8664-54fc45153ef4
+    m_ActionName: Player/Map[/Keyboard/m]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -330,7 +338,7 @@ MonoBehaviour:
   layerMaskInteract:
     serializedVersion: 2
     m_Bits: 128
-  excludedLayer: Ground
+  excludedLayer: Default
   rayLength: 6
   crosshair: {fileID: 0}
 --- !u!1 &483065528216082119
@@ -480,7 +488,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 544
+    m_Bits: 548
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

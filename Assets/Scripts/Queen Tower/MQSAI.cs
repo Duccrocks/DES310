@@ -6,9 +6,19 @@ public class MQSAI : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject player;
     private PlayerHealth playerHealth;
+
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float attackRange = 5;
     private bool canAttack = true;
+
+    Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+
 
     void OnEnable()
     {
@@ -33,6 +43,7 @@ public class MQSAI : MonoBehaviour
         {
             agent.isStopped = false;
             agent.SetDestination(player.transform.position);
+            animator.SetTrigger("EnemyWalk");
         } 
         else
         {
@@ -46,7 +57,7 @@ public class MQSAI : MonoBehaviour
     {
         RaycastHit hit;
         Physics.Raycast(transform.position, player.transform.position - transform.position, out hit, 50, layerMask);
-        
+
 
         if (hit.transform == null) return false;
         if (hit.transform.CompareTag(player.tag)) return true;
@@ -58,6 +69,7 @@ public class MQSAI : MonoBehaviour
 
     void Attack()
     {
+        animator.SetTrigger("EnemyAttack");
         playerHealth.HealthDecrease(50);
         canAttack = false;
         Invoke(nameof(AttackReset), 2f);
@@ -67,4 +79,5 @@ public class MQSAI : MonoBehaviour
     {
         canAttack = true;
     }
+
 }

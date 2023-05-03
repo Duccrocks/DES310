@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class RebindManager : MonoBehaviour
 {
     public static PlayerControls inputActions;
+    public static bool isRebinding;
 
     private void Awake()
     {
@@ -15,10 +16,11 @@ public class RebindManager : MonoBehaviour
         //DontDestroyOnLoad(gameObject);
     }
 
+
     //Events on different binding states different scripts can listen to and react on a rebind.
     public static event Action RebindComplete;
     public static event Action RebindCanceled;
-    public static event Action<InputAction, int> RebindStarted;
+    public static event Action RebindStarted;
 
     public static void StartRebind(string actionName, int bindingIndex, TMP_Text statusText, bool isMouseExcluded)
     {
@@ -50,10 +52,15 @@ public class RebindManager : MonoBehaviour
         if (actionToRebind == null || bindingIndex < 0)
             return;
 
+        //States we're rebinding so the back/cancel action for UI can still be rebinding normally.
+        isRebinding = true;
+
         statusText.text = $"Press a {actionToRebind.expectedControlType}";
-        
+
+
         //Disables that binding while we're currently changing it.
         actionToRebind.Disable();
+
 
         var rebind = actionToRebind.PerformInteractiveRebinding(bindingIndex);
 
@@ -62,6 +69,8 @@ public class RebindManager : MonoBehaviour
         {
             //Reset the binding and then dispose of the rebinding operation.
             actionToRebind.Enable();
+
+
             operation.Dispose();
 
             if (isCompositeParts)
@@ -75,6 +84,7 @@ public class RebindManager : MonoBehaviour
             //Saves the new input and tells listeners the rebinding was successful.
             SaveBindingOverride(actionToRebind);
             RebindComplete?.Invoke();
+            isRebinding = false;
         });
 
         //When the user cancels the rebind.
@@ -84,13 +94,20 @@ public class RebindManager : MonoBehaviour
             operation.Dispose();
 
             RebindCanceled?.Invoke();
+            isRebinding = false;
         });
-        //A timeout useful so a player doesn't accidentally put in the wrong thing before getting a chance to react.
+        //A delay useful so a player doesn't accidentally put in the wrong thing before getting a chance to react.
         rebind.OnMatchWaitForAnother(0.1f);
+
+        //Timeout so player doesnt get stuck
+        rebind.WithTimeout(4f);
+
         //How to exit out of rebinding
         rebind.WithCancelingThrough("<Keyboard>/escape");
         rebind.WithCancelingThrough("<Gamepad>/select");
-
+        rebind.WithBindingGroup("Button");
+        // //Stops cancel/submit events from happening.
+        // rebind.WithMatchingEventsBeingSuppressed();
 
         //If mouse should be ignored or not 
         if (excludeMouse)
@@ -100,7 +117,7 @@ public class RebindManager : MonoBehaviour
         rebind.WithControlsExcluding("<Mouse>/position");
         rebind.WithControlsExcluding("<Mouse>/delta");
 
-        RebindStarted?.Invoke(actionToRebind, bindingIndex);
+        RebindStarted?.Invoke();
         //Actually starts the rebinding process
         rebind.Start();
     }
@@ -125,7 +142,6 @@ public class RebindManager : MonoBehaviour
     //Loads previously saved bindings from player prefs.
     public static void LoadBindingOverride(string actionName)
     {
-
         if (inputActions == null)
             inputActions = new PlayerControls();
 

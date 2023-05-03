@@ -7,6 +7,7 @@ public class MQoSManager : MonoBehaviour
     
     void Start()
     {
+        LevelManager.instance.SceneLoaded();
         try
         {
             AudioManager.Instance.PlayMusicWithFade(clip);

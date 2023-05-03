@@ -47,7 +47,7 @@ public class RadarGameManager : MonoBehaviour
         {
             Debug.LogError("Audio Manager Null");
         }
-
+        LevelManager.instance.SceneLoaded();
         kelpie = FindObjectOfType<KelpieAI>();
         artifactsCount = FindObjectsOfType<Artifacts>().Length;
     }

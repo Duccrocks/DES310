@@ -7,10 +7,11 @@ public class HealthBarManager : MonoBehaviour
 {
     [SerializeField] Image bar;
     [SerializeField] PlayerHealth health;
+  
     // Start is called before the first frame update
     // Update is called once per frame
     void Update()
     {
-        bar.fillAmount = health.getHealth() / 250.0f;
+        bar.fillAmount = health.getHealth() / health.getMaxHealth();
     }
 }
