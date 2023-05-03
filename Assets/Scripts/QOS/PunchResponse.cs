@@ -103,7 +103,7 @@ public class PunchResponse : MonoBehaviour
 
     public void Punched(Vector3 axis)
     {
-        if (type ==KnightType.green)
+        if (type ==KnightType.green&&!RaddollManager.ragDollEnabled)
         {
             return;
         }
