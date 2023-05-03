@@ -2246,6 +2246,10 @@ PrefabInstance:
       propertyPath: disolveDuration
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3581081377697513185, guid: b3064350b9cda154290ba9bd38bc372f, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3581081377697513186, guid: b3064350b9cda154290ba9bd38bc372f, type: 3}
       propertyPath: health
       value: 2
