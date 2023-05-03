@@ -1449,7 +1449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3000
-  health: 2
+  health: 1
   IFrameTime: 2
   type: 0
   disolveManagers: []
