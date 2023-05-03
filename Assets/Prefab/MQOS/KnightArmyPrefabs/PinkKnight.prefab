@@ -113,7 +113,7 @@ Transform:
   - {fileID: 1924295558571452864}
   - {fileID: 1279975586218240228}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 184.449, z: 0}
 --- !u!195 &1743994090648125756
 NavMeshAgent:
@@ -166,8 +166,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3000
-  health: 150
+  health: 1
   IFrameTime: 2
+  type: 0
+  disolveManagers: []
 --- !u!114 &1509410333167537367
 MonoBehaviour:
   m_ObjectHideFlags: 0
