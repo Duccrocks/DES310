@@ -17,11 +17,11 @@ public class GuardSpawn : MonoBehaviour
 
     public void SpawnGuard()
     {
-        MakeDict();
+        //MakeDict();
         foreach (var guardPos in guardSpawnPos)
         {
             
-            var spawnedGuard = Instantiate(knightDict[guardPos.gameObject.tag],guardPos.position,Quaternion.identity);
+            var spawnedGuard = Instantiate( knightPrefabs[(int)guardPos.gameObject.GetComponent<enemySpawner>().type], guardPos.position,Quaternion.identity);
             //Look at the player when spawning so won't miss the player.
             spawnedGuard.transform.LookAt(Camera.main.transform);
         }

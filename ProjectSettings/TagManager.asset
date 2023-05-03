@@ -8,6 +8,12 @@ TagManager:
   - Wisp
   - SelectableObject
   - Enemy
+  - Physics Object
+  - UI
+  - Pink
+  - Red
+  - Blue
+  - Green
   layers:
   - Default
   - TransparentFX
@@ -19,10 +25,10 @@ TagManager:
   - Interactable
   - Toon
   - No Post Processing
-  - 
-  - 
-  - 
-  - 
+  - Pink
+  - Red
+  - Blue
+  - Green
   - 
   - 
   - 
