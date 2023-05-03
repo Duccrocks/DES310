@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 22855627}
   m_Layer: 6
   m_Name: Enemy Spawn (1)
-  m_TagString: Untagged
+  m_TagString: Pink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4867,7 +4867,7 @@ GameObject:
   - component: {fileID: 317285021}
   m_Layer: 6
   m_Name: Enemy Spawn (2)
-  m_TagString: Untagged
+  m_TagString: Pink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5259,7 +5259,7 @@ GameObject:
   - component: {fileID: 333757306}
   m_Layer: 0
   m_Name: Enemy Spawn (3)
-  m_TagString: Untagged
+  m_TagString: Pink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12696,7 +12696,7 @@ GameObject:
   - component: {fileID: 861271565}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14751,7 +14751,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b521d98bf2c58e544a60b73a7ec5f8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guardPrefab: {fileID: 4249531243921499202, guid: b3064350b9cda154290ba9bd38bc372f, type: 3}
+  knightPrefabs:
+  - {fileID: 1509410333167537366, guid: da3ff750948d3924baec735da78a8c00, type: 3}
+  - {fileID: 298482950205065942, guid: faf2af3f997fdf142a9e27b918319a7c, type: 3}
+  - {fileID: 3963114041974833030, guid: e7d7a42c96e252147a1cf3c1b0ece5f9, type: 3}
+  - {fileID: 8983638318216200497, guid: d997f3ae1b5ff9d4f8b743d32ec3769a, type: 3}
   guardSpawnPos:
   - {fileID: 1350231999}
   - {fileID: 22855627}
@@ -17103,7 +17107,7 @@ GameObject:
   - component: {fileID: 1126399373}
   m_Layer: 0
   m_Name: Enemy Spawn (1)
-  m_TagString: Untagged
+  m_TagString: Pink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17754,7 +17758,7 @@ GameObject:
   - component: {fileID: 1178257869}
   m_Layer: 0
   m_Name: GameObject (5)
-  m_TagString: Untagged
+  m_TagString: Green
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20552,7 +20556,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b521d98bf2c58e544a60b73a7ec5f8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guardPrefab: {fileID: 4249531243921499202, guid: b3064350b9cda154290ba9bd38bc372f, type: 3}
+  knightPrefabs:
+  - {fileID: 1509410333167537366, guid: da3ff750948d3924baec735da78a8c00, type: 3}
+  - {fileID: 298482950205065942, guid: faf2af3f997fdf142a9e27b918319a7c, type: 3}
+  - {fileID: 3963114041974833030, guid: e7d7a42c96e252147a1cf3c1b0ece5f9, type: 3}
+  - {fileID: 8983638318216200497, guid: d997f3ae1b5ff9d4f8b743d32ec3769a, type: 3}
   guardSpawnPos:
   - {fileID: 1917133138}
   - {fileID: 1686230570}
@@ -20797,7 +20805,7 @@ GameObject:
   - component: {fileID: 1350231999}
   m_Layer: 6
   m_Name: Enemy Spawn
-  m_TagString: Untagged
+  m_TagString: Pink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20980,7 +20988,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b521d98bf2c58e544a60b73a7ec5f8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guardPrefab: {fileID: 4249531243921499202, guid: b3064350b9cda154290ba9bd38bc372f, type: 3}
+  knightPrefabs:
+  - {fileID: 1509410333167537366, guid: da3ff750948d3924baec735da78a8c00, type: 3}
+  - {fileID: 298482950205065942, guid: faf2af3f997fdf142a9e27b918319a7c, type: 3}
+  - {fileID: 3963114041974833030, guid: e7d7a42c96e252147a1cf3c1b0ece5f9, type: 3}
+  - {fileID: 8983638318216200497, guid: d997f3ae1b5ff9d4f8b743d32ec3769a, type: 3}
   guardSpawnPos:
   - {fileID: 1743599818}
   - {fileID: 1126399373}
@@ -21859,7 +21871,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b521d98bf2c58e544a60b73a7ec5f8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guardPrefab: {fileID: 4249531243921499202, guid: b3064350b9cda154290ba9bd38bc372f, type: 3}
+  knightPrefabs:
+  - {fileID: 1509410333167537366, guid: da3ff750948d3924baec735da78a8c00, type: 3}
+  - {fileID: 298482950205065942, guid: faf2af3f997fdf142a9e27b918319a7c, type: 3}
+  - {fileID: 3963114041974833030, guid: e7d7a42c96e252147a1cf3c1b0ece5f9, type: 3}
+  - {fileID: 8983638318216200497, guid: d997f3ae1b5ff9d4f8b743d32ec3769a, type: 3}
   guardSpawnPos:
   - {fileID: 861271565}
   - {fileID: 1854461825}
@@ -22079,7 +22095,7 @@ GameObject:
   - component: {fileID: 1485754091}
   m_Layer: 0
   m_Name: GameObject (3)
-  m_TagString: Untagged
+  m_TagString: Green
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22110,7 +22126,7 @@ GameObject:
   - component: {fileID: 1488925377}
   m_Layer: 0
   m_Name: GameObject (2)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25208,7 +25224,7 @@ GameObject:
   - component: {fileID: 1686230570}
   m_Layer: 6
   m_Name: Enemy Spawn (1)
-  m_TagString: Untagged
+  m_TagString: Pink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25239,7 +25255,7 @@ GameObject:
   - component: {fileID: 1688675570}
   m_Layer: 0
   m_Name: GameObject (4)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26641,7 +26657,7 @@ GameObject:
   - component: {fileID: 1743599818}
   m_Layer: 0
   m_Name: Enemy Spawn
-  m_TagString: Untagged
+  m_TagString: Pink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27354,7 +27370,7 @@ GameObject:
   - component: {fileID: 1773065085}
   m_Layer: 0
   m_Name: Enemy Spawn (2)
-  m_TagString: Untagged
+  m_TagString: Pink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28882,7 +28898,7 @@ GameObject:
   - component: {fileID: 1854461825}
   m_Layer: 0
   m_Name: GameObject (1)
-  m_TagString: Untagged
+  m_TagString: Pink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29432,7 +29448,7 @@ GameObject:
   - component: {fileID: 1917133138}
   m_Layer: 6
   m_Name: Enemy Spawn
-  m_TagString: Untagged
+  m_TagString: Pink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30341,7 +30357,7 @@ GameObject:
   - component: {fileID: 1993747492}
   m_Layer: 6
   m_Name: Enemy Spawn (2)
-  m_TagString: Untagged
+  m_TagString: Pink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

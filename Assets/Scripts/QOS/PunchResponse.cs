@@ -1,6 +1,7 @@
  using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using System;
 public class PunchResponse : MonoBehaviour
 {
     public enum KnightType {smol, red, blue, green };
@@ -109,6 +110,7 @@ public class PunchResponse : MonoBehaviour
         if (Punchahble)
         {
             health--;
+            health = Math.Max(health, 0);
             if (health == 0)
             {
                 deathlewaytimer = 0;
