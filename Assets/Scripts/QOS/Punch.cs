@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class Punch : MonoBehaviour
 {
+    [Header("Ray Masks")]
     [SerializeField] private LayerMask layerMaskInteract;
     [SerializeField] private string excludedLayer;
 
+    [Header("Punch Settings")]
     [SerializeField] private float attackRange = 5;
 
+    [Header("Audio")] 
+    [SerializeField] private AudioClip clip;
     public void PunchEnemy()
     {
         Debug.Log("Punching");
-
+        AudioManager.Instance.PlaySoundOnce(clip);
         var forward = transform.TransformDirection(Vector3.forward);
         var mask = (1 << LayerMask.NameToLayer(excludedLayer)) | layerMaskInteract.value;
         Debug.DrawRay(transform.position, forward * attackRange, Color.black);
@@ -22,11 +26,9 @@ public class Punch : MonoBehaviour
                 hit.transform.gameObject.GetComponentInParent<PunchResponse>().Punched(forward);
                 return;
             }
-            else if (hit.collider.CompareTag("Physics Object"))
-            {
-                hit.transform.gameObject.GetComponent<GenericPunchResponse>().Punched(forward);
 
-            }
+            if (hit.collider.CompareTag("Physics Object"))
+                hit.transform.gameObject.GetComponent<GenericPunchResponse>().Punched(forward);
         }
     }
 }

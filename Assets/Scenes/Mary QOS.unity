@@ -7101,6 +7101,7 @@ MonoBehaviour:
     m_Bits: 128
   excludedLayer: 
   attackRange: 5
+  clip: {fileID: 8300000, guid: 040f093a45c3c9a49a1bc1bc1d626573, type: 3}
 --- !u!20 &1809553815 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 483065527602597335, guid: dc677f9018cd65744a133ceb49680718, type: 3}

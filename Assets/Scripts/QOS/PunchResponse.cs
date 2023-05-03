@@ -7,9 +7,13 @@ public class PunchResponse : MonoBehaviour
     [SerializeField] private int health = 3;
     [SerializeField] private float IFrameTime = 2;
 
+    [Header("Audio")] 
+    public AudioSource audioSource;
+    
     private Vector3 direction;
-
+    
     private float healthTimer;
+    
     private NavMeshAgent navMeshAgent;
 
     private RaddollManager RaddollManager;
@@ -38,9 +42,10 @@ public class PunchResponse : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log($"{gameObject.name} hit {collision.gameObject.name}");
+        audioSource.Play();
         if (!collision.transform.CompareTag("Ground"))
         {
-            //Debug.Log("hit simmin");
         }
 
         if (collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Physics Object"))
@@ -64,6 +69,7 @@ public class PunchResponse : MonoBehaviour
                 collisionPunchResponse.DestroyAI();
 
                 var collisionRagdoll = collisionPunchResponse.gameObject.GetComponent<RaddollManager>();
+                // gameObject.GetComponent<AudioSource>().pitch = audioSource.pitch + 0.1f;
                 collisionRagdoll.ragDollEnabled = true;
                 collisionRagdoll.EnableRagdoll();
 
@@ -84,6 +90,9 @@ public class PunchResponse : MonoBehaviour
             dir *= speed;
             gameObject.GetComponent<Rigidbody>().AddForceAtPosition(-dir, new Vector3(0, 0, 0));
         }
+        
+        //Destroys the source after the clip has finished playing.
+        Destroy(audioSource,audioSource.clip.length);
     }
 
     public void Punched(Vector3 axis)

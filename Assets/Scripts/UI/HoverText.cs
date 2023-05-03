@@ -70,8 +70,6 @@ public class HoverText : MonoBehaviour
 
     private void UpdateBinding()
     {
-        Debug.Log(inputText);
-
         var bindingIndex = action.GetBindingIndex(playerInput.currentControlScheme);
 
         var displayString = RebindManager.GetBindingName(inputActionReference.name, bindingIndex);
