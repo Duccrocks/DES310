@@ -745,7 +745,7 @@ MonoBehaviour:
   sensSlider: {fileID: 1177142147197474504}
   qualityDropdown: {fileID: 6521041818791005756}
   colourBlindDropDown: {fileID: 5192159941408756142}
-  fullscreenToggle: {fileID: 0}
+  fullscreenToggle: {fileID: 4818679094298610588}
 --- !u!1 &6395131484852850292
 GameObject:
   m_ObjectHideFlags: 0
@@ -2720,6 +2720,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2390752141763399131, guid: d9186a47e14d7c24b9233a408d617013, type: 3}
   m_PrefabInstance: {fileID: 2012007484321111799}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4818679094298610588 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6427610004654003563, guid: d9186a47e14d7c24b9233a408d617013, type: 3}
+  m_PrefabInstance: {fileID: 2012007484321111799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2337039122985139806
 PrefabInstance:
   m_ObjectHideFlags: 0

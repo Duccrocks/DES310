@@ -465,6 +465,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &411920167 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6634853357720338931, guid: de9259876a1b2594fb35e75324c312a0, type: 3}
+  m_PrefabInstance: {fileID: 651658940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &425668200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,8 +2036,7 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1748095491124860186, guid: de9259876a1b2594fb35e75324c312a0, type: 3}
+    m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6475072603104718993, guid: de9259876a1b2594fb35e75324c312a0, type: 3}
       insertIndex: 0
@@ -2232,6 +2242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1171942331}
   - component: {fileID: 1171942332}
+  - component: {fileID: 1171942333}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -2266,6 +2277,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21caa72aba725a94dbbd557aba06ff68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeOutController: {fileID: 1171942333}
+--- !u!114 &1171942333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171942330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1711e037b2c8b4cbdd4f889d1cc2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 1.2
+  isFading: 0
+  rendererData: {fileID: 11400000, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
+  featureName: FadeOut
 --- !u!1 &1250566227
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,7 +2345,7 @@ MonoBehaviour:
   sensSlider: {fileID: 1756985648}
   qualityDropdown: {fileID: 1171236033}
   colourBlindDropDown: {fileID: 505547283}
-  fullscreenToggle: {fileID: 0}
+  fullscreenToggle: {fileID: 411920167}
 --- !u!1001 &1346920730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2807,6 +2835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1900248546}
   - component: {fileID: 1900248545}
+  - component: {fileID: 1900248547}
   m_Layer: 0
   m_Name: Post Processing Manager
   m_TagString: Untagged
@@ -2845,6 +2874,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1900248547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900248544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b90da13f51cbc548ac6ff9bfcb5ae99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rendererData: {fileID: 11400000, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
+  featureName: Gamma
+  gamma: 1
 --- !u!1 &1904566523
 GameObject:
   m_ObjectHideFlags: 0
