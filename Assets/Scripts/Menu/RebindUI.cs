@@ -98,7 +98,7 @@ public class RebindUI : MonoBehaviour
     private void UpdateUI()
     {
         if (actionText != null)
-            actionText.text = actionName;
+            actionText.text = $"{actionName}:";
 
         if (rebindText != null)
         {

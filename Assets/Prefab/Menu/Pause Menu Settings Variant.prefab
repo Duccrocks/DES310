@@ -132,6 +132,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
+    - target: {fileID: 9101622462238527540, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
+      propertyPath: fullscreenToggle
+      value: 
+      objectReference: {fileID: 1703706630009157042}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
@@ -140,3 +144,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5120818017945795327, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
   m_PrefabInstance: {fileID: 6159705190978649646}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1703706630009157042 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4818679094298610588, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
+  m_PrefabInstance: {fileID: 6159705190978649646}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
