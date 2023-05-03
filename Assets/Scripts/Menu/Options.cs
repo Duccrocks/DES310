@@ -2,15 +2,19 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Options : MonoBehaviour
 {
+    [Header("Audio")]
     [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private Slider masterSlider;
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider sfxSlider;
 
     [Header("Sliders")]
     [SerializeField] private Slider sensSlider;
-    [SerializeField] private Slider volumeSlider;
 
     [Header("Dropdowns")]
     [SerializeField] private TMP_Dropdown qualityDropdown;
@@ -47,12 +51,40 @@ public class Options : MonoBehaviour
     ///     Sets the volume of the game.
     /// </summary>
     /// <param name="volume">The value of the volume</param>
-    public void SetVolume(float volume)
+    public void SetMasterVolume(float volume)
     {
         print($"The volume has changed to {volume}");
-        audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("volume", volume);
+        string volumeFloat = "master_volume";
+        audioMixer.SetFloat("master_volume", Mathf.Log10(volume) * 20);
         //Saves this volume so if the player reloads it'll keep their volume.
+        PlayerPrefs.SetFloat("master_volume", volume);
+    }
+
+        /// <summary>
+    ///     Sets the volume of the game.
+    /// </summary>
+    /// <param name="volume">The value of the volume</param>
+    public void SetMusicVolume(float volume)
+    {
+        print($"The volume has changed to {volume}");
+        string volumeFloat = "music_volume";
+        audioMixer.SetFloat(volumeFloat, Mathf.Log10(volume) * 20);
+        //Saves this volume so if the player reloads it'll keep their volume.
+        PlayerPrefs.SetFloat(volumeFloat, volume);
+    }
+
+        /// <summary>
+    ///     Sets the volume of the game.
+    /// </summary>
+    /// <param name="volume">The value of the volume</param>
+    public void SetSfxVolume(float volume)
+    {
+        print($"The volume has changed to {volume}");
+        string volumeFloat = "sfx_volume";
+        
+        audioMixer.SetFloat(volumeFloat, Mathf.Log10(volume) * 20);
+        //Saves this volume so if the player reloads it'll keep their volume.
+        PlayerPrefs.SetFloat(volumeFloat, volume);
     }
 
     /// <summary>
@@ -105,11 +137,25 @@ public class Options : MonoBehaviour
             StaticVariables.cameraSensitivity = previousSensitivity;
         }
 
-        if (PlayerPrefs.HasKey("volume"))
+        if (PlayerPrefs.HasKey("master_volume"))
         {
             var previousVolume = PlayerPrefs.GetFloat("volume", 0.75f);
-            audioMixer.SetFloat("volume", Mathf.Log10(previousVolume) * 20);
-            volumeSlider.value = previousVolume;
+            audioMixer.SetFloat("master_volume", Mathf.Log10(previousVolume) * 20);
+            masterSlider.value = previousVolume;
+        }
+
+        if (PlayerPrefs.HasKey("music_volume"))
+        {
+            var previousVolume = PlayerPrefs.GetFloat("music_volume", 0.75f);
+            audioMixer.SetFloat("music_volume", Mathf.Log10(previousVolume) * 20);
+            masterSlider.value = previousVolume;
+        }
+
+        if (PlayerPrefs.HasKey("sfx_volume"))
+        {
+            var previousVolume = PlayerPrefs.GetFloat("sfx_volume", 0.75f);
+            audioMixer.SetFloat("sfx_volume", Mathf.Log10(previousVolume) * 20);
+            masterSlider.value = previousVolume;
         }
 
         if (PlayerPrefs.HasKey("colourblind"))
