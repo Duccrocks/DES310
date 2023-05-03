@@ -167,10 +167,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 3878566744207144236, guid: cad45338d4bd57c43ab44c320a4705ef, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4317411352512959455, guid: cad45338d4bd57c43ab44c320a4705ef, type: 3}
       propertyPath: hudPanel
       value: 
@@ -211,7 +207,8 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3317824583335704611, guid: cad45338d4bd57c43ab44c320a4705ef, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: cad45338d4bd57c43ab44c320a4705ef, type: 3}
 --- !u!224 &4286221871847072951 stripped

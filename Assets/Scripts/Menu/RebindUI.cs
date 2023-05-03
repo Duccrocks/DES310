@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,6 +16,7 @@ public class RebindUI : MonoBehaviour
     [SerializeField] [Range(0, 5)] private int selectedBinding;
     [SerializeField] private bool excludeMouse = true;
     [SerializeField] private InputBinding.DisplayStringOptions displayStringOptions;
+    
 
 
 
@@ -98,7 +98,7 @@ public class RebindUI : MonoBehaviour
     private void UpdateUI()
     {
         if (actionText != null)
-            actionText.text = actionName;
+            actionText.text = $"{actionName}:";
 
         if (rebindText != null)
         {

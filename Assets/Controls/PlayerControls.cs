@@ -82,7 +82,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Echolocation"",
+                    ""name"": ""Sonar"",
                     ""type"": ""Button"",
                     ""id"": ""025b5607-d35e-45df-8c24-b114710bfac8"",
                     ""expectedControlType"": ""Button"",
@@ -192,8 +192,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""id"": ""c1f7a91b-d0fd-4a62-997e-7fb9b69bf235"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""StickDeadzone,ScaleVector2(x=25,y=25)"",
-                    ""groups"": "";Gamepad"",
+                    ""processors"": ""StickDeadzone,ScaleVector2(x=28,y=28)"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -315,7 +315,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Echolocation"",
+                    ""action"": ""Sonar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -326,7 +326,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad;Joystick"",
-                    ""action"": ""Echolocation"",
+                    ""action"": ""Sonar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20302a8b-0d6d-46ae-b8e4-011c14ca8c4c"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sonar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -448,7 +459,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
-        m_Player_Echolocation = m_Player.FindAction("Echolocation", throwIfNotFound: true);
+        m_Player_Sonar = m_Player.FindAction("Sonar", throwIfNotFound: true);
         m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
         m_Player_Map = m_Player.FindAction("Map", throwIfNotFound: true);
     }
@@ -516,7 +527,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Pause;
-    private readonly InputAction m_Player_Echolocation;
+    private readonly InputAction m_Player_Sonar;
     private readonly InputAction m_Player_Punch;
     private readonly InputAction m_Player_Map;
     public struct PlayerActions
@@ -529,7 +540,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
-        public InputAction @Echolocation => m_Wrapper.m_Player_Echolocation;
+        public InputAction @Sonar => m_Wrapper.m_Player_Sonar;
         public InputAction @Punch => m_Wrapper.m_Player_Punch;
         public InputAction @Map => m_Wrapper.m_Player_Map;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -559,9 +570,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
-                @Echolocation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEcholocation;
-                @Echolocation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEcholocation;
-                @Echolocation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEcholocation;
+                @Sonar.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSonar;
+                @Sonar.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSonar;
+                @Sonar.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSonar;
                 @Punch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
                 @Punch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
                 @Punch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunch;
@@ -590,9 +601,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @Echolocation.started += instance.OnEcholocation;
-                @Echolocation.performed += instance.OnEcholocation;
-                @Echolocation.canceled += instance.OnEcholocation;
+                @Sonar.started += instance.OnSonar;
+                @Sonar.performed += instance.OnSonar;
+                @Sonar.canceled += instance.OnSonar;
                 @Punch.started += instance.OnPunch;
                 @Punch.performed += instance.OnPunch;
                 @Punch.canceled += instance.OnPunch;
@@ -656,7 +667,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnEcholocation(InputAction.CallbackContext context);
+        void OnSonar(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
         void OnMap(InputAction.CallbackContext context);
     }

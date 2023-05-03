@@ -7,6 +7,7 @@ using UnityEngine.Audio;
 /// </summary>
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] private AudioMixer audioMixer;
     private bool firstMusicSourceIsPlaying;
 
     private AudioSource musicSource;
@@ -30,16 +31,18 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //Gets an audio source for sfx
-        sfxSource = gameObject.GetComponent<AudioSource>();
         //Adds 2 audio sources for music
         musicSource = gameObject.AddComponent<AudioSource>();
         musicSource2 = gameObject.AddComponent<AudioSource>();
 
-        AudioMixerGroup audioMixerGroup = sfxSource.outputAudioMixerGroup;
+        //Adds an audio source for sfx
+        sfxSource = gameObject.AddComponent<AudioSource>();
 
-        musicSource.outputAudioMixerGroup = audioMixerGroup;
-        musicSource2.outputAudioMixerGroup = audioMixerGroup;
+        //Gets all children of master (where the first instance is the parent mixer group, all following being children)
+        var audioMixerGroups = audioMixer.FindMatchingGroups("Master");
+        musicSource.outputAudioMixerGroup = audioMixerGroups[1];
+        musicSource2.outputAudioMixerGroup = audioMixerGroups[1];
+        sfxSource.outputAudioMixerGroup = audioMixerGroups[2];
 
 
         //Makes the Audiomanager persist throughout on scene change.
