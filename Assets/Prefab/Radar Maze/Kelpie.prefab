@@ -111,7 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1649860e5fa9c4a8e15da7dfc733ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillar: {fileID: 0}
   playerPos: {fileID: 0}
   pulseManager: {fileID: 0}
 --- !u!1 &7142493641867755048
@@ -274,6 +273,10 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: fa011fb711ff2a940b75b17359d76954, type: 3}
     - target: {fileID: 4023810059874339412, guid: 81dfccfbe9327c440a0931da18fce358, type: 3}
       propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023810059874339412, guid: 81dfccfbe9327c440a0931da18fce358, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4023810059874339412, guid: 81dfccfbe9327c440a0931da18fce358, type: 3}

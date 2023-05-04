@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Punch : MonoBehaviour
@@ -9,9 +10,10 @@ public class Punch : MonoBehaviour
     [SerializeField] private string excludedLayer;
     
     [Header("Audio")]
-    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioClip punchClip;
+    [SerializeField] private AudioClip knightHitClip;
+
     
-    private readonly int attack = Animator.StringToHash("Attack");
     
     private Animator anim;
 
@@ -24,8 +26,16 @@ public class Punch : MonoBehaviour
     {
         Debug.Log("Punching");
 
-        anim.SetTrigger(attack);
-        AudioManager.Instance.PlaySoundOnce(clip);
+        anim.SetTrigger("Attack");
+        try
+        {
+            AudioManager.Instance.PlaySoundOnce(punchClip);
+        }
+        catch (NullReferenceException )
+        {
+            Debug.LogError("Audio Manager null");
+        }
+        
         var forward = transform.TransformDirection(Vector3.forward);
         var mask = (1 << LayerMask.NameToLayer(excludedLayer)) | layerMaskInteract.value;
         Debug.DrawRay(transform.position, forward * attackRange, Color.black);
@@ -33,6 +43,14 @@ public class Punch : MonoBehaviour
         {
             if (hit.collider.CompareTag("Enemy"))
             {
+                try
+                {
+                    AudioManager.Instance.PlaySoundOnce(knightHitClip);
+                }
+                catch (NullReferenceException )
+                {
+                    Debug.LogError("Audio Manager null");
+                }
                 Debug.Log("Hit Enemy");
                 hit.transform.gameObject.GetComponentInParent<PunchResponse>().Punched(forward);
                 return;

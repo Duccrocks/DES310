@@ -185,6 +185,7 @@ MonoBehaviour:
   staminaDrain: 1
   staminaRegenDelay: 1.5
   staminaBar: {fileID: 0}
+  clip: {fileID: 8300000, guid: 283a075dddcb27544bd4627200c4fd69, type: 3}
 --- !u!1 &483065527602597337
 GameObject:
   m_ObjectHideFlags: 0

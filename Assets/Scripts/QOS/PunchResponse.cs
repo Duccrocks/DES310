@@ -16,13 +16,13 @@ public class PunchResponse : MonoBehaviour
     private float deathLeeWayTimer;
 
     [SerializeField] private DisolveManager[] disolveManagers;
+    [SerializeField] private AudioSource audioSource;
     private bool punchable;
-
     private float healthTimer;
     private NavMeshAgent navMeshAgent;
 
     private RaddollManager RaddollManager;
-
+    private bool playOnce;
     private void Awake()
     {
         disolveManagers = GetComponentsInChildren<DisolveManager>();
@@ -93,6 +93,8 @@ public class PunchResponse : MonoBehaviour
                         collisionPunchResponse.DestroyAI();
 
                         var collisionRagdoll = collisionPunchResponse.gameObject.GetComponent<RaddollManager>();
+                        // audioSource.Play();
+                        // Destroy(audioSource,audioSource.clip.length);
                         Flying(dir, collisionRagdoll);
                     }
                     

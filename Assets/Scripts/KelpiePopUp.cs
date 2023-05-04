@@ -1,9 +1,14 @@
+using System;
 using UnityEngine;
 
 public class KelpiePopUp : MonoBehaviour, IInteractable
 {
+    [Header("UI")]
     [SerializeField] private GameObject popUp;
     [SerializeField] private GameObject hud;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip audioClip;
     private PauseMenu pauseMenu;
 
     private void Start()
@@ -19,6 +24,15 @@ public class KelpiePopUp : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        try
+        {
+            AudioManager.Instance.PlaySoundOnce(audioClip);
+        }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("AudioManager Null");
+        }
+        
         Show();
         PauseMenu.OnPause += HandlePause;
     }
