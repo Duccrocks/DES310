@@ -21,7 +21,7 @@ public class GuardSpawn : MonoBehaviour
         foreach (var guardPos in guardSpawnPos)
         {
             
-            var spawnedGuard = Instantiate( knightPrefabs[(int)guardPos.gameObject.GetComponent<EnemySpawner>().type], guardPos.position,Quaternion.identity);
+            var spawnedGuard = Instantiate( knightPrefabs[(int)guardPos.gameObject.GetComponent<enemySpawn>().type], guardPos.position,Quaternion.identity);
             //Look at the player when spawning so won't miss the player.
             spawnedGuard.transform.LookAt(Camera.main.transform);
         }

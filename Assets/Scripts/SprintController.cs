@@ -18,8 +18,6 @@ public class SprintController : MonoBehaviour
     [Header("HUD")]
     [SerializeField] private Slider staminaBar;
 
-    [Header("Audio")] 
-    [SerializeField] private AudioClip clip;
 
     private bool playSound = true;
     private Coroutine regen;
@@ -64,11 +62,7 @@ public class SprintController : MonoBehaviour
         }
         else
         {
-            if (playSound)
-            {
-                AudioManager.Instance.PlaySoundOnce(clip);
-                playSound = false;
-            }
+
         }
     }
 
@@ -87,8 +81,6 @@ public class SprintController : MonoBehaviour
             //How long it takes to loop
             yield return new WaitForSeconds(regenTick);
         }
-
-        playSound = true;
 
         //Don't regen anymore. 
         regen = null;

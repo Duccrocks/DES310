@@ -3,9 +3,13 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("Health")]
     [SerializeField] private float maxHealth = 100;
     [SerializeField] private float health;
+    [SerializeField] private float regenCooldown = 3f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip clip;
     private WaitForSeconds regenTick = new WaitForSeconds(0.01f);
     private Coroutine regen;
 
@@ -41,6 +45,14 @@ public class PlayerHealth : MonoBehaviour
     private void HealthChange()
     {
         if (health <= 0) Die();
+        try
+        {
+            AudioManager.Instance.PlaySoundOnce(clip);
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.LogError("AudioManager Null");
+        }
     }
 
     public void Die()
@@ -58,7 +70,7 @@ public class PlayerHealth : MonoBehaviour
 
     private IEnumerator RegenHealth()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(regenCooldown);
 
         while (health < maxHealth)
         {

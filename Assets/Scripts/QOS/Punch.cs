@@ -6,13 +6,16 @@ public class Punch : MonoBehaviour
     [SerializeField] private string excludedLayer;
 
     [SerializeField] private float attackRange = 5;
+    [Header("Audio")]
+    [SerializeField] private AudioClip punchClip;
+    [SerializeField] private AudioClip punchImpactClip;
 
     bool canPunch = true;
     Animator anim;
 
     private void Start()
     {
-        anim = GetComponentInChildren<Animator > ();
+        anim = GetComponentInChildren<Animator>();
     }
 
     public void PunchEnemy()
@@ -24,6 +27,16 @@ public class Punch : MonoBehaviour
         Debug.Log("Punching");
 
         anim.SetTrigger("Attack");
+        try
+        {
+            AudioManager.Instance.PlaySoundOnce(punchClip);
+        }
+        catch (System.NullReferenceException)
+        {
+
+            Debug.LogError("AudioManager Null");
+        }
+
 
         var forward = transform.TransformDirection(Vector3.forward);
         var mask = (1 << LayerMask.NameToLayer(excludedLayer)) | layerMaskInteract.value;
@@ -34,11 +47,29 @@ public class Punch : MonoBehaviour
             {
                 Debug.Log("Hit Enemy");
                 hit.transform.gameObject.GetComponentInParent<PunchResponse>().Punched(forward);
+                try
+                {
+                    AudioManager.Instance.PlaySoundOnce(punchImpactClip);
+                }
+                catch (System.NullReferenceException)
+                {
+
+                    Debug.LogError("AudioManager Null");
+                }
                 return;
             }
             else if (hit.collider.CompareTag("Physics Object"))
             {
                 hit.transform.gameObject.GetComponent<GenericPunchResponse>().Punched(forward);
+                try
+                {
+                    AudioManager.Instance.PlaySoundOnce(punchImpactClip);
+                }
+                catch (System.NullReferenceException)
+                {
+
+                    Debug.LogError("AudioManager Null");
+                }
             }
         }
     }
