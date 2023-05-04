@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float maxHealth = 100;
     [SerializeField] private float health;
 
-    private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
+    private WaitForSeconds regenTick = new WaitForSeconds(0.01f);
     private Coroutine regen;
 
     void Awake()
@@ -58,11 +58,11 @@ public class PlayerHealth : MonoBehaviour
 
     private IEnumerator RegenHealth()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
 
         while (health < maxHealth)
         {
-            health += maxHealth / 25;
+            health += maxHealth / 250;
             yield return regenTick;
         }
         regen = null;

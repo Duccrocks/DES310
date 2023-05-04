@@ -7,7 +7,7 @@ public class Punch : MonoBehaviour
 
     [SerializeField] private float attackRange = 5;
 
-
+    bool canPunch = true;
     Animator anim;
 
     private void Start()
@@ -17,6 +17,10 @@ public class Punch : MonoBehaviour
 
     public void PunchEnemy()
     {
+        if (canPunch == false) return;
+        canPunch = false;
+        Invoke(nameof(CooldownReset), 0.5f);
+
         Debug.Log("Punching");
 
         anim.SetTrigger("Attack");
@@ -35,8 +39,12 @@ public class Punch : MonoBehaviour
             else if (hit.collider.CompareTag("Physics Object"))
             {
                 hit.transform.gameObject.GetComponent<GenericPunchResponse>().Punched(forward);
-
             }
         }
+    }
+
+    void CooldownReset()
+    {
+        canPunch = true;
     }
 }

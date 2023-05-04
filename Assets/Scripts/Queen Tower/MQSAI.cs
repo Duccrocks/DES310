@@ -10,6 +10,7 @@ public class MQSAI : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
 
     [SerializeField] private float attackRange = 5;
+    [SerializeField] private int attackDamage = 50;
     private bool canAttack = true;
 
     Animator animator;
@@ -71,7 +72,7 @@ public class MQSAI : MonoBehaviour
     void Attack()
     {
         animator.SetTrigger("EnemyAttack");
-        playerHealth.HealthDecrease(50);
+        playerHealth.HealthDecrease(attackDamage);
         canAttack = false;
         Invoke(nameof(AttackReset), 2f);
     }
