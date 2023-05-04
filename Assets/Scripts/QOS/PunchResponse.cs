@@ -13,10 +13,10 @@ public class PunchResponse : MonoBehaviour
     private Vector3 direction;
 
     private float deathLeway;
-    private float deathlewaytimer;
+    private float deathLeeWayTimer;
 
     [SerializeField] private DisolveManager[] disolveManagers;
-    private bool Punchahble;
+    private bool punchable;
 
     private float healthTimer;
     private NavMeshAgent navMeshAgent;
@@ -29,9 +29,9 @@ public class PunchResponse : MonoBehaviour
         RaddollManager = GetComponent<RaddollManager>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         healthTimer = 2;
-        Punchahble = true;
+        punchable = true;
         deathLeway = 3f;
-        deathlewaytimer = 0;
+        deathLeeWayTimer = 0;
     }
 
     // Start is called before the first frame update
@@ -46,10 +46,10 @@ public class PunchResponse : MonoBehaviour
         healthTimer += Time.deltaTime;
         if (RaddollManager.ragDollEnabled&&RaddollManager.gameObject.GetComponent<Rigidbody>().velocity.sqrMagnitude<0.02)
         {
-            deathlewaytimer += Time.deltaTime;
-            if (deathlewaytimer>deathLeway)
+            deathLeeWayTimer += Time.deltaTime;
+            if (deathLeeWayTimer>deathLeway)
             {
-                Punchahble = false;
+                punchable = false;
                 foreach (DisolveManager dis in disolveManagers)
                 {
                     dis.disolveMult = -1;
@@ -65,7 +65,7 @@ public class PunchResponse : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (Punchahble) { 
+        if (punchable) { 
             if (collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Physics Object"))
             {
                 if (collision.transform.CompareTag("Physics Object"))
@@ -93,7 +93,7 @@ public class PunchResponse : MonoBehaviour
                         collisionPunchResponse.DestroyAI();
 
                         var collisionRagdoll = collisionPunchResponse.gameObject.GetComponent<RaddollManager>();
-                        flying(dir, collisionRagdoll);
+                        Flying(dir, collisionRagdoll);
                     }
                     
                 }
@@ -107,27 +107,27 @@ public class PunchResponse : MonoBehaviour
         {
             return;
         }
-        if (Punchahble)
+        if (punchable)
         {
             health--;
             health = Math.Max(health, 0);
             if (health == 0)
             {
-                deathlewaytimer = 0;
+                deathLeeWayTimer = 0;
                 DestroyAI();
                 direction = axis * speed;     
-                flying(direction, RaddollManager);
+                Flying(direction, RaddollManager);
             }
             else
             {
                 direction = axis * speed;
-                StartCoroutine("pushBack", direction);
+                StartCoroutine("PushBack", direction);
             }
         }
 
     }
 
-    private void flying(Vector3 dir, RaddollManager raddollManager)
+    private void Flying(Vector3 dir, RaddollManager raddollManager)
     {
         raddollManager.ragDollEnabled = true;
         raddollManager.EnableRagdoll();
@@ -139,7 +139,7 @@ public class PunchResponse : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = true;
 
     }
-    IEnumerator pushBack(Vector3 dir)
+    IEnumerator PushBack(Vector3 dir)
     {
         navMeshAgent.enabled = false;
         Rigidbody body = GetComponent<Rigidbody>();
@@ -151,7 +151,8 @@ public class PunchResponse : MonoBehaviour
         body.freezeRotation = false;
         body.constraints = RigidbodyConstraints.None;
     }
-    public void DestroyAI()
+
+    private void DestroyAI()
     {
         Destroy(navMeshAgent);
         Destroy(GetComponent<MQSAI>());

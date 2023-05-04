@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SonarShaderManager : MonoBehaviour
 {
-   public GameObject pillar;
+   private GameObject pillar;
    public Transform playerPos;
    public SonarPulses pulseManager;
     // Start is called before the first frame update
     void Start()
     {
-       pillar = this.gameObject;
+       pillar = gameObject;
        //pulseManager = pillar.GetComponent<SonarPulses>();
     }
 

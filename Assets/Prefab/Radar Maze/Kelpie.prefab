@@ -148,7 +148,7 @@ Transform:
   - {fileID: 6927900178623894986}
   - {fileID: 5203799210533861986}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8060974728410274177
 BoxCollider:
@@ -276,6 +276,10 @@ PrefabInstance:
       propertyPath: rolloffMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4023810059874339412, guid: 81dfccfbe9327c440a0931da18fce358, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 7841529067475296446, guid: ee026c42157e24149aae554826e8e54a, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 81dfccfbe9327c440a0931da18fce358, type: 3}

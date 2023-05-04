@@ -2,25 +2,30 @@ using UnityEngine;
 
 public class Punch : MonoBehaviour
 {
+    [SerializeField] private float attackRange = 5;
+    
+    [Header("Layer Masks")]
     [SerializeField] private LayerMask layerMaskInteract;
     [SerializeField] private string excludedLayer;
-
-    [SerializeField] private float attackRange = 5;
-
-
-    Animator anim;
+    
+    [Header("Audio")]
+    [SerializeField] private AudioClip clip;
+    
+    private readonly int attack = Animator.StringToHash("Attack");
+    
+    private Animator anim;
 
     private void Start()
     {
-        anim = GetComponentInChildren<Animator > ();
+        anim = GetComponentInChildren<Animator>();
     }
 
     public void PunchEnemy()
     {
         Debug.Log("Punching");
 
-        anim.SetTrigger("Attack");
-
+        anim.SetTrigger(attack);
+        AudioManager.Instance.PlaySoundOnce(clip);
         var forward = transform.TransformDirection(Vector3.forward);
         var mask = (1 << LayerMask.NameToLayer(excludedLayer)) | layerMaskInteract.value;
         Debug.DrawRay(transform.position, forward * attackRange, Color.black);
@@ -32,11 +37,9 @@ public class Punch : MonoBehaviour
                 hit.transform.gameObject.GetComponentInParent<PunchResponse>().Punched(forward);
                 return;
             }
-            else if (hit.collider.CompareTag("Physics Object"))
-            {
-                hit.transform.gameObject.GetComponent<GenericPunchResponse>().Punched(forward);
 
-            }
+            if (hit.collider.CompareTag("Physics Object"))
+                hit.transform.gameObject.GetComponent<GenericPunchResponse>().Punched(forward);
         }
     }
 }
