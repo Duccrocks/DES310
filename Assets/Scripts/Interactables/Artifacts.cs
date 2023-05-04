@@ -1,26 +1,28 @@
+using System;
 using UnityEngine;
 
 public class Artifacts : MonoBehaviour, IInteractable
 {
     [SerializeField] private Transform[] spawnPoints;
-    private GameObject kelpie;
     [SerializeField] private int artifactID;
 
-    void Awake()
-    {
-        //transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position;
-    }
+    [Header("Audio")]
+    [SerializeField] private AudioClip audioClip;
+
+    private GameObject kelpie;
 
     public void Interact()
     {
         try
         {
             RadarGameManager.Instance.ArtifactObtained(artifactID);
+            AudioManager.Instance.PlaySoundOnce(audioClip);
         }
-        catch (System.NullReferenceException e)
+        catch (NullReferenceException e)
         {
             Debug.LogError(e);
         }
+
         Destroy(gameObject);
     }
 }
