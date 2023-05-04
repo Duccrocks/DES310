@@ -39138,6 +39138,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5512388419479794772, guid: f61ba12cc2da14546b17d1ad5a8e3aa7, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: fe5b62a12ecabb443b0c162bd3504294, type: 3}
     - target: {fileID: 6836081123121775832, guid: f61ba12cc2da14546b17d1ad5a8e3aa7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
