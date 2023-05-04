@@ -58,7 +58,7 @@ public class PlayerHealth : MonoBehaviour
 
     private IEnumerator RegenHealth()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
 
         while (health < maxHealth)
         {

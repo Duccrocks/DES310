@@ -153,7 +153,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   attackRange: 2.5
-  attackDamage: 25
+  attackDamage: 45
 --- !u!114 &1743994090648125754
 MonoBehaviour:
   m_ObjectHideFlags: 0
