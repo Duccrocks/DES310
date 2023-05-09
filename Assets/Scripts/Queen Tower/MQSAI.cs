@@ -39,17 +39,24 @@ public class MQSAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(PlayerInView());
-        if(PlayerInView())
+        if (PlayerInView())
         {
-            agent.isStopped = false;
-            agent.SetDestination(player.transform.position);
+            try
+            {
+                agent.isStopped = false;
+                agent.SetDestination(player.transform.position);
+
+            }
+            catch (System.NullReferenceException)
+            {
+                Debug.LogError($"{gameObject.name}'s navmesh agent was accessed after being destroyed");
+            }
             animator.SetTrigger("EnemyWalk");
-        } 
+        }
         else
         {
             agent.isStopped = true;
-        } 
+        }
 
         if (Vector3.Distance(player.transform.position, transform.position) <= attackRange && canAttack) Attack();
     }
@@ -62,9 +69,9 @@ public class MQSAI : MonoBehaviour
 
         if (hit.transform == null) return false;
         if (hit.transform.CompareTag(player.tag)) return true;
-        
-//        Debug.Log("Hit was not null but obj hit is not player");
-        
+
+        //        Debug.Log("Hit was not null but obj hit is not player");
+
         return false;
     }
 

@@ -4793,6 +4793,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3512105744173763119, guid: 7fd7fd993b57b3643aac26050c18efa0, type: 3}
+      propertyPath: excludeMouse
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3512105744173763119, guid: 7fd7fd993b57b3643aac26050c18efa0, type: 3}
       propertyPath: selectedBinding
       value: 0
       objectReference: {fileID: 0}
@@ -5435,6 +5439,10 @@ PrefabInstance:
     - target: {fileID: 3512105744173763119, guid: 7fd7fd993b57b3643aac26050c18efa0, type: 3}
       propertyPath: deviceType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3512105744173763119, guid: 7fd7fd993b57b3643aac26050c18efa0, type: 3}
+      propertyPath: excludeMouse
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3512105744173763119, guid: 7fd7fd993b57b3643aac26050c18efa0, type: 3}
       propertyPath: inputBinding.m_Id
