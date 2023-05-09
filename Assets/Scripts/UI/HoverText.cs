@@ -25,7 +25,7 @@ public class HoverText : MonoBehaviour
     {
         toTrack = GameObject.FindWithTag("Player");
         istoTrackNull = toTrack == null;
-        playerInput = FindObjectOfType<PlayerInput>();
+        playerInput = toTrack.GetComponent<PlayerInput>();
         inputText = bindingText.text;
     }
 

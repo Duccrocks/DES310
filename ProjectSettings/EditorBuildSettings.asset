@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mary QOS.unity
     guid: c15b73b9892ba814daa9df6e7866f0d8
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 57ad5926f26d39249a529fbee4968a1c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fe72aa3d9c424b94c99ded2df87f713c, type: 2}
