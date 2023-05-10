@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
 {
-    [Header("Controls Enum")] [Tooltip("Which scenes controls to use.")] 
+    [Header("Controls Enum")]
+    [Tooltip("Which scenes controls to use.")]
     [SerializeField] private ControlType controlType;
 
 
@@ -33,7 +34,7 @@ public class InputManager : MonoBehaviour
         MaryQueenOfScots,
         FinalMiniGame
     }
-    
+
     private void Awake()
     {
         playerControls = RebindManager.inputActions ?? new PlayerControls();
@@ -98,14 +99,28 @@ public class InputManager : MonoBehaviour
         if (mapManager) playerControls.Player.Map.performed += ToggleMap;
 
         PauseMenu.OnPause += OnPause;
-        LevelManager.instance.onChangingScene += OnSceneChange; 
+        try
+        {
+            LevelManager.instance.onChangingScene += OnSceneChange;
+        }
+        catch (System.Exception)
+        {
+            Debug.LogError("Level Manager Null");
+        }
     }
 
     private void OnDisable()
     {
         DisableControls();
         PauseMenu.OnPause -= OnPause;
-        LevelManager.instance.onChangingScene -= OnSceneChange; 
+        try
+        {
+            LevelManager.instance.onChangingScene -= OnSceneChange;
+        }
+        catch (System.Exception)
+        {
+            Debug.LogError("Level Manager Null");
+        }
     }
 
     private void DisableControls()
@@ -122,7 +137,7 @@ public class InputManager : MonoBehaviour
     }
 
 
-#region SetUpScenes
+    #region SetUpScenes
     private void SetUpRadarMaze()
     {
         sonarPulses = GetComponent<SonarPulses>();
@@ -146,7 +161,7 @@ public class InputManager : MonoBehaviour
             Debug.LogError("Punch Null\n " +
                            "If you're not in MQoS then switch controlType, else add a Punch script");
     }
-#endregion
+    #endregion
 
 
 
@@ -185,7 +200,7 @@ public class InputManager : MonoBehaviour
     }
 
 
-#endregion
+    #endregion
 
 
     #region Player Controls events
@@ -225,10 +240,10 @@ public class InputManager : MonoBehaviour
     {
         if (ctx.performed) punch.PunchEnemy();
     }
-    
+
     private void ToggleMap(InputAction.CallbackContext ctx)
     {
-        if(ctx.performed) mapManager.ToggleMap();
+        if (ctx.performed) mapManager.ToggleMap();
     }
 
     #endregion

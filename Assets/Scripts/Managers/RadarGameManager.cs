@@ -78,7 +78,13 @@ public class RadarGameManager : MonoBehaviour
 
     public void Victory()
     {
-        MiniGameProgression.RadarMazeCompleted = true;
+        MiniGameProgression.KelpieGameCompleted = true;
+
+        if(MiniGameProgression.HasWon())
+        {
+            LevelManager.instance.LoadScene("Credits");
+            return;
+        }
         LevelManager.instance.LoadScene("Library");
     }
 

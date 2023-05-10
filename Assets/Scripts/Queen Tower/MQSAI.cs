@@ -47,7 +47,7 @@ public class MQSAI : MonoBehaviour
                 agent.SetDestination(player.transform.position);
 
             }
-            catch (System.NullReferenceException)
+            catch (MissingReferenceException)
             {
                 Debug.LogError($"{gameObject.name}'s navmesh agent was accessed after being destroyed");
             }

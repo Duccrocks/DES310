@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,6 +17,8 @@ public class CreditScript : MonoBehaviour
     private InputSystemUIInputModule inputSystemUIInputModule;
 
     [SerializeField] private PlayerInput playerInput;
+
+    private bool isScrolling;
 
 
     private void Awake()
@@ -36,24 +39,30 @@ public class CreditScript : MonoBehaviour
         backText.text = $"Press: {displayString} to Exit.";
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
         var pos = scroller.localPosition;
         pos.y = -850;
         scroller.localPosition = pos;
         inputSystemUIInputModule.cancel.action.performed += Trigger;
+        //Wait for a second before starting to scroll.
+        yield return new WaitForSeconds(1);
+        isScrolling = true;
     }
 
 
-    // Update is called once per frame
     private void Update()
     {
-        var pos = scroller.localPosition;
-        pos.y += 3850f / creditTime * Time.deltaTime;
-        scroller.localPosition = pos;
+        if (isScrolling)
+        {
+            var pos = scroller.localPosition;
+            pos.y += 3850f / creditTime * Time.deltaTime;
+            scroller.localPosition = pos;
 
 
-        if (pos.y > 2000) LevelManager.instance.LoadScene("Menu", shouldTransitionEffect: false);
+            if (pos.y > 3000) LevelManager.instance.LoadScene("Menu", shouldTransitionEffect: false);
+        }
+
 
     }
 
