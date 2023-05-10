@@ -1,11 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LibraryManager : MonoBehaviour
 {
     [SerializeField] private AudioClip clip;
+
     private void Start()
     {
         try

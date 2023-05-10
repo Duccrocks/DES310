@@ -102,6 +102,7 @@ MonoBehaviour:
   resumeButton: {fileID: 470756467139341351}
   settingsPanel: {fileID: 8255397722232928879}
   pausePanel: {fileID: 2363166745792627453}
+  options: {fileID: 5462490101401948324}
 --- !u!1 &2363166745792627453
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,6 +973,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5462490101401948324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3113357696793374234, guid: f1483f397d67fd642ae03d8d4c424424, type: 3}
+  m_PrefabInstance: {fileID: 6988029276121366206}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8255397722232928879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a83f2edce3756424d9da127f0330033a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6880085034287128514 stripped

@@ -1,26 +1,27 @@
 using System;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class RadarGameManager : MonoBehaviour
 {
     public static RadarGameManager instance;
-    
-    [Header("Game Objects")]
+
+    [Header("Game Objects")] 
     [SerializeField] private GameObject[] treePrefabs;
     [SerializeField] public MapManager mapManager;
+    [SerializeField] private GameObject[] keyObjects;
+
 
     [Header("Wisps")]
-    [SerializeField] private GameObject[] keyObjects;
     [SerializeField] private GameObject wispPrefab;
-    [SerializeField] LayerMask layerMask;
-    
+    [SerializeField] private LayerMask layerMask;
+
+
     [Header("Audio")]
     [SerializeField] private AudioClip ambience;
 
     private int artifactsCount;
     private KelpieAI kelpie;
-    
+
     public static RadarGameManager Instance
 
     {
@@ -47,6 +48,7 @@ public class RadarGameManager : MonoBehaviour
         {
             Debug.LogError("Audio Manager Null");
         }
+
         try
         {
             LevelManager.instance.SceneLoaded();
@@ -55,6 +57,7 @@ public class RadarGameManager : MonoBehaviour
         {
             Debug.LogError("Level Manager Null when attempting to fade in.");
         }
+
         kelpie = FindObjectOfType<KelpieAI>();
         artifactsCount = FindObjectsOfType<Artifacts>().Length;
     }
@@ -80,11 +83,12 @@ public class RadarGameManager : MonoBehaviour
     {
         MiniGameProgression.KelpieGameCompleted = true;
 
-        if(MiniGameProgression.HasWon())
+        if (MiniGameProgression.HasWon())
         {
             LevelManager.instance.LoadScene("Credits");
             return;
         }
+
         LevelManager.instance.LoadScene("Library");
     }
 

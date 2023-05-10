@@ -15,7 +15,7 @@ public class BackButtonInput : MonoBehaviour
         inputSystemUIInputModule = EventSystem.current.currentInputModule.GetComponent<InputSystemUIInputModule>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         inputSystemUIInputModule.cancel.action.performed += Trigger;
     }

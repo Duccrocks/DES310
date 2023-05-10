@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursors: {fileID: 8210037504139690533}
+  clip: {fileID: 8300000, guid: 3c1c153e1c0112e42a1c67255953a876, type: 3}
 --- !u!1 &3430441670305604732
 GameObject:
   m_ObjectHideFlags: 0
