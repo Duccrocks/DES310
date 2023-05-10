@@ -1,10 +1,10 @@
- using UnityEngine;
+using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using System;
 public class PunchResponse : MonoBehaviour
 {
-    public enum KnightType {smol, red, blue, green };
+    public enum KnightType { smol, red, blue, green };
 
     [SerializeField] private float speed;
     [SerializeField] private int health = 3;
@@ -15,7 +15,7 @@ public class PunchResponse : MonoBehaviour
     private float deathLeway;
     private float deathLeeWayTimer;
 
-    [SerializeField] private DisolveManager[] disolveManagers;
+    [SerializeField] private DisolveManager[] dissolveManagers;
     [SerializeField] private AudioSource audioSource;
     private bool punchable;
     private float healthTimer;
@@ -25,7 +25,7 @@ public class PunchResponse : MonoBehaviour
     private bool playOnce;
     private void Awake()
     {
-        disolveManagers = GetComponentsInChildren<DisolveManager>();
+        dissolveManagers = GetComponentsInChildren<DisolveManager>();
         RaddollManager = GetComponent<RaddollManager>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         healthTimer = 2;
@@ -37,35 +37,36 @@ public class PunchResponse : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
- 
+
     }
 
     // Update is called once per frame
     private void Update()
     {
         healthTimer += Time.deltaTime;
-        if (RaddollManager.ragDollEnabled&&RaddollManager.gameObject.GetComponent<Rigidbody>().velocity.sqrMagnitude<0.02)
+        if (RaddollManager.ragDollEnabled && RaddollManager.gameObject.GetComponent<Rigidbody>().velocity.sqrMagnitude < 0.02)
         {
             deathLeeWayTimer += Time.deltaTime;
-            if (deathLeeWayTimer>deathLeway)
+            if (deathLeeWayTimer > deathLeway)
             {
                 punchable = false;
-                foreach (DisolveManager dis in disolveManagers)
+                foreach (DisolveManager dis in dissolveManagers)
                 {
                     dis.disolveMult = -1;
                 }
-                Destroy(gameObject, disolveManagers[0].disolveDuration);
+                Destroy(gameObject, dissolveManagers[0].disolveDuration);
             }
-            
+
         }
 
 
-     
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (punchable) { 
+        if (punchable)
+        {
             if (collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Physics Object"))
             {
                 if (collision.transform.CompareTag("Physics Object"))
@@ -79,13 +80,13 @@ public class PunchResponse : MonoBehaviour
 
                 if (healthTimer > IFrameTime)
                 {
-                    if (collision.transform.CompareTag("Enemy")&&type==KnightType.green)
+                    if (collision.transform.CompareTag("Enemy") && type == KnightType.green)
                     {
                         return;
                     }
                     health--;
                     healthTimer = 0;
-                    if (health==0)
+                    if (health == 0)
                     {
                         var dir = Vector3.Normalize(transform.position - collision.transform.position) * speed * 0.2f;
 
@@ -97,7 +98,7 @@ public class PunchResponse : MonoBehaviour
                         // Destroy(audioSource,audioSource.clip.length);
                         Flying(dir, collisionRagdoll);
                     }
-                    
+
                 }
             }
         }
@@ -105,7 +106,7 @@ public class PunchResponse : MonoBehaviour
 
     public void Punched(Vector3 axis)
     {
-        if (type ==KnightType.green&&!RaddollManager.ragDollEnabled)
+        if (type == KnightType.green && !RaddollManager.ragDollEnabled)
         {
             return;
         }
@@ -117,7 +118,7 @@ public class PunchResponse : MonoBehaviour
             {
                 deathLeeWayTimer = 0;
                 DestroyAI();
-                direction = axis * speed;     
+                direction = axis * speed;
                 Flying(direction, RaddollManager);
             }
             else
@@ -149,7 +150,14 @@ public class PunchResponse : MonoBehaviour
         body.constraints = RigidbodyConstraints.FreezePositionY;
         body.freezeRotation = true;
         yield return new WaitForSeconds(1);
-        navMeshAgent.enabled = true;
+        try
+        {            
+            navMeshAgent.enabled = true;
+        }
+        catch (MissingReferenceException)
+        {
+            Debug.LogError("NavMesh Agent was accessed after it was destroyed");
+        }
         body.freezeRotation = false;
         body.constraints = RigidbodyConstraints.None;
     }

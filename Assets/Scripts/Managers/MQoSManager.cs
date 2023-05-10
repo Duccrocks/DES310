@@ -7,21 +7,33 @@ public class MQoSManager : MonoBehaviour
     
     void Start()
     {
-        LevelManager.instance.SceneLoaded();
+        try
+        {
+            LevelManager.instance.SceneLoaded();
+        }
+        catch (System.Exception)
+        {
+            Debug.LogError("LevelManager Null when fading in");            
+        }
         try
         {
             AudioManager.Instance.PlayMusicWithFade(clip);
         }
         catch (NullReferenceException)
         {
-            Debug.LogError("Audiomanager null");
+            Debug.LogError("Audiomanager Null");
         }
     }
 
     public void Victory()
     {
         Debug.Log("Player won MQoS");
-        LevelManager.instance.LoadScene("Library");
         MiniGameProgression.MQoSCompleted = true;
+        if(MiniGameProgression.HasWon())
+        {
+            LevelManager.instance.LoadScene("Credits");
+            return;
+        }
+        LevelManager.instance.LoadScene("Library");
     }
 }
