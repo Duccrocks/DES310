@@ -4,17 +4,18 @@ using UnityEngine;
 public class MQoSManager : MonoBehaviour
 {
     [SerializeField] private AudioClip clip;
-    
-    void Start()
+
+    private void Start()
     {
         try
         {
             LevelManager.instance.SceneLoaded();
         }
-        catch (System.Exception)
+        catch (NullReferenceException)
         {
-            Debug.LogError("LevelManager Null when fading in");            
+            Debug.LogError("LevelManager Null when fading in");
         }
+
         try
         {
             AudioManager.Instance.PlayMusicWithFade(clip);
@@ -29,11 +30,12 @@ public class MQoSManager : MonoBehaviour
     {
         Debug.Log("Player won MQoS");
         MiniGameProgression.MQoSCompleted = true;
-        if(MiniGameProgression.HasWon())
+        if (MiniGameProgression.HasWon())
         {
             LevelManager.instance.LoadScene("Credits");
             return;
         }
+
         LevelManager.instance.LoadScene("Library");
     }
 }

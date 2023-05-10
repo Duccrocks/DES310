@@ -360,3 +360,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursors: {fileID: 786142606775755548}
+  clip: {fileID: 8300000, guid: 3c1c153e1c0112e42a1c67255953a876, type: 3}
