@@ -5,13 +5,13 @@ using UnityEngine.InputSystem.UI;
 
 public class CreditScript : MonoBehaviour
 {
-    [Header("UI")] 
+    [Header("UI")]
     [SerializeField] private RectTransform scroller;
 
     [SerializeField] private TMP_Text backText;
     [SerializeField] private float creditTime;
 
-    [Header("Input")] 
+    [Header("Input")]
     [SerializeField]
     private InputSystemUIInputModule inputSystemUIInputModule;
 
@@ -53,7 +53,8 @@ public class CreditScript : MonoBehaviour
         scroller.localPosition = pos;
 
 
-        if (pos.y > 2000) LevelManager.instance.LoadScene("Menu");
+        if (pos.y > 2000) LevelManager.instance.LoadScene("Menu", shouldTransitionEffect: false);
+
     }
 
 
@@ -64,6 +65,6 @@ public class CreditScript : MonoBehaviour
 
     private void Trigger(InputAction.CallbackContext context)
     {
-        LevelManager.instance.LoadScene("Menu");
+        LevelManager.instance.LoadScene("Menu", shouldTransitionEffect: false);
     }
 }
