@@ -13,10 +13,10 @@ public class FadeOutController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startFadeIn();
+        StartFadeIn();
         isFading = 0;
     }
-    void startFade()
+    void StartFade()
     {
         isFading = 1;
         fadeTimer = 0;
@@ -64,14 +64,14 @@ public class FadeOutController : MonoBehaviour
         }
     }
 
-    public void startFadeOut()
+    public void StartFadeOut()
     {
         isFading = 1;
         fadeTimer= 0;
         fadeMult = 1;
     }
 
-    public void startFadeIn()
+    public void StartFadeIn()
     {
         fadeTimer = fadeDuration;
         isFading = 1;

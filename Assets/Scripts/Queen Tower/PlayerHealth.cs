@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip clip;
     private WaitForSeconds regenTick = new WaitForSeconds(0.01f);
     private Coroutine regen;
+    private bool hasDied;
 
     void Awake()
     {
@@ -37,14 +38,14 @@ public class PlayerHealth : MonoBehaviour
         regen = StartCoroutine(RegenHealth());
     }
 
-    void DamagePlayer(int amount) 
-    {
-        
-    }
-
     private void HealthChange()
     {
-        if (health <= 0) Die();
+        if (health <= 0 && !hasDied)
+        {
+            Die();
+            hasDied = true;
+            return;
+        } 
         try
         {
             AudioManager.Instance.PlaySoundOnce(clip);
@@ -80,12 +81,12 @@ public class PlayerHealth : MonoBehaviour
         regen = null;
     }
 
-    public float getHealth()
+    public float GetHealth()
     {
         return health;
     }
 
-    public float getMaxHealth()
+    public float GetMaxHealth()
     {
         return maxHealth;
     }

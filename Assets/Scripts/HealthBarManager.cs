@@ -12,6 +12,6 @@ public class HealthBarManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bar.fillAmount = health.getHealth() / health.getMaxHealth();
+        bar.fillAmount = health.GetHealth() / health.GetMaxHealth();
     }
 }

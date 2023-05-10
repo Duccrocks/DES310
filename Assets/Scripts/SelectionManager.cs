@@ -11,7 +11,7 @@ public class SelectionManager : MonoBehaviour
     [SerializeField] private LayerMask layerMaskInteract;
     [SerializeField] private string excludedLayer;
     
-    [Header("Ray settings")]
+    [Header("Ray Settings")]
     [SerializeField] [Range(0, 10)] private float rayLength;
     
     [Header("HUD")]

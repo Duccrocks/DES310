@@ -10,6 +10,11 @@ public class InputManager : MonoBehaviour
 
 
     private bool isPaused;
+
+    //Event for when the player changes their device (keyboard -> controller vice versa)
+    public static event Action PlayerDeviceChanged;
+
+
     private PlayerControls playerControls;
 
     //Reference to all player controls.
@@ -93,10 +98,17 @@ public class InputManager : MonoBehaviour
         if (mapManager) playerControls.Player.Map.performed += ToggleMap;
 
         PauseMenu.OnPause += OnPause;
+        LevelManager.instance.onChangingScene += OnSceneChange; 
     }
 
-
     private void OnDisable()
+    {
+        DisableControls();
+        PauseMenu.OnPause -= OnPause;
+        LevelManager.instance.onChangingScene -= OnSceneChange; 
+    }
+
+    private void DisableControls()
     {
         //Personally I don't like memory leaks so unsubscribe from all.
         playerControls.Disable();
@@ -107,12 +119,10 @@ public class InputManager : MonoBehaviour
         playerControls.Player.Pause.performed -= TogglePause;
         playerControls.Player.Sonar.performed -= SonarPulse;
         playerControls.Player.Punch.performed -= PunchEnemy;
-
-        PauseMenu.OnPause -= OnPause;
     }
 
-    public static event Action PlayerDeviceChanged;
 
+#region SetUpScenes
     private void SetUpRadarMaze()
     {
         sonarPulses = GetComponent<SonarPulses>();
@@ -136,7 +146,11 @@ public class InputManager : MonoBehaviour
             Debug.LogError("Punch Null\n " +
                            "If you're not in MQoS then switch controlType, else add a Punch script");
     }
+#endregion
 
+
+
+    #region HandleEvents
     public void HandleDeviceChange()
     {
         PlayerDeviceChanged?.Invoke();
@@ -165,8 +179,13 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    private void OnSceneChange()
+    {
+        DisableControls();
+    }
 
 
+#endregion
 
 
     #region Player Controls events
