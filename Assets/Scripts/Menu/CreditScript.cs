@@ -24,6 +24,7 @@ public class CreditScript : MonoBehaviour
 
     private void Awake()
     {
+        MiniGameProgression.ResetProgress();
         UpdateBackText();
     }
 

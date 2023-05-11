@@ -99,9 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseHud: {fileID: 1150326423480159727}
   hudPanel: {fileID: 0}
-  resumeButton: {fileID: 470756467139341351}
   settingsPanel: {fileID: 8255397722232928879}
   pausePanel: {fileID: 2363166745792627453}
+  resumeButton: {fileID: 470756467139341351}
   options: {fileID: 5462490101401948324}
 --- !u!1 &2363166745792627453
 GameObject:
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

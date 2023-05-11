@@ -7,4 +7,10 @@ public class MiniGameProgression
     {
         return KelpieGameCompleted && MQoSCompleted;
     }
+
+    public static void ResetProgress()
+    {
+        KelpieGameCompleted = false;
+        MQoSCompleted = false;
+    }
 }

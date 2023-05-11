@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -214,6 +214,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000069225504800191, guid: 631c6286f0eb8644492bb225823d0193, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000069225713293824, guid: 631c6286f0eb8644492bb225823d0193, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000069225713293825, guid: 631c6286f0eb8644492bb225823d0193, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000069225790713628, guid: 631c6286f0eb8644492bb225823d0193, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2000069225790713631, guid: 631c6286f0eb8644492bb225823d0193, type: 3}

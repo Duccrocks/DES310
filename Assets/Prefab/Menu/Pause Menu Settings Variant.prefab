@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 302463097528732264, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
+      propertyPath: m_text
+      value: Back
+      objectReference: {fileID: 0}
     - target: {fileID: 2756497833795886258, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
       propertyPath: onCancel.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -15,6 +19,10 @@ PrefabInstance:
     - target: {fileID: 2756497833795886258, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
       propertyPath: onCancel.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316695915248282011, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
+      propertyPath: m_text
+      value: Back
       objectReference: {fileID: 0}
     - target: {fileID: 5039195671144028467, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
       propertyPath: onBack.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -124,6 +132,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5198650049261813025, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
+      propertyPath: m_text
+      value: Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 8418496474177412914, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
+      propertyPath: m_text
+      value: Back
+      objectReference: {fileID: 0}
     - target: {fileID: 8536041550873738521, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
@@ -131,6 +147,14 @@ PrefabInstance:
     - target: {fileID: 8536041550873738521, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536041551075025364, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
+      propertyPath: m_text
+      value: Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946929380470674640, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
+      propertyPath: m_text
+      value: Back
       objectReference: {fileID: 0}
     - target: {fileID: 9101622462238527540, guid: f88da3cff99367f4ca699fc0aaf629c1, type: 3}
       propertyPath: fullscreenToggle
