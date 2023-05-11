@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float regenCooldown = 3f;
 
     [Header("Audio")]
-    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioClip hurtClip;
     private WaitForSeconds regenTick = new WaitForSeconds(0.01f);
     private Coroutine regen;
     private bool hasDied;
@@ -48,7 +48,7 @@ public class PlayerHealth : MonoBehaviour
         } 
         try
         {
-            AudioManager.Instance.PlaySoundOnce(clip);
+            AudioManager.Instance.PlaySoundOnce(hurtClip);
         }
         catch (System.NullReferenceException)
         {
