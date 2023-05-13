@@ -90,8 +90,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void StartSprinting()
     {
-        speed = sprintSpeed;
-        isSprinting = true;
+        if (controller.velocity.magnitude>0.2f)
+        {
+            speed = sprintSpeed;
+            isSprinting = true;
+        }
     }
 
     public void StopSprinting()
