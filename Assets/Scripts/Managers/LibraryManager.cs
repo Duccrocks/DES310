@@ -9,6 +9,14 @@ public class LibraryManager : MonoBehaviour
     {
         try
         {
+            LevelManager.instance.SceneLoaded();
+        }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("Level Manager Null while trying to fade in");
+        }
+        try
+        {
             AudioManager.Instance.PlayMusicWithFade(clip);
         }
         catch (NullReferenceException)

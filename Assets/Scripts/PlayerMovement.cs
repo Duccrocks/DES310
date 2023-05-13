@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -17,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private SprintController sprintController;
     
-    private bool isSprinting;
+    [NonSerialized]  public bool isSprinting;
     private bool isGrounded;
     private float sprintSpeed;
     private float walkSpeed;
@@ -90,17 +91,23 @@ public class PlayerMovement : MonoBehaviour
 
     public void StartSprinting()
     {
-        if (controller.velocity.magnitude>0.2f)
+        if (IsMoving())
         {
             speed = sprintSpeed;
             isSprinting = true;
         }
+
     }
 
     public void StopSprinting()
     {
         speed = walkSpeed;
         isSprinting = false;
+    }
+
+    public bool IsMoving()
+    {
+        return controller.velocity.magnitude > 0.05f;
     }
 
     private void IsGroundedCheck()

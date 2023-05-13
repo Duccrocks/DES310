@@ -64,7 +64,7 @@ public class InputManager : MonoBehaviour
                 SetUpMQOS();
                 break;
             case ControlType.FinalMiniGame:
-                Debug.LogError("No final minigame has been made");
+                Debug.LogError("No final mini-game has been made");
                 break;
         }
     }
@@ -103,7 +103,7 @@ public class InputManager : MonoBehaviour
         {
             LevelManager.instance.onChangingScene += OnSceneChange;
         }
-        catch (System.Exception)
+        catch (NullReferenceException)
         {
             Debug.LogError("Level Manager Null");
         }

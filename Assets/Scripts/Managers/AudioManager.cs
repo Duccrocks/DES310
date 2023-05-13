@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource musicSource2;
 
     private AudioSource sfxSource;
+    private float defaultPitch;
 
     //Makes use of the singleton pattern to create an instance that can be accessed from anywhere in the level.
     public static AudioManager Instance { get; private set; }
@@ -51,6 +52,7 @@ public class AudioManager : MonoBehaviour
         //Loops the music tracks, just incase a new one doesn't play in time.
         musicSource.loop = true;
         musicSource2.loop = true;
+        defaultPitch = sfxSource.pitch;
     }
 
     private void OnEnable()
@@ -166,6 +168,16 @@ public class AudioManager : MonoBehaviour
         sfxSource.clip = sfxClip;
         //Oneshot used so sounds don't overlap.
         sfxSource.PlayOneShot(sfxClip, volume);
+    }
+
+    public void IncreaseSFXPitch(float pitchMultiplier)
+    {
+        sfxSource.pitch *= pitchMultiplier;
+    }
+
+    public void ResetSFXPitch()
+    {
+        sfxSource.pitch = defaultPitch;
     }
 
     public void TogglePause(bool isPaused)

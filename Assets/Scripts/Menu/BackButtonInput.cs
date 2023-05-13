@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -7,6 +8,10 @@ using UnityEngine.InputSystem.UI;
 public class BackButtonInput : MonoBehaviour
 {
     [SerializeField] private UnityEvent onBack;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip backClip;
+
     private InputSystemUIInputModule inputSystemUIInputModule;
 
     private void Awake()
@@ -29,6 +34,15 @@ public class BackButtonInput : MonoBehaviour
     private void Trigger(InputAction.CallbackContext context)
     {
         if (RebindManager.isRebinding) return;
+        try
+        {
+            AudioManager.Instance.PlaySound(backClip);
+        }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("Audio Manager Null when playing cancel sound");
+        }
+
         onBack?.Invoke();
     }
 }
