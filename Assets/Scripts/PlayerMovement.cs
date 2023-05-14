@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void StaminaCheck()
     {
-        if (sprintController.CurrentStamina <= 0.9f)
+        if (sprintController.isOutOfStamina)
         {
             StopSprinting();
             return;
@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void StartSprinting()
     {
-        if (IsMoving())
+        if (IsMoving() && !sprintController.isOutOfStamina)
         {
             speed = sprintSpeed;
             isSprinting = true;

@@ -41,6 +41,7 @@ public class AudioManager : MonoBehaviour
 
         //Gets all children of master (where the first instance is the parent mixer group, all following being children)
         var audioMixerGroups = audioMixer.FindMatchingGroups("Master");
+        //And sets their output groups to the children of master.
         musicSource.outputAudioMixerGroup = audioMixerGroups[1];
         musicSource2.outputAudioMixerGroup = audioMixerGroups[1];
         sfxSource.outputAudioMixerGroup = audioMixerGroups[2];
