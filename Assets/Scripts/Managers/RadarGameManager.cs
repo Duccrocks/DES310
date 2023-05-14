@@ -42,7 +42,7 @@ public class RadarGameManager : MonoBehaviour
     {
         try
         {
-            AudioManager.Instance.PlayMusicWithFade(ambience);
+            AudioManager.Instance.PlayMusic(ambience);
         }
         catch (NullReferenceException)
         {

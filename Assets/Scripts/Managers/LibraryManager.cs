@@ -17,7 +17,7 @@ public class LibraryManager : MonoBehaviour
         }
         try
         {
-            AudioManager.Instance.PlayMusicWithFade(clip);
+            AudioManager.Instance.PlayMusic(clip);
         }
         catch (NullReferenceException)
         {

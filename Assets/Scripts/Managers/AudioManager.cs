@@ -85,7 +85,7 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="newClip">The song that you want to play.</param>
     /// <param name="transitionTime">How long to transition in and out of it.</param>
-    public void PlayMusicWithFade(AudioClip newClip, float transitionTime = 1.0f)
+    public void PlayMusicWithFade(AudioClip newClip, float transitionTime = 0.25f)
     {
         //A ternary operator, essentially a if statement, if firstMusicSourceIsPlaying is true. 
         var activeSource = firstMusicSourceIsPlaying ? musicSource : musicSource2;
