@@ -14,9 +14,13 @@ public class PlayerHealth : MonoBehaviour
     private Coroutine regen;
     private bool hasDied;
 
+    private Animator Animdeth;
+
     void Awake()
     {
         health = maxHealth;
+
+        Animdeth = GetComponent<Animator>();
     }
 
     public void HealthIncrease(int amount = 1)
@@ -59,6 +63,9 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         //Play death animation here 
+
+        Animdeth.SetTrigger("Deathdeath");
+
         try
         {
             LevelManager.instance.LoadScene("Mary QOS");
