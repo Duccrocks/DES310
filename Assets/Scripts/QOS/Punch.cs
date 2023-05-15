@@ -10,6 +10,7 @@ public class Punch : MonoBehaviour
     [SerializeField] private AudioClip punchClip;
     [SerializeField] private AudioClip punchImpactClip;
 
+    public bool jitterRoom;
     bool canPunch = true;
     Animator anim;
 
@@ -20,9 +21,12 @@ public class Punch : MonoBehaviour
 
     public void PunchEnemy()
     {
-        if (canPunch == false) return;
-        canPunch = false;
-        Invoke(nameof(CooldownReset), 0.5f);
+        if (!jitterRoom)
+        {
+            if (canPunch == false) return;
+            canPunch = false;
+            Invoke(nameof(CooldownReset), 0.5f);
+        }
 
         Debug.Log("Punching");
 

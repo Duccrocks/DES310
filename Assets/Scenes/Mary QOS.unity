@@ -13941,6 +13941,44 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: c92bc296baa551f4f9a08c72e2648c9e, type: 3}
+--- !u!1 &947286639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5910768285074287187, guid: c92bc296baa551f4f9a08c72e2648c9e, type: 3}
+  m_PrefabInstance: {fileID: 947286638}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &947286640 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5910768285521628863, guid: c92bc296baa551f4f9a08c72e2648c9e, type: 3}
+  m_PrefabInstance: {fileID: 947286638}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &947286641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947286639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 189f20c0806c6ba45ae8bf290caa644c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jitter: 0
+  Punch: {fileID: 6034129766123387630}
+--- !u!114 &947286642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947286640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 189f20c0806c6ba45ae8bf290caa644c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jitter: 1
+  Punch: {fileID: 6034129766123387630}
 --- !u!1001 &949241979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31900,7 +31938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148992160398}
   m_LocalRotation: {x: 0.0000000050959468, y: -0.00000008940697, z: 1, w: 0.000000047242796}
-  m_LocalPosition: {x: 0.279, y: -0.1651, z: 0.0999}
+  m_LocalPosition: {x: -0.265, y: -0.165, z: -0.439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -38285,6 +38323,7 @@ MonoBehaviour:
   attackRange: 5
   punchClip: {fileID: 8300000, guid: 040f093a45c3c9a49a1bc1bc1d626573, type: 3}
   punchImpactClip: {fileID: 8300000, guid: 58de460250a901845be61f7269d1df7e, type: 3}
+  jitterRoom: 0
 --- !u!114 &6034129766275646721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38341,7 +38380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6909703464163934963}
   m_LocalRotation: {x: 0.50000006, y: -0.49999997, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -66.75403, y: -0.15600014, z: -36.947994}
+  m_LocalPosition: {x: -12.35, y: -54.1, z: -36.9}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
