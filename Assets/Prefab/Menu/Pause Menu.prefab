@@ -585,6 +585,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  backClip: {fileID: 8300000, guid: c542bb521b8a416478c9d5727dc3970c, type: 3}
 --- !u!1001 &3508759752313770735
 PrefabInstance:
   m_ObjectHideFlags: 0

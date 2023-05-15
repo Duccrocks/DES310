@@ -20,6 +20,7 @@ public class SprintController : MonoBehaviour
 
 
     private bool playSound = true;
+    public bool isOutOfStamina { get; private set; } = false;
     private Coroutine regen;
 
 
@@ -62,7 +63,7 @@ public class SprintController : MonoBehaviour
         }
         else
         {
-
+            isOutOfStamina = true;
         }
     }
 
@@ -70,6 +71,7 @@ public class SprintController : MonoBehaviour
     {
         //Waits 2 seconds before regenerating stamina.
         yield return new WaitForSeconds(staminaRegenDelay);
+        isOutOfStamina = false;
 
         //While their is still stamina left for the user to deplete
         while (CurrentStamina < maxStamina)

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -15,7 +16,14 @@ public class ButtonSelectHandler : MonoBehaviour, ISelectHandler, IDeselectHandl
     public void OnDeselect(BaseEventData eventData)
     {
         cursors.SetActive(false);
-        AudioManager.Instance.PlaySound(clip);
+        try
+        {
+            AudioManager.Instance.PlaySound(clip);
+        }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("Audio Manager Null when playing select sound");
+        }
     }
 
 

@@ -6,15 +6,18 @@ using UnityEngine.InputSystem.UI;
 
 public class CreditScript : MonoBehaviour
 {
-    [Header("UI")] [SerializeField] private RectTransform scroller;
+    [Header("UI")] 
+    [SerializeField] private RectTransform scroller;
 
     [SerializeField] private TMP_Text backText;
 
-    [Header("Input")] [SerializeField] private InputSystemUIInputModule inputSystemUIInputModule;
+    [Header("Input")] 
+    [SerializeField] private InputSystemUIInputModule inputSystemUIInputModule;
 
     [SerializeField] private PlayerInput playerInput;
 
-    [Header("Options")] [SerializeField] private float creditTime;
+    [Header("Options")] 
+    [SerializeField] private float creditTime;
 
     [SerializeField] private float waitBeforeScrollTime = 1;
 

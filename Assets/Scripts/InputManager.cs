@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
 
 
     private bool isPaused;
+    private bool isAbleToJump = false;
+    private bool isSprintHeld;
 
     //Event for when the player changes their device (keyboard -> controller vice versa)
     public static event Action PlayerDeviceChanged;
@@ -29,8 +31,8 @@ public class InputManager : MonoBehaviour
 
     private enum ControlType
     {
-        General,
-        RadarMaze,
+        Library,
+        KelpieGame,
         MaryQueenOfScots,
         FinalMiniGame
     }
@@ -55,16 +57,17 @@ public class InputManager : MonoBehaviour
         //Depending on what scene we're in set up certain input events or not.
         switch (controlType)
         {
-            case ControlType.General:
-                return;
-            case ControlType.RadarMaze:
-                SetUpRadarMaze();
+            case ControlType.Library:
+                isAbleToJump = false;
+                break;
+            case ControlType.KelpieGame:
+                SetUpKelpieGame();
                 break;
             case ControlType.MaryQueenOfScots:
                 SetUpMQOS();
                 break;
             case ControlType.FinalMiniGame:
-                Debug.LogError("No final minigame has been made");
+                Debug.LogError("No final mini-game has been made");
                 break;
         }
     }
@@ -83,16 +86,26 @@ public class InputManager : MonoBehaviour
 
         var cameraRotationValue = playerControls.Player.Look.ReadValue<Vector2>();
         cameraController.Look(cameraRotationValue);
+
+        isSprintHeld = playerControls.Player.Sprint.IsPressed();
+        if(isSprintHeld)
+        {
+            playerMovement.StartSprinting();
+        }
+        else
+        {
+            playerMovement.StopSprinting();
+        }
     }
 
     private void OnEnable()
     {
         //Subscribes all player control events
         playerControls.Enable();
-        playerControls.Player.Jump.performed += Jump;
+        if(isAbleToJump) playerControls.Player.Jump.performed += Jump;
         playerControls.Player.Interact.performed += Interact;
-        playerControls.Player.Sprint.performed += StartSprinting;
-        playerControls.Player.Sprint.canceled += StopSprinting;
+        // playerControls.Player.Sprint.performed += StartSprinting;
+        // playerControls.Player.Sprint.canceled += StopSprinting;
         if (pauseMenu) playerControls.Player.Pause.performed += TogglePause;
         if (sonarPulses) playerControls.Player.Sonar.performed += SonarPulse;
         if (punch) playerControls.Player.Punch.performed += PunchEnemy;
@@ -103,7 +116,7 @@ public class InputManager : MonoBehaviour
         {
             LevelManager.instance.onChangingScene += OnSceneChange;
         }
-        catch (System.Exception)
+        catch (NullReferenceException)
         {
             Debug.LogError("Level Manager Null");
         }
@@ -129,8 +142,8 @@ public class InputManager : MonoBehaviour
         playerControls.Disable();
         playerControls.Player.Jump.performed -= Jump;
         playerControls.Player.Interact.performed -= Interact;
-        playerControls.Player.Sprint.performed -= StartSprinting;
-        playerControls.Player.Sprint.canceled -= StopSprinting;
+        // playerControls.Player.Sprint.performed -= StartSprinting;
+        // playerControls.Player.Sprint.canceled -= StopSprinting;
         playerControls.Player.Pause.performed -= TogglePause;
         playerControls.Player.Sonar.performed -= SonarPulse;
         playerControls.Player.Punch.performed -= PunchEnemy;
@@ -138,8 +151,9 @@ public class InputManager : MonoBehaviour
 
 
     #region SetUpScenes
-    private void SetUpRadarMaze()
+    private void SetUpKelpieGame()
     {
+        isAbleToJump = true;
         sonarPulses = GetComponent<SonarPulses>();
         if (TryGetComponent(out SonarPulses sonarPulsesComponent))
             sonarPulses = sonarPulsesComponent;
@@ -154,8 +168,10 @@ public class InputManager : MonoBehaviour
                            "If you're not in Radar Maze then switch controlType, else add a Map Manager script");
     }
 
+
     private void SetUpMQOS()
     {
+        isAbleToJump = true;
         punch = GetComponentInChildren<Punch>();
         if (!punch)
             Debug.LogError("Punch Null\n " +
@@ -178,17 +194,17 @@ public class InputManager : MonoBehaviour
         {
             playerControls.Player.Jump.performed -= Jump;
             playerControls.Player.Interact.performed -= Interact;
-            playerControls.Player.Sprint.performed -= StartSprinting;
-            playerControls.Player.Sprint.canceled -= StopSprinting;
+            // playerControls.Player.Sprint.performed -= StartSprinting;
+            // playerControls.Player.Sprint.canceled -= StopSprinting;
             playerControls.Player.Sonar.performed -= SonarPulse;
             playerControls.Player.Punch.performed -= PunchEnemy;
         }
         else
         {
-            playerControls.Player.Jump.performed += Jump;
+           if(isAbleToJump)playerControls.Player.Jump.performed += Jump;
             playerControls.Player.Interact.performed += Interact;
-            playerControls.Player.Sprint.performed += StartSprinting;
-            playerControls.Player.Sprint.canceled += StopSprinting;
+            // playerControls.Player.Sprint.performed += StartSprinting;
+            // playerControls.Player.Sprint.canceled += StopSprinting;
             if (sonarPulses) playerControls.Player.Sonar.performed += SonarPulse;
             if (punch) playerControls.Player.Punch.performed += PunchEnemy;
         }

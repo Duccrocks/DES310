@@ -13538,7 +13538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced66207a375e7b458a81551c02f4e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 3d732948b7bc67c4ca7aadda743399bd, type: 3}
+  clip: {fileID: 8300000, guid: 530a27e6ac78c26469f64b33e34517ae, type: 3}
 --- !u!1 &935444830
 GameObject:
   m_ObjectHideFlags: 0
@@ -32673,6 +32673,7 @@ GameObject:
   - component: {fileID: 5425729815503123418}
   - component: {fileID: 8465599300414050674}
   - component: {fileID: 6034129766275646721}
+  - component: {fileID: 8465599300414050675}
   m_Layer: 0
   m_Name: Player Variant
   m_TagString: Player
@@ -38299,7 +38300,7 @@ MonoBehaviour:
   maxHealth: 250
   health: 0
   regenCooldown: 3
-  hurtClip: {fileID: 0}
+  hurtClip: {fileID: 8300000, guid: ec1ad5264bb66f54c84ae45411588e39, type: 3}
 --- !u!1 &6043478362648064859
 GameObject:
   m_ObjectHideFlags: 0
@@ -38768,6 +38769,27 @@ MonoBehaviour:
   staminaDrain: 1
   staminaRegenDelay: 1.5
   staminaBar: {fileID: 2126177935}
+--- !u!114 &8465599300414050675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788142550550448648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704ecf5b7c81b574c8fadb88b6341577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepClips:
+  - {fileID: 8300000, guid: cbbbc9952d5db394faa49ad2a7e8fdfb, type: 3}
+  - {fileID: 8300000, guid: 2f489f4fc1571da44a948ad174ac276d, type: 3}
+  - {fileID: 8300000, guid: 3c955a3d7a289694bae4584d0254c6b5, type: 3}
+  - {fileID: 8300000, guid: 52b1a996454c74740890e730bae96b5f, type: 3}
+  - {fileID: 8300000, guid: 20abd044c01b5a14f98437806dfb8070, type: 3}
+  soundDelayThreshold: 0.5
+  playerMovement: {fileID: 5425729815503123418}
+  groundPositionTransform: {fileID: 7969740750536199985}
 --- !u!1 &8547714793372849741
 GameObject:
   m_ObjectHideFlags: 0

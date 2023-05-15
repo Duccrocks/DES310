@@ -189,6 +189,7 @@ MonoBehaviour:
   onBack:
     m_PersistentCalls:
       m_Calls: []
+  backClip: {fileID: 8300000, guid: c542bb521b8a416478c9d5727dc3970c, type: 3}
 --- !u!1 &1393154300988195341
 GameObject:
   m_ObjectHideFlags: 0

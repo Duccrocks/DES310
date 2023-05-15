@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource musicSource2;
 
     private AudioSource sfxSource;
+    private float defaultPitch;
 
     //Makes use of the singleton pattern to create an instance that can be accessed from anywhere in the level.
     public static AudioManager Instance { get; private set; }
@@ -40,6 +41,7 @@ public class AudioManager : MonoBehaviour
 
         //Gets all children of master (where the first instance is the parent mixer group, all following being children)
         var audioMixerGroups = audioMixer.FindMatchingGroups("Master");
+        //And sets their output groups to the children of master.
         musicSource.outputAudioMixerGroup = audioMixerGroups[1];
         musicSource2.outputAudioMixerGroup = audioMixerGroups[1];
         sfxSource.outputAudioMixerGroup = audioMixerGroups[2];
@@ -51,6 +53,7 @@ public class AudioManager : MonoBehaviour
         //Loops the music tracks, just incase a new one doesn't play in time.
         musicSource.loop = true;
         musicSource2.loop = true;
+        defaultPitch = sfxSource.pitch;
     }
 
     private void OnEnable()
@@ -82,7 +85,7 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="newClip">The song that you want to play.</param>
     /// <param name="transitionTime">How long to transition in and out of it.</param>
-    public void PlayMusicWithFade(AudioClip newClip, float transitionTime = 1.0f)
+    public void PlayMusicWithFade(AudioClip newClip, float transitionTime = 0.25f)
     {
         //A ternary operator, essentially a if statement, if firstMusicSourceIsPlaying is true. 
         var activeSource = firstMusicSourceIsPlaying ? musicSource : musicSource2;
@@ -166,6 +169,16 @@ public class AudioManager : MonoBehaviour
         sfxSource.clip = sfxClip;
         //Oneshot used so sounds don't overlap.
         sfxSource.PlayOneShot(sfxClip, volume);
+    }
+
+    public void IncreaseSFXPitch(float pitchMultiplier)
+    {
+        sfxSource.pitch *= pitchMultiplier;
+    }
+
+    public void ResetSFXPitch()
+    {
+        sfxSource.pitch = defaultPitch;
     }
 
     public void TogglePause(bool isPaused)

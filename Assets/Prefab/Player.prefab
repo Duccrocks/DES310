@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1952874571160141081}
   - component: {fileID: 5118387661832502334}
   - component: {fileID: 8736951696169770646}
+  - component: {fileID: 4728645145333790543}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -185,7 +186,27 @@ MonoBehaviour:
   staminaDrain: 1
   staminaRegenDelay: 1.5
   staminaBar: {fileID: 0}
-  clip: {fileID: 8300000, guid: 283a075dddcb27544bd4627200c4fd69, type: 3}
+--- !u!114 &4728645145333790543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483065527466821100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704ecf5b7c81b574c8fadb88b6341577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepClips:
+  - {fileID: 8300000, guid: a55471a5e4b33b241b4fb6575fbd05ab, type: 3}
+  - {fileID: 8300000, guid: 40daec418e7474743a793ebb3ded2767, type: 3}
+  - {fileID: 8300000, guid: 5213085f7ad11d74f84aafdce0a6c405, type: 3}
+  - {fileID: 8300000, guid: 877470d23903a914d80274c0fbfe9b3c, type: 3}
+  - {fileID: 8300000, guid: 140dbe7a77290bf4f83578dbf48a7123, type: 3}
+  soundDelayThreshold: 0.5
+  playerMovement: {fileID: 5118387661832502334}
+  groundPositionTransform: {fileID: 7124147106484437205}
 --- !u!1 &483065527602597337
 GameObject:
   m_ObjectHideFlags: 0

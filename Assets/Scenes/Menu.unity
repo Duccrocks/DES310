@@ -3997,6 +3997,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7de6eed8ae525024e85c4e728c1efbf0, type: 2}
+    - target: {fileID: -7146521406498821007, guid: 2408cdf033056ca45b915ab9685256a7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -804731622281664130, guid: 2408cdf033056ca45b915ab9685256a7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4013,6 +4017,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 2100000, guid: 5b7dcf4601ac7564bbe1b0eaf718d102, type: 2}
+    - target: {fileID: 183511268692346852, guid: 2408cdf033056ca45b915ab9685256a7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2408cdf033056ca45b915ab9685256a7, type: 3}
       propertyPath: m_Name
       value: LibraryRedo
@@ -4033,6 +4041,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 2100000, guid: 5b7dcf4601ac7564bbe1b0eaf718d102, type: 2}
+    - target: {fileID: 2121082584537592385, guid: 2408cdf033056ca45b915ab9685256a7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163116264202745361, guid: 2408cdf033056ca45b915ab9685256a7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3618742547905260167, guid: 2408cdf033056ca45b915ab9685256a7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4053,6 +4069,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 2100000, guid: 5b7dcf4601ac7564bbe1b0eaf718d102, type: 2}
+    - target: {fileID: 7191523447718877404, guid: 2408cdf033056ca45b915ab9685256a7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2408cdf033056ca45b915ab9685256a7, type: 3}
