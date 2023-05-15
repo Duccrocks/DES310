@@ -4875,7 +4875,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329233233}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -54.69, y: -44.888794, z: 234.79843}
+  m_LocalPosition: {x: -54.69, y: -43.89, z: 234.79843}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13549,8 +13549,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced66207a375e7b458a81551c02f4e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 530a27e6ac78c26469f64b33e34517ae, type: 3}
-  victoryfield: {fileID: 405938254}
+  musicClip: {fileID: 8300000, guid: 530a27e6ac78c26469f64b33e34517ae, type: 3}
+  victoryCanvas: {fileID: 405938254}
 --- !u!1 &935444830
 GameObject:
   m_ObjectHideFlags: 0
@@ -30922,6 +30922,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 927628209}
     m_Modifications:
+    - target: {fileID: 3918992344362558370, guid: 38ba2994680e31d4494f2f88ce133b5f, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 3918992344362558371, guid: 38ba2994680e31d4494f2f88ce133b5f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -31008,7 +31012,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3918992344362558375, guid: 38ba2994680e31d4494f2f88ce133b5f, type: 3}
       propertyPath: m_Name
-      value: Vcitory Canvas
+      value: Victory Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3918992345816513499, guid: 38ba2994680e31d4494f2f88ce133b5f, type: 3}
+      propertyPath: m_fontSize
+      value: 37.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3918992345816513499, guid: 38ba2994680e31d4494f2f88ce133b5f, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -32823,6 +32835,7 @@ GameObject:
   - component: {fileID: 8465599300414050674}
   - component: {fileID: 6034129766275646721}
   - component: {fileID: 8465599300414050675}
+  - component: {fileID: 8465599300414050676}
   m_Layer: 0
   m_Name: Player Variant
   m_TagString: Player
@@ -38940,6 +38953,26 @@ MonoBehaviour:
   soundDelayThreshold: 0.5
   playerMovement: {fileID: 5425729815503123418}
   groundPositionTransform: {fileID: 7969740750536199985}
+--- !u!95 &8465599300414050676
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788142550550448648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9cf014965f330ce4aa308890a1d033b8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8547714793372849741
 GameObject:
   m_ObjectHideFlags: 0

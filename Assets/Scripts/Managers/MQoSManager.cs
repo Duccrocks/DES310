@@ -1,10 +1,13 @@
 using System;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.Serialization;
+
 public class MQoSManager : MonoBehaviour
 {
-    [SerializeField] private AudioClip clip;
-    [SerializeField] GameObject victoryfield;
+    [SerializeField] private AudioClip musicClip;
+    [SerializeField] private GameObject victoryCanvas;
+
     private void Start()
     {
         try
@@ -18,31 +21,31 @@ public class MQoSManager : MonoBehaviour
 
         try
         {
-            AudioManager.Instance.PlayMusic(clip);
+            AudioManager.Instance.PlayMusic(musicClip);
         }
         catch (NullReferenceException)
         {
             Debug.LogError("Audiomanager Null");
         }
 
-        victoryfield.SetActive(false);
+        victoryCanvas.SetActive(false);
     }
 
     public void Victory()
     {
-        StartCoroutine(vict());
+        StartCoroutine(VictoryPopUp());
     }
 
-    IEnumerator vict()
+    private IEnumerator VictoryPopUp()
     {
-        var UI = GameObject.FindGameObjectsWithTag("UI");//DISABLE ALL UI
-        foreach (GameObject obj in UI)
+        var ui = GameObject.FindGameObjectsWithTag("UI"); //DISABLE ALL UI
+        foreach (GameObject obj in ui)
         {
             obj.SetActive(false);
         }
-        victoryfield.SetActive(true);
 
-        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        victoryCanvas.SetActive(true);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject obj in enemies)
         {
             obj.SetActive(false);

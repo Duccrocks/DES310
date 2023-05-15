@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class RadarGameManager : MonoBehaviour
 {
@@ -23,7 +23,7 @@ public class RadarGameManager : MonoBehaviour
 
     private int artifactsCount;
     private KelpieAI kelpie;
-    [SerializeField] GameObject victoryfield;
+    [SerializeField] GameObject victoryCanvas;
 
     public static RadarGameManager Instance
 
@@ -64,7 +64,7 @@ public class RadarGameManager : MonoBehaviour
         kelpie = FindObjectOfType<KelpieAI>();
         artifactsCount = FindObjectsOfType<Artifacts>().Length;
 
-        victoryfield.SetActive(false);
+        victoryCanvas.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -84,14 +84,14 @@ public class RadarGameManager : MonoBehaviour
         // }
     }
 
-    IEnumerator Victory()
+    IEnumerator VictoryPopUp()
     {
         var UI = GameObject.FindGameObjectsWithTag("UI");//DISABLE ALL UI
         foreach (GameObject obj in UI)
         {
             obj.SetActive(false);
         }
-        victoryfield.SetActive(true);
+        victoryCanvas.SetActive(true);
 
         kelpie.gameObject.SetActive(false);
         yield return new WaitForSeconds(5);
@@ -118,7 +118,7 @@ public class RadarGameManager : MonoBehaviour
         kelpie.IncreaseDiff();
         artifactsCount--;
         mapManager.PieceCollected(id);
-        if (artifactsCount <= 0) StartCoroutine("Victory");
+        if (artifactsCount <= 0) StartCoroutine(nameof(VictoryPopUp));
     }
 
     public void CollectStartingMap()

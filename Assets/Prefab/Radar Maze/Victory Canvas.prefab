@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3918992344362558373}
   - component: {fileID: 3918992344362558372}
   m_Layer: 0
-  m_Name: Vcitory Canvas
+  m_Name: Victory Canvas
   m_TagString: VictoryUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ RectTransform:
   - {fileID: 3918992344954220205}
   - {fileID: 3918992345816513498}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -75,10 +75,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 3918992344954220203}
   - component: {fileID: 3918992344954220202}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Victory Image
   m_TagString: VictoryUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 3918992345816513496}
   - component: {fileID: 3918992345816513499}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Victory Text
   m_TagString: VictoryUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
