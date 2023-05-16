@@ -94,7 +94,7 @@ public class RadarGameManager : MonoBehaviour
         victoryCanvas.SetActive(true);
 
         kelpie.gameObject.SetActive(false);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1.5f);
         MiniGameProgression.KelpieGameCompleted = true;
 
         if (MiniGameProgression.HasWon())
@@ -109,8 +109,14 @@ public class RadarGameManager : MonoBehaviour
     public void Death()
     {
         //Play death animation here 
-
-        LevelManager.instance.LoadScene("Library");
+        try
+        {
+            LevelManager.instance.LoadScene("Library");
+        }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("Level manager null");
+        }
     }
 
     public void ArtifactObtained(int id)
@@ -118,7 +124,7 @@ public class RadarGameManager : MonoBehaviour
         kelpie.IncreaseDiff();
         artifactsCount--;
         mapManager.PieceCollected(id);
-        if (artifactsCount <= 0) StartCoroutine(nameof(VictoryPopUp));
+        if (artifactsCount <= 0) StartCoroutine(VictoryPopUp());
     }
 
     public void CollectStartingMap()

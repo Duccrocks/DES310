@@ -10,9 +10,15 @@ public class KelpieAI : MonoBehaviour
 
     // Kelpie Settings
     [SerializeField] private float kelpieRange = 30;
+    private NavMeshAgent agent;
 
 
     private Vector3 lastPlayerPos;
+    private void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
+
 
     void Update()
     {
@@ -59,7 +65,7 @@ public class KelpieAI : MonoBehaviour
     {
         Debug.Log("Action is coming (African accent)");
 
-        GetComponent<NavMeshAgent>().speed *= 1.1f;
+        agent.speed *= 1.1f;
         kelpieRange += 10;
     }
 

@@ -1110,9 +1110,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scroller: {fileID: 471844564}
   backText: {fileID: 1970112747}
-  creditTime: 20
   inputSystemUIInputModule: {fileID: 456774336}
   playerInput: {fileID: 1736988306}
+  creditTime: 20
+  waitBeforeScrollTime: 1
 --- !u!1 &505546509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,7 +1829,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Finlay Pearston
+  m_text: 'Finlay Pearston - Team Mentor
 
 '
   m_isRightToLeft: 0

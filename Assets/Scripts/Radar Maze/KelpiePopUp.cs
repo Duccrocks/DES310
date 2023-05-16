@@ -16,7 +16,6 @@ public class KelpiePopUp : MonoBehaviour, IInteractable
         pauseMenu = FindObjectOfType<PauseMenu>();
     }
 
-
     private void OnDisable()
     {
         PauseMenu.OnPause -= HandlePause;

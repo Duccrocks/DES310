@@ -6,17 +6,17 @@ using UnityEngine.InputSystem.UI;
 
 public class CreditScript : MonoBehaviour
 {
-    [Header("UI")] 
+    [Header("UI")]
     [SerializeField] private RectTransform scroller;
 
     [SerializeField] private TMP_Text backText;
 
-    [Header("Input")] 
+    [Header("Input")]
     [SerializeField] private InputSystemUIInputModule inputSystemUIInputModule;
 
     [SerializeField] private PlayerInput playerInput;
 
-    [Header("Options")] 
+    [Header("Options")]
     [SerializeField] private float creditTime;
 
     [SerializeField] private float waitBeforeScrollTime = 1;
@@ -52,7 +52,17 @@ public class CreditScript : MonoBehaviour
             scroller.localPosition = pos;
 
 
-            if (pos.y > 3000) LevelManager.instance.LoadScene("Menu", shouldTransitionEffect: false);
+            if (pos.y > 3000)
+            {
+                try
+                {
+                    LevelManager.instance.LoadScene("Menu", shouldTransitionEffect: false);
+                }
+                catch (System.NullReferenceException)
+                {
+                    Debug.LogError("Level Manager null");
+                }
+            }
         }
     }
 
@@ -78,6 +88,13 @@ public class CreditScript : MonoBehaviour
 
     private void OnCancelEvent(InputAction.CallbackContext context)
     {
-        LevelManager.instance.LoadScene("Menu", shouldTransitionEffect: false);
+        try
+        {
+            LevelManager.instance.LoadScene("Menu", shouldTransitionEffect: false);
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.LogError("Level Manager null");
+        }
     }
 }

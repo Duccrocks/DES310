@@ -10447,7 +10447,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665886544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3.81, z: 0}
   m_LocalScale: {x: 59.975708, y: 21.818136, z: 61.996407}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19740,7 +19740,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215339442}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -15.521376, z: 94.4}
+  m_LocalPosition: {x: 0, y: -15.521376, z: 91.9}
   m_LocalScale: {x: 20.675575, y: 21.77562, z: 112.8911}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34022,12 +34022,12 @@ PrefabInstance:
       value: Victory Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 3918992345816513499, guid: 38ba2994680e31d4494f2f88ce133b5f, type: 3}
-      propertyPath: m_fontSize
-      value: 37.35
+      propertyPath: m_text
+      value: Congrats! You have collected the crown!
       objectReference: {fileID: 0}
     - target: {fileID: 3918992345816513499, guid: 38ba2994680e31d4494f2f88ce133b5f, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 1
+      propertyPath: m_fontSize
+      value: 71.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

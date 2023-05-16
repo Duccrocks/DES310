@@ -50,7 +50,7 @@ public class MQoSManager : MonoBehaviour
         {
             obj.SetActive(false);
         }
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1.5f);
         MiniGameProgression.MQoSCompleted = true;
 
         if (MiniGameProgression.HasWon())
