@@ -11,8 +11,15 @@ public class Artifacts : MonoBehaviour, IInteractable
 
     private GameObject kelpie;
 
+    void Awake() 
+    {
+        kelpie = GameObject.FindGameObjectWithTag("Enemy");
+    }
+
     public void Interact()
     {
+        if (kelpie) kelpie.GetComponent<KelpieAI>().IncreaseDiff();
+
         try
         {
             RadarGameManager.Instance.ArtifactObtained(artifactID);
