@@ -18,11 +18,12 @@ public class Artifacts : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (kelpie) kelpie.GetComponent<KelpieAI>().IncreaseDiff();
+
         try
         {
             RadarGameManager.Instance.ArtifactObtained(artifactID);
             AudioManager.Instance.PlaySoundOnce(audioClip);
-            if (kelpie) kelpie.GetComponent<KelpieAI>().IncreaseDiff();
         }
         catch (NullReferenceException e)
         {
