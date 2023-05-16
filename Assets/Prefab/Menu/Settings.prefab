@@ -7311,6 +7311,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 5596154920495525771}
     m_Modifications:
     - target: {fileID: 3430441670048508869, guid: 3a2dca6b463ada4438ace2eeb53cc3fb, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430441670048508869, guid: 3a2dca6b463ada4438ace2eeb53cc3fb, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 5192159941408756142}
+    - target: {fileID: 3430441670048508869, guid: 3a2dca6b463ada4438ace2eeb53cc3fb, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 4818679094298610588}
+    - target: {fileID: 3430441670048508869, guid: 3a2dca6b463ada4438ace2eeb53cc3fb, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 9101622462238527540}
